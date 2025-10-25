@@ -196,6 +196,24 @@ canvas {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+:root {
+  --pf-bg: #0B132B;
+  --pf-bg-soft: #1C2541;
+  --pf-text: #FFFFFF;
+  --pf-primary: #5BC0BE;
+  --pf-accent: #3A506B;
+}
+
+.theme-prefest {
+  --background: var(--pf-bg);
+  --foreground: var(--pf-text);
+  --primary: var(--pf-primary);
+  --accent: var(--pf-accent);
+  --card: var(--pf-bg-soft);
+  --popover: var(--pf-bg-soft);
+  --secondary: var(--pf-bg-soft);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

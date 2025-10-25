@@ -16,129 +16,111 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-const teamMembers = [
+const sponsors = [
   {
-    name: "Aarav Sharma",
-    role: "Overall Coordinator",
-    icon: Users,
+    name: "NexaSoft",
+    sector: "Cloud & AI",
+    icon: Code,
     color: "from-cyan-500 to-blue-500",
-    description: "Leads the fest operations and coordination.",
-    src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=700&h=440&fit=crop&crop=faces&auto=format",
-    ctaText: "Connect",
+    description: "Building scalable cloud-native platforms.",
+    src: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1200&h=600&fit=crop&crop=entropy&auto=format",
+    ctaText: "Visit Site",
     ctaLink: "#",
-    details: {
-      department: "CSE",
-      year: "4th Year",
-      location: "Main Campus",
-    },
+    details: { industry: "Software", founded: "2016", hq: "Bengaluru" },
     content: () => (
       <div className="space-y-4 text-center">
         <p className="text-neutral-600 dark:text-neutral-400">
-          Oversees team workflows, planning, and cross-department syncs to keep the fest running smoothly.
-        </p>
-        <div className="grid grid-cols-3 gap-4 text-sm">
-          <div className="flex items-center justify-center gap-2">
-            <Users size={16} className="text-cyan-400" />
-            <span>{"CSE"}</span>
-          </div>
-          <div className="flex items-center justify-center gap-2">
-            <Award size={16} className="text-yellow-400" />
-            <span>{"4th Year"}</span>
-          </div>
-          <div className="flex items-center justify-center gap-2">
-            <MapPin size={16} className="text-red-400" />
-            <span>{"Main Campus"}</span>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    name: "Isha Patel",
-    role: "Cultural Lead",
-    icon: Music,
-    color: "from-purple-500 to-pink-500",
-    description: "Curates cultural showcases and performances.",
-    src: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700&h=440&fit=crop&crop=faces&auto=format",
-    ctaText: "Connect",
-    ctaLink: "#",
-    details: { department: "ECE", year: "3rd Year", location: "Auditorium" },
-    content: () => (
-      <div className="space-y-4 text-center">
-        <p className="text-neutral-600 dark:text-neutral-400">
-          Manages auditions, stage setups, and performance schedules for cultural nights.
+          NexaSoft accelerates digital transformation with secure, serverless stacks and ML ops.
         </p>
       </div>
     ),
   },
   {
-    name: "Kabir Mehta",
-    role: "Gaming Head",
-    icon: Gamepad2,
+    name: "GreenLeaf Energy",
+    sector: "Renewables",
+    icon: Award,
     color: "from-green-500 to-emerald-500",
-    description: "Leads esports tournaments and LAN setups.",
-    src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=700&h=440&fit=crop&crop=faces&auto=format",
-    ctaText: "Connect",
+    description: "Sustainable solar solutions at scale.",
+    src: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=1200&h=600&fit=crop&crop=entropy&auto=format",
+    ctaText: "Visit Site",
     ctaLink: "#",
-    details: { department: "IT", year: "3rd Year", location: "Gaming Arena" },
+    details: { industry: "Energy", founded: "2012", hq: "Gurugram" },
     content: () => (
       <div className="space-y-4 text-center">
         <p className="text-neutral-600 dark:text-neutral-400">
-          Coordinates brackets, streaming, and fair play checks for all gaming events.
+          Provider of utility-scale solar farms and rooftop microgrids for campuses and SMEs.
         </p>
       </div>
     ),
   },
   {
-    name: "Meera Nair",
-    role: "Sponsorships Lead",
+    name: "Finova Capital",
+    sector: "Fintech",
     icon: Briefcase,
-    color: "from-orange-500 to-red-500",
-    description: "Drives partnerships and sponsorships.",
-    src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=700&h=440&fit=crop&crop=faces&auto=format",
-    ctaText: "Connect",
-    ctaLink: "#",
-    details: { department: "MBA", year: "2nd Year", location: "Conf. Hall" },
-    content: () => (
-      <div className="space-y-4 text-center">
-        <p className="text-neutral-600 dark:text-neutral-400">
-          Handles outreach, proposals, and branding deliverables with sponsors.
-        </p>
-      </div>
-    ),
-  },
-  {
-    name: "Riya Kapoor",
-    role: "Design Lead",
-    icon: Palette,
-    color: "from-indigo-500 to-purple-500",
-    description: "Owns brand, posters, and UI/UX.",
-    src: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=700&h=440&fit=crop&crop=faces&auto=format",
-    ctaText: "Connect",
-    ctaLink: "#",
-    details: { department: "Design", year: "3rd Year", location: "Studio" },
-    content: () => (
-      <div className="space-y-4 text-center">
-        <p className="text-neutral-600 dark:text-neutral-400">
-          Crafts visual systems and ensures high-quality creative outputs.
-        </p>
-      </div>
-    ),
-  },
-  {
-    name: "Devika Rao",
-    role: "Literary & PR",
-    icon: Users,
     color: "from-yellow-500 to-orange-500",
-    description: "Manages press, content, and debates.",
-    src: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=700&h=440&fit=crop&crop=faces&auto=format",
-    ctaText: "Connect",
+    description: "Smart payments and lending APIs.",
+    src: "https://images.unsplash.com/photo-1556745738-8d76bdb6984b?w=1200&h=600&fit=crop&crop=entropy&auto=format",
+    ctaText: "Visit Site",
     ctaLink: "#",
-    details: { department: "ENGLISH", year: "2nd Year", location: "Media Room" },
+    details: { industry: "Finance", founded: "2018", hq: "Mumbai" },
     content: () => (
       <div className="space-y-4 text-center">
         <p className="text-neutral-600 dark:text-neutral-400">
-          Handles write-ups, anchors communication, and conducts literary meets.
+          Enabling seamless collections, payouts, and credit scoring with robust compliance.
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: "PixelForge Studios",
+    sector: "Design & Media",
+    icon: Palette,
+    color: "from-purple-500 to-pink-500",
+    description: "Branding and motion design for startups.",
+    src: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1200&h=600&fit=crop&crop=entropy&auto=format",
+    ctaText: "Visit Site",
+    ctaLink: "#",
+    details: { industry: "Creative", founded: "2014", hq: "Pune" },
+    content: () => (
+      <div className="space-y-4 text-center">
+        <p className="text-neutral-600 dark:text-neutral-400">
+          From visual identities to product videos, PixelForge crafts memorable brand stories.
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: "SkyLoop Networks",
+    sector: "Networking",
+    icon: Users,
+    color: "from-indigo-500 to-blue-500",
+    description: "High-availability network solutions.",
+    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop&crop=entropy&auto=format",
+    ctaText: "Visit Site",
+    ctaLink: "#",
+    details: { industry: "Telecom", founded: "2010", hq: "Hyderabad" },
+    content: () => (
+      <div className="space-y-4 text-center">
+        <p className="text-neutral-600 dark:text-neutral-400">
+          Enterprise Wi‑Fi, SD‑WAN, and edge security with 24/7 managed services.
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: "MediSync Health",
+    sector: "HealthTech",
+    icon: Trophy,
+    color: "from-red-500 to-rose-500",
+    description: "Connected devices and telemedicine.",
+    src: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1200&h=600&fit=crop&crop=entropy&auto=format",
+    ctaText: "Visit Site",
+    ctaLink: "#",
+    details: { industry: "Healthcare", founded: "2015", hq: "Chennai" },
+    content: () => (
+      <div className="space-y-4 text-center">
+        <p className="text-neutral-600 dark:text-neutral-400">
+          Remote patient monitoring and AI triage helping hospitals scale care access.
         </p>
       </div>
     ),
@@ -211,7 +193,7 @@ export default function EventsSection() {
   useOutsideClick(ref, () => setActive(null));
 
   return (
-    <section id="events" className="w-full py-12 sm:py-16 lg:py-20 relative">
+    <section id="sponsors" className="w-full py-12 sm:py-16 lg:py-20 relative">
       <div className="flex flex-col items-center justify-center w-full px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-7xl mx-auto space-y-12 sm:space-y-16">
           {/* Modal overlay */}
@@ -312,22 +294,22 @@ export default function EventsSection() {
             className="w-full flex flex-col items-center text-center"
           >
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6 sm:mb-8 drop-shadow-[0_0_30px_rgba(168,85,247,0.8)]">
-              Our Team
+              Our Sponsors
             </h1>
 
             <p className="text-lg sm:text-xl lg:text-2xl text-cyan-100 max-w-4xl mx-auto leading-relaxed px-4 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,1)] font-medium">
-              The faces behind the fest.
+              Celebrating the partners
             </p>
           </motion.div>
 
-          {/* Team Grid */}
+          {/* Sponsors Grid */}
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 max-w-none items-stretch">
-              {teamMembers.map((member, index) => (
+              {sponsors.map((sponsor, index) => (
                 <motion.div
-                  layoutId={`card-${member.name}-${id}`}
-                  key={`card-${member.name}-${id}`}
-                  onClick={() => setActive(member)}
+                  layoutId={`card-${sponsor.name}-${id}`}
+                  key={`card-${sponsor.name}-${id}`}
+                  onClick={() => setActive(sponsor)}
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, delay: index * 0.06 }}
@@ -337,14 +319,14 @@ export default function EventsSection() {
                     className={`relative overflow-hidden rounded-xl backdrop-blur-lg bg-black/60 border border-purple-400/40 p-0 hover:bg-black/70 transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:scale-105 flex flex-col h-full`}
                   >
                     <motion.div
-                      layoutId={`image-${member.name}-${id}`}
+                      layoutId={`image-${sponsor.name}-${id}`}
                       className="flex-none"
                     >
                       <Image
                         width={600}
                         height={240}
-                        src={member.src}
-                        alt={member.name}
+                        src={sponsor.src}
+                        alt={sponsor.name}
                         className="w-full h-44 rounded-t-lg object-cover object-top group-hover:scale-110 transition-transform duration-300"
                       />
                     </motion.div>
@@ -353,28 +335,28 @@ export default function EventsSection() {
                       <div className="w-full">
                         <div className="flex items-center justify-center mb-2">
                           <div
-                            className={`p-3 rounded-full bg-gradient-to-r ${member.color} mr-3 shadow-[0_0_20px_rgba(168,85,247,0.6)]`}
+                            className={`p-3 rounded-full bg-gradient-to-r ${sponsor.color} mr-3 shadow-[0_0_20px_rgba(168,85,247,0.6)]`}
                           >
-                            <member.icon size={24} className="text-white" />
+                            <sponsor.icon size={24} className="text-white" />
                           </div>
                           <motion.h3
-                            layoutId={`title-${member.name}-${id}`}
+                            layoutId={`title-${sponsor.name}-${id}`}
                             className="font-bold text-cyan-100 text-xl drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]"
                           >
-                            {member.name}
+                            {sponsor.name}
                           </motion.h3>
                         </div>
 
                         <motion.p
-                          layoutId={`description-${member.description}-${id}`}
+                          layoutId={`description-${sponsor.description}-${id}`}
                           className="text-cyan-50 mb-2 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
                         >
-                          {member.role}
+                          {sponsor.sector}
                         </motion.p>
                         <div className="w-full flex-1 overflow-auto space-y-2 px-2 min-h-0">
                           <div className="flex items-center justify-center gap-2 text-cyan-100">
                             <Users size={16} className="text-cyan-400" />
-                            <span className="text-sm">{member.description}</span>
+                            <span className="text-sm">{sponsor.description}</span>
                           </div>
                         </div>
                       </div>
@@ -383,15 +365,15 @@ export default function EventsSection() {
                         <div className="grid grid-cols-2 gap-3 w-full mb-2 text-sm">
                           <div className="text-center p-3 rounded bg-black/40 border border-cyan-400/30">
                             <div className="text-cyan-300 font-semibold drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
-                              {member.details.department}
+                              {sponsor.details.industry}
                             </div>
-                            <div className="text-cyan-100 text-xs">Department</div>
+                            <div className="text-cyan-100 text-xs">Industry</div>
                           </div>
                           <div className="text-center p-3 rounded bg-black/40 border border-yellow-400/30">
                             <div className="text-yellow-300 font-semibold drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]">
-                              {member.details.year}
+                              {sponsor.details.founded}
                             </div>
-                            <div className="text-cyan-100 text-xs">Year</div>
+                            <div className="text-cyan-100 text-xs">Founded</div>
                           </div>
                         </div>
                         <p className="text-cyan-200 text-sm drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
