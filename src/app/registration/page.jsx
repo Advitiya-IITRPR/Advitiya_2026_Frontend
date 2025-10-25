@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import Image from "next/image";
 import { Mail, Lock, User, Phone, Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import axios from "axios"
 import { Input } from "@/components/ui/input";
 
 const RegistrationPage = () => {
@@ -25,9 +25,8 @@ const RegistrationPage = () => {
       setIsLoading(true);
       setError("");
 
-      const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:3001/api";
   
-      const response = await axios.post(`${API_BASE_URL}/user/registerUser`, {
+      const response = await axios.post(`api/user/registerUser`, {
         userName: data.name,
         email: data.email,
         mobileNo: data.mobile,

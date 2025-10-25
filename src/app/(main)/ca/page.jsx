@@ -4,17 +4,6 @@ import Footer from "@/components/Footer";
 const CA = () => {
   return (
     <div className="relative min-h-screen bg-transparent text-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-            ADVITIYA
-          </div>
-          <button className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 cursor-pointer">
-            Register
-          </button>
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6">
@@ -272,9 +261,6 @@ const CA = () => {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };

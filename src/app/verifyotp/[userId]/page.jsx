@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Image from "next/image";
-import axios from "axios";
+import axios from "axios"
 
 const VerifyOtp = () => {
   const router = useRouter();
@@ -38,10 +38,8 @@ const VerifyOtp = () => {
       setIsLoading(true);
       setError("");
 
-      const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:3001/api";
-
       const response = await axios.post(
-        `${API_BASE_URL}/user/verifyUser/${params.userId}`,
+        `api/user/verifyUser/${params.userId}`,
         {
           verificationCode: otp.join(""),
         }
@@ -64,6 +62,28 @@ const VerifyOtp = () => {
       setError(errorMessage);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const sendOTP = async () => {
+    try {
+      const response = await axios.post(
+        `/api/user/sendOTPForResetPassword`,
+        { type: "VERIFY", userId: params.userId }
+      );
+
+      if (response.data.success) {
+        toast.success("OTP sent to your email!");
+        issetOtpSent(true);
+        setUserId(response.data.data.id)
+      } else {
+        toast.error(response.data.message || "Failed to send OTP");
+      }
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      const errorMessage =
+        error.response?.data?.message || "An error occurred while sending OTP.";
+      toast.error(errorMessage);
     }
   };
 
@@ -101,7 +121,13 @@ const VerifyOtp = () => {
               />
             ))}
           </div>
-
+          <button
+            type="button"
+            onClick={sendOTP}
+            className="mt-2 text-sm text-blue-700 hover:text-blue-800 dark:hover:text-orange-500 font-semibold transition-colors duration-200 cursor-pointer"
+          >
+            Resend OTP
+          </button>
           {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
           <button

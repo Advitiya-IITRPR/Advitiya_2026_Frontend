@@ -8,23 +8,16 @@ import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import Teaser from "@/components/Teaser";
 import Highlights from "@/components/Highlights";
+import Background from "@/components/Background";
 
-// Dynamically import ParticleBackground to avoid SSR issues
-const ParticleBackground = dynamic(
-  () => import("@/components/ParticleBackground"),
-  {
-    ssr: false,
-  }
-);
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
-      {/* Dynamic Background */}
-      {/* <ParticleBackground /> */}
 
       {/* Navigation */}
-      <NavigationBar />
+      
+      <Background />
 
       {/* Main Content */}
       <div className="relative z-10">
@@ -33,7 +26,6 @@ export default function Home() {
         <Teaser />
         <EventsSection />
         <Highlights />
-        <Footer />
       </div>
     </main>
   );
