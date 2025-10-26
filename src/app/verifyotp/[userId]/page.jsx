@@ -39,7 +39,7 @@ const VerifyOtp = () => {
       setError("");
 
       const response = await axios.post(
-        `api/user/verifyUser/${params.userId}`,
+        `/api/user/verifyUser/${params.userId}`,
         {
           verificationCode: otp.join(""),
         }
