@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Image from "next/image";
 import axios from "axios"
+import { StarsBackground } from "@/components/StarsBackground";
 
 const VerifyOtp = () => {
   const router = useRouter();
@@ -88,8 +89,9 @@ const VerifyOtp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#021334] via-[#012a61] to-[#275a91]">
-      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-2xl">
+    <StarsBackground className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-blue-950">
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="w-full max-w-md p-8 bg-[#021334] backdrop-blur-sm rounded-xl shadow-2xl">
         {/* Logo and Header */}
         <div className="flex flex-col items-center mb-8">
           <Image
@@ -99,8 +101,8 @@ const VerifyOtp = () => {
             height={80}
             className="rounded-full mb-4"
           />
-          <h2 className="text-3xl font-bold text-[#021334]">Verify Email</h2>
-          <p className="text-gray-600 mt-2">
+          <h2 className="text-3xl font-bold text-white">Verify Email</h2>
+          <p className="text-gray-300 mt-2">
             Enter the 6-digit code sent to your email
           </p>
         </div>
@@ -117,29 +119,30 @@ const VerifyOtp = () => {
                 value={digit}
                 onChange={(e) => handleOtpChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
-                className="w-12 h-12 text-center text-lg font-semibold border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#275a91] focus:border-[#275a91] transition-colors duration-200 text-black [&:-webkit-autofill]:bg-white [&:-webkit-autofill]:shadow-[0_0_0_30px_white_inset] [&:-webkit-autofill]:text-black"
+                className="w-12 h-12 text-center text-lg font-semibold border border-gray-600 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors duration-200 text-white placeholder-gray-400 [&:-webkit-autofill]:bg-gray-800 [&:-webkit-autofill]:shadow-[0_0_0_30px_rgb(31,41,55)_inset] [&:-webkit-autofill]:text-white"
               />
             ))}
           </div>
           <button
             type="button"
             onClick={sendOTP}
-            className="mt-2 text-sm text-blue-700 hover:text-blue-800 dark:hover:text-orange-500 font-semibold transition-colors duration-200 cursor-pointer"
+            className="mt-2 text-sm text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-200 cursor-pointer"
           >
             Resend OTP
           </button>
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+          {error && <p className="text-red-400 text-sm text-center">{error}</p>}
 
           <button
             onClick={verifyOtp}
             disabled={isLoading || otp.some((digit) => !digit)}
-            className="w-full py-3 px-4 bg-[#275a91] text-white font-semibold rounded-lg hover:bg-[#021334] focus:ring-4 focus:ring-[#275a91]/50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-400/50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? "Verifying..." : "Verify Email"}
           </button>
         </div>
+        </div>
       </div>
-    </div>
+    </StarsBackground>
   );
 };
 

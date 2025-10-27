@@ -7,6 +7,7 @@ import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
+import { StarsBackground } from "@/components/StarsBackground";
 import Link from "next/link";
 
 const LoginPage = () => {
@@ -51,8 +52,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#021334] via-[#012a61] to-[#275a91]">
-      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-2xl">
+    <StarsBackground className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-blue-950">
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="w-full max-w-md p-8 bg-[#021334] backdrop-blur-sm rounded-xl shadow-2xl">
         {/* Logo and Header */}
         <div className="flex flex-col items-center mb-8">
           <Image
@@ -62,20 +64,21 @@ const LoginPage = () => {
             height={80}
             className="rounded-full mb-4"
           />
-          <h2 className="text-3xl font-bold text-[#021334]">Welcome Back</h2>
-          <p className="text-gray-600 mt-2">Sign in to your account</p>
+          <h2 className="text-3xl font-bold text-white">Welcome Back</h2>
+          <p className="text-gray-300 mt-2">Sign in to your account</p>
         </div>
 
         {/* Login Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-              <Mail className="w-4 h-4 text-[#275a91]" />
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+              <Mail className="w-4 h-4 text-blue-400" />
               Email Address
             </label>
             <Input
               type="email"
               placeholder="Enter your email address"
+              className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400"
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -85,22 +88,22 @@ const LoginPage = () => {
               })}
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.email.message}
               </p>
             )}
           </div>
 
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-              <Lock className="w-4 h-4 text-[#275a91]" />
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+              <Lock className="w-4 h-4 text-blue-400" />
               Password
             </label>
             <div className="relative">
-              <input
+              <Input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#275a91] focus:border-[#275a91] transition-colors duration-200 text-black"
+                className="w-full px-4 py-3 border border-gray-600 bg-gray-800 text-white rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors duration-200 placeholder-gray-400"
                 {...register("password", {
                   required: "Password is required",
                 })}
@@ -108,7 +111,7 @@ const LoginPage = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#275a91]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-400"
               >
                 {showPassword ? (
                   <EyeOff className="w-5 h-5" />
@@ -118,7 +121,7 @@ const LoginPage = () => {
               </button>
             </div>
             {errors.password && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.password.message}
               </p>
             )}
@@ -128,23 +131,23 @@ const LoginPage = () => {
           <div className="flex justify-end">
             <Link 
               href="/forgot-password" 
-              className="text-sm text-[#275a91] hover:text-[#021334] transition-colors duration-200"
+              className="text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200"
             >
-              Forgot your password?
+              Forgot your password ?
             </Link>
           </div>
 
           {/* Display general error */}
           {error && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-600 text-sm">{error}</p>
+            <div className="p-3 bg-red-900/50 border border-red-600 rounded-lg">
+              <p className="text-red-400 text-sm">{error}</p>
             </div>
           )}
 
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 px-4 bg-[#275a91] text-white font-semibold rounded-lg hover:bg-[#021334] focus:ring-4 focus:ring-[#275a91]/50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-400/50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? "Signing In..." : "Sign In"}
           </button>
@@ -152,18 +155,19 @@ const LoginPage = () => {
 
         {/* Sign Up Link */}
         <div className="mt-6 text-center">
-          <p className="text-gray-600 text-sm">
+          <p className="text-gray-300 text-sm">
             Don't have an account?{" "}
             <Link 
               href="/registration" 
-              className="text-[#275a91] hover:text-[#021334] font-semibold transition-colors duration-200"
+              className="text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-200"
             >
               Create Account
             </Link>
           </p>
         </div>
+        </div>
       </div>
-    </div>
+    </StarsBackground>
   );
 };
 

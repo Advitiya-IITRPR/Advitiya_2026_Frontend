@@ -7,6 +7,7 @@ import { Mail, Lock, User, Phone, Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import axios from "axios"
 import { Input } from "@/components/ui/input";
+import { StarsBackground } from "@/components/StarsBackground";
 
 const RegistrationPage = () => {
   const router = useRouter();
@@ -52,8 +53,9 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#021334] via-[#012a61] to-[#275a91]">
-      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-2xl">
+    <StarsBackground className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-blue-950">
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="w-full max-w-md p-8 bg-[#021334] backdrop-blur-sm rounded-xl shadow-2xl py-4">
         {/* Logo and Header */}
         <div className="flex flex-col items-center mb-8">
           <Image
@@ -63,20 +65,21 @@ const RegistrationPage = () => {
             height={80}
             className="rounded-full mb-4"
           />
-          <h2 className="text-3xl font-bold text-[#021334]">Create Account</h2>
-          <p className="text-gray-600 mt-2">Welcome to Advitiya 2025</p>
+          <h2 className="text-3xl font-bold text-white">Create Account</h2>
+          <p className="text-gray-300 mt-2">Welcome to Advitiya 2025</p>
         </div>
 
         {/* Registration Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-              <User className="w-4 h-4 text-[#275a91]" />
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+              <User className="w-4 h-4 text-blue-400" />
               Full Name
             </label>
             <Input
               type="text"
               placeholder="Enter your full name"
+              className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400"
               {...register("name", {
                 required: "Full name is required",
                 minLength: {
@@ -86,18 +89,19 @@ const RegistrationPage = () => {
               })}
             />
             {errors.name && (
-              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+              <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
             )}
           </div>
 
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-              <Mail className="w-4 h-4 text-[#275a91]" />
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+              <Mail className="w-4 h-4 text-blue-400" />
               Email Address
             </label>
             <Input
               type="email"
               placeholder="Enter your email address"
+              className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400"
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -107,20 +111,21 @@ const RegistrationPage = () => {
               })}
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.email.message}
               </p>
             )}
           </div>
 
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-              <Phone className="w-4 h-4 text-[#275a91]" />
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+              <Phone className="w-4 h-4 text-blue-400" />
               Mobile Number
             </label>
             <Input
               type="tel"
               placeholder="Enter your mobile number"
+              className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400"
               {...register("mobile", {
                 required: "Mobile number is required",
                 pattern: {
@@ -130,22 +135,22 @@ const RegistrationPage = () => {
               })}
             />
             {errors.mobile && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.mobile.message}
               </p>
             )}
           </div>
 
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-              <Lock className="w-4 h-4 text-[#275a91]" />
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+              <Lock className="w-4 h-4 text-blue-400" />
               Password
             </label>
             <div className="relative">
-              <input
+              <Input
                 type={showPassword ? "text" : "password"}
                 placeholder="Create a password"
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#275a91] focus:border-[#275a91] transition-colors duration-200 text-black"
+                className="w-full px-4 py-3 border border-gray-600 bg-gray-800 text-white rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors duration-200 placeholder-gray-400"
                 {...register("password", {
                   required: "Password is required",
                   minLength: {
@@ -162,7 +167,7 @@ const RegistrationPage = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#275a91]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-400"
               >
                 {showPassword ? (
                   <EyeOff className="w-5 h-5" />
@@ -172,7 +177,7 @@ const RegistrationPage = () => {
               </button>
             </div>
             {errors.password && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.password.message}
               </p>
             )}
@@ -181,13 +186,14 @@ const RegistrationPage = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 px-4 bg-[#275a91] text-white font-semibold rounded-lg hover:bg-[#021334] focus:ring-4 focus:ring-[#275a91]/50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-400/50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? "Creating Account..." : "Create Account"}
           </button>
         </form>
+        </div>
       </div>
-    </div>
+    </StarsBackground>
   );
 };
 

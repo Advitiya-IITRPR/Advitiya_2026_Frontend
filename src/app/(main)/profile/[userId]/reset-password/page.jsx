@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useRouter, useParams } from "next/navigation";
 import axios from "axios";
+import { StarsBackground } from "@/components/StarsBackground";
 
 const Page = () => {
   const router = useRouter();
@@ -107,10 +108,11 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center bg-gradient-to-br from-[#275a91] to-[#021334] dark:from-[#e47b3c] dark:to-[#ed9e6f] py-12 px-4 sm:px-6 lg:px-8 pt-24">
-      <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg my-8">
+    <StarsBackground className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-blue-950">
+      <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 pt-24">
+        <div className="max-w-md w-full space-y-8 bg-[#021334] backdrop-blur-sm p-8 rounded-xl shadow-lg my-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-[#275a91] dark:text-[#e47b3c]">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
             Reset Password
           </h2>
         </div>
@@ -119,15 +121,15 @@ const Page = () => {
             {!isForgotPassword && (
               /* Current Password Field */
               <div className="mb-2">
-                <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                  <Lock className="w-4 h-4 text-[#275a91] dark:text-[#e47b3c]" />
+                <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+                  <Lock className="w-4 h-4 text-blue-400" />
                   Current Password
                 </label>
                 <div className="relative">
                   <input
                     type={showCurrentPassword ? "text" : "password"}
                     placeholder="Enter your current password"
-                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#275a91] dark:focus:ring-[#e47b3c] focus:border-[#275a91] dark:focus:border-[#e47b3c] transition-colors duration-200 text-black dark:text-white dark:bg-gray-700"
+                    className="w-full px-4 py-3 border border-gray-600 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors duration-200 text-white placeholder-gray-400"
                     {...register("currentPassword", {
                       required: "Current password is required",
                     })}
@@ -135,7 +137,7 @@ const Page = () => {
                   <button
                     type="button"
                     onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#275a91] dark:hover:text-[#e47b3c]"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-400"
                   >
                     {showCurrentPassword ? (
                       <EyeOff className="w-5 h-5" />
@@ -145,7 +147,7 @@ const Page = () => {
                   </button>
                 </div>
                 {errors.currentPassword && (
-                  <p className="text-red-500 text-sm mt-1">
+                  <p className="text-red-400 text-sm mt-1">
                     {errors.currentPassword.message}
                   </p>
                 )}
@@ -160,7 +162,7 @@ const Page = () => {
                   sendOTP();
                   setIsForgotPassword(true);
                 }}
-                className="text-sm text-[#275a91] dark:text-[#e47b3c] hover:text-[#021334] dark:hover:text-[#ed9e6f] font-semibold transition-colors duration-200"
+                className="text-sm text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-200"
               >
                 Forgot Password?
               </button>
@@ -168,8 +170,8 @@ const Page = () => {
             {/* OTP Field - Only show if OTP has been sent */}
             {otpSent && (
               <div>
-                <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                  <Lock className="w-4 h-4 text-[#275a91] dark:text-[#e47b3c]" />
+                <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+                  <Lock className="w-4 h-4 text-blue-400" />
                   Enter OTP
                 </label>
                 <div className="flex justify-between gap-2">
@@ -182,14 +184,14 @@ const Page = () => {
                       value={digit}
                       onChange={(e) => handleOtpChange(index, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(index, e)}
-                      className="w-12 h-12 text-center text-lg font-semibold border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#275a91] dark:focus:ring-[#e47b3c] focus:border-[#275a91] dark:focus:border-[#e47b3c] transition-colors duration-200 text-black dark:text-white dark:bg-gray-700"
+                      className="w-12 h-12 text-center text-lg font-semibold border border-gray-600 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors duration-200 text-white placeholder-gray-400"
                     />
                   ))}
                 </div>
                 <button
                   type="button"
                   onClick={sendOTP}
-                  className="mt-2 text-sm text-[#275a91] dark:text-[#e47b3c] hover:text-[#021334] dark:hover:text-[#ed9e6f] font-semibold transition-colors duration-200"
+                  className="mt-2 text-sm text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-200"
                 >
                   Resend OTP
                 </button>
@@ -198,15 +200,15 @@ const Page = () => {
 
             {/* New Password Field */}
             <div>
-              <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                <Lock className="w-4 h-4 text-[#275a91] dark:text-[#e47b3c]" />
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+                <Lock className="w-4 h-4 text-blue-400" />
                 New Password
               </label>
               <div className="relative">
                 <input
                   type={showNewPassword ? "text" : "password"}
                   placeholder="Enter your new password"
-                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#275a91] dark:focus:ring-[#e47b3c] focus:border-[#275a91] dark:focus:border-[#e47b3c] transition-colors duration-200 text-black dark:text-white dark:bg-gray-700"
+                  className="w-full px-4 py-3 border border-gray-600 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors duration-200 text-white placeholder-gray-400"
                   {...register("newPassword", {
                     required: "New password is required",
                     minLength: {
@@ -223,7 +225,7 @@ const Page = () => {
                 <button
                   type="button"
                   onClick={() => setShowNewPassword(!showNewPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#275a91] dark:hover:text-[#e47b3c]"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-400"
                 >
                   {showNewPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -233,7 +235,7 @@ const Page = () => {
                 </button>
               </div>
               {errors.newPassword && (
-                <p className="text-red-500 text-sm mt-1">
+                <p className="text-red-400 text-sm mt-1">
                   {errors.newPassword.message}
                 </p>
               )}
@@ -241,15 +243,15 @@ const Page = () => {
 
             {/* Confirm Password Field */}
             <div>
-              <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                <Lock className="w-4 h-4 text-[#275a91] dark:text-[#e47b3c]" />
+              <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+                <Lock className="w-4 h-4 text-blue-400" />
                 Confirm New Password
               </label>
               <div className="relative">
                 <input
                   type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm your new password"
-                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#275a91] dark:focus:ring-[#e47b3c] focus:border-[#275a91] dark:focus:border-[#e47b3c] transition-colors duration-200 text-black dark:text-white dark:bg-gray-700"
+                  className="w-full px-4 py-3 border border-gray-600 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors duration-200 text-white placeholder-gray-400"
                   {...register("confirmPassword", {
                     required: "Please confirm your password",
                     validate: (value) =>
@@ -259,7 +261,7 @@ const Page = () => {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#275a91] dark:hover:text-[#e47b3c]"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-400"
                 >
                   {showConfirmPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -269,7 +271,7 @@ const Page = () => {
                 </button>
               </div>
               {errors.confirmPassword && (
-                <p className="text-red-500 text-sm mt-1">
+                <p className="text-red-400 text-sm mt-1">
                   {errors.confirmPassword.message}
                 </p>
               )}
@@ -279,14 +281,15 @@ const Page = () => {
           <div>
             <button
               type="submit"
-              className="w-full bg-[#275a91] hover:bg-[#021334] dark:bg-[#e47b3c] dark:hover:bg-[#ed9e6f] text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200"
             >
               Reset Password
             </button>
           </div>
         </form>
+        </div>
       </div>
-    </div>
+    </StarsBackground>
   );
 };
 

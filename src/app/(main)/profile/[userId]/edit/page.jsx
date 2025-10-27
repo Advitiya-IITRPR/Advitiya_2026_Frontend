@@ -5,6 +5,7 @@ import { User, Mail, Phone, Save, Loader2 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import axios from "axios";
+import { StarsBackground } from "@/components/StarsBackground";
 
 const EditProfilePage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -73,29 +74,32 @@ const EditProfilePage = () => {
 
   if (isFetching) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-700 to-blue-600 dark:from-orange-200 dark:to-orange-300 py-12 px-4 sm:px-6 lg:px-8 pt-24">
-        <div className="flex flex-col items-center gap-4">
-          <Loader2 className="w-12 h-12 text-white dark:text-gray-900 animate-spin" />
-          <p className="text-white dark:text-gray-900 text-lg">
-            Loading profile...
-          </p>
+      <StarsBackground className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-blue-950">
+        <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 pt-24">
+          <div className="flex flex-col items-center gap-4">
+            <Loader2 className="w-12 h-12 text-white dark:text-gray-900 animate-spin" />
+            <p className="text-white dark:text-gray-900 text-lg">
+              Loading profile...
+            </p>
+          </div>
         </div>
-      </div>
+      </StarsBackground>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#275a91] to-[#012a61] dark:from-[#e47b3c] dark:to-[#ed9e6f] py-12 px-4 sm:px-6 lg:px-8 pt-24">
-      <div className="w-full max-w-md p-8 bg-white dark:bg-gray-800 rounded-xl shadow-2xl my-8">
+    <StarsBackground className="min-h-screen bg-gradient-to-br from-[#275a91] to-[#012a61] dark:from-[#e47b3c] dark:to-[#ed9e6f]">
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 pt-24">
+        <div className="w-full max-w-md p-8 bg-[#021334] backdrop-blur-sm rounded-xl shadow-2xl my-8">
         {/* Header */}
         <div className="flex flex-col items-center mb-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-[#275a91] to-[#012a61] dark:from-[#e47b3c] dark:to-[#ed9e6f] rounded-full flex items-center justify-center mb-4">
-            <User className="w-10 h-10 text-white dark:text-gray-900" />
+          <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mb-4">
+            <User className="w-10 h-10 text-white" />
           </div>
-          <h2 className="text-3xl font-bold text-[#275a91] dark:text-[#e47b3c]">
+          <h2 className="text-3xl font-bold text-white">
             Edit Profile
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 mt-2">
+          <p className="text-gray-300 mt-2">
             Update your account information
           </p>
         </div>
@@ -103,14 +107,14 @@ const EditProfilePage = () => {
         {/* Edit Profile Form */}
         <div className="space-y-6">
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              <User className="w-4 h-4 text-[#275a91] dark:text-[#e47b3c]" />
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+              <User className="w-4 h-4 text-blue-400" />
               Username
             </label>
             <input
               type="text"
               placeholder="Enter your username"
-              className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#275a91] dark:focus:ring-[#e47b3c] focus:border-[#275a91] dark:focus:border-[#e47b3c] transition-colors duration-200 text-black dark:text-white dark:bg-gray-700"
+              className="w-full px-4 py-3 border border-gray-600 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors duration-200 text-white placeholder-gray-400"
               {...register("userName", {
                 required: "Username is required",
                 minLength: {
@@ -124,21 +128,21 @@ const EditProfilePage = () => {
               })}
             />
             {errors.userName && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.userName.message}
               </p>
             )}
           </div>
 
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              <Mail className="w-4 h-4 text-[#275a91] dark:text-[#e47b3c]" />
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+              <Mail className="w-4 h-4 text-blue-400" />
               Email Address
             </label>
             <input
               type="email"
               placeholder="Enter your email address"
-              className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#275a91] dark:focus:ring-[#e47b3c] focus:border-[#275a91] dark:focus:border-[#e47b3c] transition-colors duration-200 text-black dark:text-white dark:bg-gray-700"
+              className="w-full px-4 py-3 border border-gray-600 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors duration-200 text-white placeholder-gray-400"
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -148,21 +152,21 @@ const EditProfilePage = () => {
               })}
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.email.message}
               </p>
             )}
           </div>
 
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-              <Phone className="w-4 h-4 text-[#275a91] dark:text-[#e47b3c]" />
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
+              <Phone className="w-4 h-4 text-blue-400" />
               Phone Number
             </label>
             <input
               type="tel"
               placeholder="Enter your phone number"
-              className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#275a91] dark:focus:ring-[#e47b3c] focus:border-[#275a91] dark:focus:border-[#e47b3c] transition-colors duration-200 text-black dark:text-white dark:bg-gray-700"
+              className="w-full px-4 py-3 border border-gray-600 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors duration-200 text-white placeholder-gray-400"
               {...register("mobileNo", {
                 required: "Mobile number is required",
                 pattern: {
@@ -172,7 +176,7 @@ const EditProfilePage = () => {
               })}
             />
             {errors.mobileNo && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.mobileNo.message}
               </p>
             )}
@@ -182,7 +186,7 @@ const EditProfilePage = () => {
             type="button"
             disabled={isLoading}
             onClick={handleSubmit(onSubmit)}
-            className="w-full py-3 px-4 bg-[#275a91] dark:bg-[#e47b3c] text-white dark:text-white font-semibold rounded-lg hover:bg-[#021334] dark:hover:bg-[#ed9e6f] focus:ring-4 focus:ring-[#275a91]/50 dark:focus:ring-[#e47b3c]/50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-400/50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>
@@ -197,8 +201,9 @@ const EditProfilePage = () => {
             )}
           </button>
         </div>
+        </div>
       </div>
-    </div>
+    </StarsBackground>
   );
 };
 
