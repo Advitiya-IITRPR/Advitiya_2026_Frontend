@@ -38,7 +38,7 @@ const LoginPage = () => {
         setError(errorMsg);
       } else if (result?.ok) {
         toast.success("Login successful! Welcome back.");
-        router.push("/dashboard");
+        router.push(`/`);
       }
     } catch (error) {
       console.error("Error during login:", error);
@@ -56,7 +56,7 @@ const LoginPage = () => {
         {/* Logo and Header */}
         <div className="flex flex-col items-center mb-8">
           <Image
-            src="/Advitiya Image.jpg"
+            src="/logo2.png"
             alt="Advitiya Logo"
             width={80}
             height={80}

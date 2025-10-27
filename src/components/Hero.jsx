@@ -110,7 +110,7 @@ export default function Hero() {
             className="mb-2"
           >
             <h1 className="text-6xl md:text-8xl font-bold mb-2">
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text drop-shadow-[0_0_40px_rgba(34,211,238,0.8)]">
+              <span className="bg-gradient-to-r from-cyan-300 via-purple-400 to-pink-400 text-transparent bg-clip-text drop-shadow-[0_0_40px_rgba(34,211,238,0.8)]">
                 ADVITIYA'26
               </span>
             </h1>

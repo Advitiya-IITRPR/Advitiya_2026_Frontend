@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "next-auth/react";
 import AuthProvider from "@/context/AuthProvider";
 import { ThemeProvider } from "@/components/theme-provider";
+import { DataProvider } from "@/context/dataContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <DataProvider>
               {children}
+            </DataProvider>
             <Toaster expand={true} richColors closeButton={true} />
           </ThemeProvider>
         </AuthProvider>
@@ -45,9 +48,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-
-
-
-

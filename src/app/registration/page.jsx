@@ -57,7 +57,7 @@ const RegistrationPage = () => {
         {/* Logo and Header */}
         <div className="flex flex-col items-center mb-8">
           <Image
-            src="/Advitiya Image.jpg"
+            src="/logo2.png"
             alt="Advitiya Logo"
             width={80}
             height={80}
