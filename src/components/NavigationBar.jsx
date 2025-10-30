@@ -210,7 +210,7 @@ export default function NavigationBar() {
   const navItems = [
     { name: "Home", href: "/", icon: Home },
     { name: "Events", href: "/events", icon: Calendar },
-    { name: "Our Team", href: "/team", icon: Users },
+    { name: "Our Team", href: "/our-team", icon: Users },
     { name: "Sponsors", href: "/sponsors", icon: Trophy },
     { name: "Contact Us", href: "/contact", icon: Mail },
     { name: "CA", href: "/ca", icon: MicVocal },
