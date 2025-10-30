@@ -437,19 +437,6 @@ export default function EventsSection() {
               </div>
             </div>
           </div>
-
-          {/* Footer Info */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
-            className="w-full flex flex-col items-center text-center"
-          >
-            <div className="max-w-4xl mx-auto px-4 text-center">
-              
-IY
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

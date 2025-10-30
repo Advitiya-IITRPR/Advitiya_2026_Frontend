@@ -36,7 +36,7 @@ export default function AdminLoginPage() {
       <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
         <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
           <h2 className="text-2xl font-bold text-center text-neutral-800 dark:text-neutral-200">
-            Welcome to E-Cell Admin Portal
+            Welcome to Advitiya Admin Portal
           </h2>
 
           <form className="my-8" onSubmit={handleSubmit}>

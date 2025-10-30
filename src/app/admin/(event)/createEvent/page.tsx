@@ -93,7 +93,7 @@ export default function EventCreation() {
       <AdminNavbar />
       <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-green-300 md:rounded-2xl md:p-8 dark:bg-blue-400 mt-32">
         <h2 className="text-2xl font-bold text-black dark:text-neutral-200 text-center italic ">
-          E-Cell Event Creation Form
+          Advitiya Event Creation Form
         </h2>
 
         <form className="my-8" onSubmit={handleSubmit}>
@@ -166,7 +166,7 @@ export default function EventCreation() {
                   id="time-picker"
                   step="1"
                   defaultValue="--:--:--"
-                  className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none mt-1"
+                  className="appearance-none mt-1"
                   onChange={(e) => setTimeString(e.target.value)}
                   required={true}
                 />

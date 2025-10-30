@@ -141,7 +141,7 @@ export default function Hero() {
                 size={24}
                 className="drop-shadow-[0_0_8px_rgba(34,211,238,1)]"
               />
-              <span className="text-lg font-semibold">March 15-17, 2026</span>
+              <span className="text-lg font-semibold">Feb 6-8, 2026</span>
             </div>
             <div className="flex items-center space-x-3 text-purple-200 bg-black/60 backdrop-blur-md px-5 py-3 rounded-full border border-purple-400/50 shadow-[0_0_20px_rgba(168,85,247,0.3)]">
               <MapPin

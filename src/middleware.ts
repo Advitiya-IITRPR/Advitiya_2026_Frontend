@@ -6,6 +6,7 @@ export async function middleware(req:NextRequest) {
   const isAdminRoute = req.nextUrl.pathname.startsWith("/admin");
   try {
     if (!token && isAdminRoute && req.nextUrl.pathname !== "/admin/login") {
+
       return NextResponse.redirect(new URL("/admin/login", req.url));
     } else if (token && isAdminRoute) {
       const secret = new TextEncoder().encode(process.env.JWT_SECRET);

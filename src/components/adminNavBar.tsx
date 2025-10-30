@@ -43,7 +43,7 @@ export default function AdminNavbar() {
       <Menu setActive={setActive}>
         <div>
           <Image
-            src="/E-Cell Image.jpg"
+            src="/logo.png"
             alt="My Photo"
             width={48}
             height={48}

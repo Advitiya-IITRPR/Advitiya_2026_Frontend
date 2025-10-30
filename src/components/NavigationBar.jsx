@@ -182,10 +182,33 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { data: session } = useSession()
+  const router = useRouter()
+
+
+  const Logout = async () => {
+    console.log("Enter")
+
+    await signOut({ redirect: false, callbackUrl: '/' })
+      .then(() => {
+        toast.success("User Logout Successfully")
+        setTimeout(() => {
+          router.push('/')
+        }, 1000);
+      })
+      .catch((error) => {
+        toast.error("Error while Logout", {
+          description: error.message
+        })
+      })
+  }
 
   // Scroll listener for glass effect
   useEffect(() => {
@@ -212,7 +235,7 @@ export default function NavigationBar() {
     { name: "Home", href: "/", icon: Home },
     { name: "Events", href: "/events", icon: Calendar },
     { name: "Our Team", href: "/our-team", icon: Users },
-    { name: "Sponsors", href: "/sponsors", icon: Trophy },
+    { name: "Sponsors", href: "/#sponsors", icon: Trophy },
     { name: "Contact Us", href: "/contact", icon: Mail },
     { name: "CA", href: "/ca", icon: MicVocal },
     { name: "Prefest", href: "/prefest", icon: Sparkles },
@@ -224,9 +247,8 @@ export default function NavigationBar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "glass py-4" : "bg-transparent py-6"
-        }`}
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "glass py-4" : "bg-transparent py-6"
+          }`}
       >
         {/* --- Centered container --- */}
         <div className="max-w-[95%] mx-auto flex justify-between items-center px-4">
@@ -262,30 +284,75 @@ export default function NavigationBar() {
               </Link>
             ))}
 
-            {/* --- Register Now Button --- */}
-            <Link href="/registration">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white font-semibold text-xl hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 flex items-center whitespace-nowrap ml-4"
-                style={{ padding: "8px 24px", gap: "10px" }}
-              >
-                <UserPlus size={22} />
-                <span>Register</span>
-              </motion.button>
-            </Link>
+        {!session ? (
+                  <div className="flex justify-center items-center gap-x-2">
+                    {/* Register Button */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <Link
+                        href="/registration"
+                        className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white font-semibold text-xl flex items-center justify-center"
+                        style={{ padding: "12px 24px", gap: "10px" }}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <UserPlus size={22} />
+                        <span>Register Now</span>
+                      </Link>
+                    </motion.div>
 
-            {/* --- Login Button --- */}
-            <Link href="/login">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white font-semibold text-xl hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 whitespace-nowrap flex items-center"
-                style={{ padding: "8px 24px", gap: "10px" }}
-              >
-                <span>Login</span>
-              </motion.button>
-            </Link>
+                    {/* Login Button */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      <Link
+                        href="/login"
+                        className="w-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold text-xl flex items-center justify-center"
+                        style={{ padding: "12px 24px", gap: "10px" }}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span>Login</span>
+                      </Link>
+                    </motion.div>
+                  </div>
+                ) : (
+                  <div className="flex justify-center items-center gap-x-2">
+                    {/* Profile Button */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <Link
+                        href={`profile/${session.user.id}`}
+                        className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white font-semibold text-xl flex items-center justify-center"
+                        style={{ padding: "12px 24px", gap: "10px" }}
+                      >
+                        <UserPlus size={22} />
+                        <span>Profile</span>
+                      </Link>
+                    </motion.div>
+
+                    {/* Logout Button */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      <div
+                        className="w-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold text-xl flex items-center justify-center hover:cursor-pointer"
+                        style={{ padding: "12px 24px", gap: "10px" }}
+                        onClick={() => Logout()}
+                      >
+                        <span>Logout</span>
+                      </div>
+                    </motion.div>
+                  </div>
+                )}
           </div>
 
           {/* --- Mobile Toggle Button --- */}
@@ -340,38 +407,75 @@ export default function NavigationBar() {
                   </motion.div>
                 ))}
 
-                {/* Register Button */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  <Link
-                    href="/registration"
-                    className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white font-semibold text-xl flex items-center justify-center mt-6"
-                    style={{ padding: "12px 24px", gap: "10px" }}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <UserPlus size={22} />
-                    <span>Register Now</span>
-                  </Link>
-                </motion.div>
+                {!session ? (
+                  <div className="space-y-2">
+                    {/* Register Button */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <Link
+                        href="/registration"
+                        className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white font-semibold text-xl flex items-center justify-center mt-6"
+                        style={{ padding: "12px 24px", gap: "10px" }}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <UserPlus size={22} />
+                        <span>Register Now</span>
+                      </Link>
+                    </motion.div>
 
-                {/* Login Button */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  <Link
-                    href="/login"
-                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold text-xl flex items-center justify-center"
-                    style={{ padding: "12px 24px", gap: "10px" }}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <span>Login</span>
-                  </Link>
-                </motion.div>
+                    {/* Login Button */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      <Link
+                        href="/login"
+                        className="w-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold text-xl flex items-center justify-center"
+                        style={{ padding: "12px 24px", gap: "10px" }}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <span>Login</span>
+                      </Link>
+                    </motion.div>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    {/* Profile Button */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <Link
+                        href={`profile/${session.user.id}`}
+                        className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white font-semibold text-xl flex items-center justify-center mt-6"
+                        style={{ padding: "12px 24px", gap: "10px" }}
+                      >
+                        <UserPlus size={22} />
+                        <span>Profile</span>
+                      </Link>
+                    </motion.div>
+
+                    {/* Login Button */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      <div
+                        className="w-full pt-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold text-xl flex items-center justify-center"
+                        style={{ padding: "12px 24px", gap: "10px" }}
+                        onClick={() => Logout()}
+                      >
+                        <span>Logout</span>
+                      </div>
+                    </motion.div>
+                  </div>
+                )}
               </div>
             </motion.div>
           </>
