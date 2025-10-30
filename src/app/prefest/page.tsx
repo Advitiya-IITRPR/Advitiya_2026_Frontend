@@ -8,6 +8,15 @@ export default function PrefestHome() {
   return (
     <main className="relative min-h-screen">
       <Background />
+      {/* Top corner logos */}
+      <div className="pointer-events-none absolute top-30 left-14 right-20 z-20 flex items-start justify-between">
+        <div className="pointer-events-auto">
+          <img src="/iitb_logo.png" alt="IIT Bombay Logo" className="h-40 w-auto drop-shadow-[0_0_12px_rgba(0,0,0,0.8)]" />
+        </div>
+        <div className="pointer-events-auto">
+          <img src="/iitrpr_logo.png" alt="IIT Ropar Logo" className="h-44 w-auto drop-shadow-[0_0_12px_rgba(0,0,0,0.8)]" />
+        </div>
+      </div>
       <div className="relative z-10">
 
       <section className="pt-28 md:pt-36 pb-10 px-6 max-w-6xl mx-auto text-center">
@@ -87,6 +96,9 @@ export default function PrefestHome() {
                     </ul>
                   </div>
                 </div>
+                <motion.a href="/registration" className="gradient-button mt-3" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                  Register
+                </motion.a>
               </div>
             </motion.div>
           ))}
