@@ -75,7 +75,7 @@ export default function EventRegistrationModal({ event, onClose, onSubmit }: Mod
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!teamName.trim()) {
+    if (event.maxSize!>1 &&  !teamName.trim()) {
       alert('Please enter team name');
       return;
     }
@@ -109,7 +109,6 @@ export default function EventRegistrationModal({ event, onClose, onSubmit }: Mod
       onClick={onClose}
     >
       <StarsBackground className="absolute inset-0 bg-linear-to-br from-black via-gray-900 to-blue-950">
-        <div></div>
       </StarsBackground>
       <div
         className="bg-[#021334] backdrop-blur-sm rounded-2xl shadow-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative border border-blue-300/20 z-10"
@@ -129,7 +128,7 @@ export default function EventRegistrationModal({ event, onClose, onSubmit }: Mod
         </h3>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
+          {event.maxSize!>1 && (<div>
             <label htmlFor="teamName" className="block text-sm font-medium text-gray-200 mb-1">
               Team Name
             </label>
@@ -142,7 +141,7 @@ export default function EventRegistrationModal({ event, onClose, onSubmit }: Mod
               placeholder="Enter team name"
               className="w-full px-4 py-2 border border-gray-600 bg-gray-800 text-white rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none placeholder-gray-400"
             />
-          </div>
+          </div>)}
 
           <div>
             <div className="flex justify-between items-center mb-3">

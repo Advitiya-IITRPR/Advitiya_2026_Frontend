@@ -4,7 +4,7 @@ import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground as StarsBackgroundUI } from "@/components/ui/stars-background";
 
 export function StarsBackground({
-  children,
+  children="",
   className = "",
   showShootingStars = true,
 }) {

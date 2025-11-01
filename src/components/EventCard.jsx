@@ -135,6 +135,7 @@ export function ExpandableEventCards({ events, onRegisterClick }) {
                         onRegisterClick(active);
                       }
                     }}
+                    disabled={!active.isRegistrationOpen}
                     className="inline-block px-8 py-3 text-sm rounded-full font-bold bg-linear-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-500/40 transition-all duration-200"
                   >
                     Register Now
