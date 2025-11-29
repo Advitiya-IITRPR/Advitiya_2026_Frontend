@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Background from "@/components/Background";
 import { Calendar, MapPin, Users } from "lucide-react";
@@ -11,7 +12,13 @@ export default function PrefestHome() {
       {/* Top corner logos */}
       <div className="pointer-events-none absolute top-30 left-14 right-20 z-20 flex items-start justify-between">
         <div className="pointer-events-auto">
-          <img src="/iitb_logo.png" alt="IIT Bombay Logo" className="h-40 w-auto drop-shadow-[0_0_12px_rgba(0,0,0,0.8)]" />
+          <Image
+  src="/iitb_logo.png"
+  alt="IIT Bombay Logo"
+  width={400}     // adjust
+  height={400}
+  className="h-40 w-auto drop-shadow-[0_0_12px_rgba(0,0,0,0.8)]"
+/>
         </div>
         <div className="pointer-events-auto">
           <img src="/iitrpr_logo.png" alt="IIT Ropar Logo" className="h-44 w-auto drop-shadow-[0_0_12px_rgba(0,0,0,0.8)]" />
@@ -30,7 +37,7 @@ export default function PrefestHome() {
           </div>
           </motion.a>
           
-          <p className="mt-10 mb-15 text-3xl text-cyan-50 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Asia's largest Science & Technology festival meets North India's premier technical fest. A first look at what’s coming — energy, innovation, and creativity.</p>
+          <p className="mt-10 mb-15 text-3xl text-cyan-50 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Asia&apos;s largest Science & Technology festival meets North India&apos;s premier technical fest. A first look at what’s coming — energy, innovation, and creativity.</p>
           
           <div className="mt-8 flex flex-wrap justify-center gap-6 mb-4">
             <div className="flex items-center space-x-3 text-cyan-200 bg-black/60 backdrop-blur-md px-5 py-3 rounded-full border border-cyan-400/50 shadow-[0_0_20px_rgba(34,211,238,0.3)]">
@@ -108,7 +115,7 @@ export default function PrefestHome() {
       <section className="mt-30 mb-15 py-10 px-6 max-w-6xl mx-auto text-center">
         <motion.h2 className="gradient-text text-3xl md:text-5xl font-bold" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }}>The Ultimate Tech Extravaganza</motion.h2>
         <motion.p className="mt-10 text-white/85 max-w-5xl text-2xl" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
-          Experience the unprecedented fusion of Techfest, IIT Bombay – Asia's largest science and technology festival – with Advitiya, IIT Ropar – North India's premier technical fest. This collaboration unites a 28-year legacy with a rising star for an unforgettable celebration of technology, innovation, and creativity.
+          Experience the unprecedented fusion of Techfest, IIT Bombay – Asia&apos;s largest Science & Technology festival meets North India&apos;s premier technical fest.
         </motion.p>
       </section>
 
@@ -116,16 +123,16 @@ export default function PrefestHome() {
         <motion.h2 className="gradient-text text-2xl md:text-3xl font-bold" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }}>What Makes This Collaboration Special?</motion.h2>
         <div className="mt-6 grid md:grid-cols-2 gap-6">
           <motion.div className="relative overflow-hidden rounded-xl backdrop-blur-lg bg-black/60 border border-cyan-400/40 p-6 hover:bg-black/70 transition-all duration-300 hover:shadow-[0_0_60px_rgba(34,211,238,0.5)] hover:scale-105" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <div className="text-lg font-semibold mb-2 text-cyan-100">Advitiya's Rising Star</div>
+            <div className="text-lg font-semibold mb-2 text-cyan-100">Advitiya&apos;s Rising Star</div>
             <ul className="space-y-2 text-cyan-50 list-disc pl-5">
               <li>15,000+ student footfall from 200+ regional colleges.</li>
-              <li>North India's largest technical festival hosted at IIT Ropar.</li>
+              <li>North India&apos;s largest technical festival hosted at IIT Ropar.</li>
             </ul>
           </motion.div>
           <motion.div className="relative overflow-hidden rounded-xl backdrop-blur-lg bg-black/60 border border-purple-400/40 p-6 hover:bg-black/70 transition-all duration-300 hover:shadow-[0_0_60px_rgba(168,85,247,0.5)] hover:scale-105" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.08 }}>
             <div className="text-lg font-semibold mb-2 text-purple-100">Techfest Legacy Meets Northern Innovation</div>
             <ul className="space-y-2 text-cyan-50 list-disc pl-5">
-              <li>28-year journey as Asia's largest science and technology festival.</li>
+              <li>28-year journey as Asia&apos;s largest science and technology festival.</li>
               <li>180,000+ annual footfall, global recognition, and world records.</li>
             </ul>
           </motion.div>
