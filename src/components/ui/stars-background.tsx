@@ -4,7 +4,6 @@ import React, {
   useState,
   useEffect,
   useRef,
-  RefObject,
   useCallback,
 } from "react";
 
@@ -40,9 +39,11 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
     (width: number, height: number): StarProps[] => {
       const area = width * height;
       const numStars = Math.floor(area * starDensity);
+
       return Array.from({ length: numStars }, () => {
         const shouldTwinkle =
           allStarsTwinkle || Math.random() < twinkleProbability;
+
         return {
           x: Math.random() * width,
           y: Math.random() * height,
@@ -64,43 +65,42 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
     ]
   );
 
+  // ⭐ FIXED: resize observer effect
   useEffect(() => {
-    const updateStars = () => {
-      if (canvasRef.current) {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
+    const canvas = canvasRef.current; // capture ref
+    if (!canvas) return;
 
-        const { width, height } = canvas.getBoundingClientRect();
-        canvas.width = width;
-        canvas.height = height;
-        setStars(generateStars(width, height));
-      }
+    const updateStars = () => {
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      const { width, height } = canvas.getBoundingClientRect();
+      canvas.width = width;
+      canvas.height = height;
+
+      setStars(generateStars(width, height));
     };
 
     updateStars();
 
     const resizeObserver = new ResizeObserver(updateStars);
-    if (canvasRef.current) {
-      resizeObserver.observe(canvasRef.current);
-    }
+    resizeObserver.observe(canvas);
 
     return () => {
-      if (canvasRef.current) {
-        resizeObserver.unobserve(canvasRef.current);
-      }
+      resizeObserver.unobserve(canvas); // safe cleanup with captured ref
     };
   }, [
+    generateStars,
     starDensity,
     allStarsTwinkle,
     twinkleProbability,
     minTwinkleSpeed,
     maxTwinkleSpeed,
-    generateStars,
   ]);
 
+  // ⭐ FIXED: animation loop stays safe
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef.current; // capture ref
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
@@ -110,6 +110,7 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
 
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
       stars.forEach((star) => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
@@ -119,7 +120,9 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
         if (star.twinkleSpeed !== null) {
           star.opacity =
             0.5 +
-            Math.abs(Math.sin((Date.now() * 0.001) / star.twinkleSpeed) * 0.5);
+            Math.abs(
+              Math.sin((Date.now() * 0.001) / star.twinkleSpeed) * 0.5
+            );
         }
       });
 

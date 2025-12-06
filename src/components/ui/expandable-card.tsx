@@ -271,7 +271,7 @@
 //         ) : null}
 //       </AnimatePresence>
 //       <ul className="max-w-2xl mx-auto w-full gap-4">
-//         {cards.map((card, index) => (
+//         {cards.map((card, ) => (
 //           <motion.div
 //             layoutId={`card-${card.title}-${id}`}
 //             key={`card-${card.title}-${id}`}
@@ -475,14 +475,13 @@ import { AnimatePresence, motion } from "framer-motion";
 
 /** Simple useOutsideClick hook (self-contained) */
 export const useOutsideClick = (
-  ref: React.RefObject<HTMLDivElement>,
-  callback: Function
+  ref: React.RefObject<HTMLDivElement | null>,
+  callback: (event: MouseEvent | TouchEvent) => void
 ) => {
   useEffect(() => {
-    const listener = (event: any) => {
-      if (!ref.current || ref.current.contains(event.target)) {
-        return;
-      }
+    const listener = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node;
+      if (!ref.current || ref.current.contains(target)) return;
       callback(event);
     };
 
@@ -740,7 +739,7 @@ export function ExpandableCardDemo() {
         ) : null}
       </AnimatePresence>
       <ul className="max-w-2xl mx-auto w-full gap-4">
-        {cards.map((card, index) => (
+        {cards.map((card, ) => (
           <motion.div
             layoutId={`card-${card.title}-${id}`}
             key={`card-${card.title}-${id}`}

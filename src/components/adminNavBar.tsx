@@ -1,7 +1,7 @@
 "use client";
-import React, { act, useEffect, useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
-import { cn } from "@/lib/utils";
+import React, { useEffect, useState } from "react";
+import { HoveredLink, Menu, MenuItem} from "@/components/ui/navbar-menu";
+
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,7 @@ import { toast } from "sonner";
 
 export default function AdminNavbar() {
   const [active, setActive] = useState<string | null>(null);
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const router = useRouter()
 

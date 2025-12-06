@@ -21,7 +21,7 @@ type ModalProps = {
     maxSize?: number;
   } | null;
   onClose: () => void;
-  onSubmit: (formData: any) => void;
+  onSubmit: (formData: FormData) => void;
 };
 
 export default function EventRegistrationModal({ event, onClose, onSubmit }: ModalProps) {

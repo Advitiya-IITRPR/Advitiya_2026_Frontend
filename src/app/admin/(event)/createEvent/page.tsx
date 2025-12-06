@@ -1,5 +1,5 @@
 'use client'
-import React, { isValidElement, useState } from "react";
+import React, { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -25,67 +25,76 @@ export default function EventCreation() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false)
   const [eventLogo, setEventLogo] = useState<File>();
   const [eventRuleBook, setEventRuleBook] = useState<File>();
-  const [submitButtonDisable,setSubmitButtonDisable] = useState(false)
+  const [submitButtonDisable, setSubmitButtonDisable] = useState(false)
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    
-    const form = e.target as HTMLFormElement
-    const eventName = (form.elements.namedItem("eventName") as HTMLInputElement)?.value
-    const eventEmail = (form.elements.namedItem("email") as HTMLInputElement)?.value
-    const eventFees = (form.elements.namedItem("eventFees") as HTMLFormElement)?.value
-    let teamMinSize = (form.elements.namedItem("teamMinSize") as HTMLFormElement)?.value
-    let teamMaxSize = (form.elements.namedItem("teamMaxSize") as HTMLFormElement)?.value
-    const description = (form.elements.namedItem("description") as HTMLFormElement)?.value
-    const webPageLink = (form.elements.namedItem("webPageLink") as HTMLFormElement)?.value
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  
+  const form = e.target as HTMLFormElement;
+  const eventName = (form.elements.namedItem("eventName") as HTMLInputElement)?.value;
+  const eventEmail = (form.elements.namedItem("email") as HTMLInputElement)?.value;
+  const eventFees = (form.elements.namedItem("eventFees") as HTMLInputElement)?.value;
+  let teamMinSize = (form.elements.namedItem("teamMinSize") as HTMLInputElement)?.value;
+  let teamMaxSize = (form.elements.namedItem("teamMaxSize") as HTMLInputElement)?.value;
+  const description = (form.elements.namedItem("description") as HTMLInputElement)?.value;
+  const webPageLink = (form.elements.namedItem("webPageLink") as HTMLInputElement)?.value;
 
-    if (isIndividualParticipation) {
-      teamMinSize = 1, teamMaxSize=1
-    }
-    else if (!teamMinSize || !teamMaxSize) {
-      toast.error("Team Maximum Size and Minimum Size is required.")
-      return;
-    }
-    if(teamMinSize>teamMaxSize){
-      toast.error("Minimum size of team should be less than Maximum size of team")
-      return;
-    }
-    if (!eventName || !eventEmail || !eventFees || !eventLogo || !date || !timeString || !description || !webPageLink) {
-      toast.error("All Fields are required")
-      return;
-    }
-    const day = String(date.getDate()).padStart(2, '0');       
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();                           
+  if (isIndividualParticipation) {
+    teamMinSize = "1";
+    teamMaxSize = "1";
+  } else if (!teamMinSize || !teamMaxSize) {
+    toast.error("Team Maximum Size and Minimum Size is required.");
+    return;
+  }
 
-    const dateString = `${day}/${month}/${year}`;
+  if (Number(teamMinSize) > Number(teamMaxSize)) {
+    toast.error("Minimum size of team should be less than Maximum size of team");
+    return;
+  }
 
-    const eventFormData = new FormData()
-    eventFormData.append("eventName", eventName)
-    eventFormData.append("eventDate", dateString)
-    eventFormData.append("eventTime", timeString)
-    eventFormData.append("eventFees", eventFees)
-    eventFormData.append("minSize", teamMinSize)
-    eventFormData.append("maxSize", teamMaxSize)
-    eventFormData.append("eventImage", eventLogo)
-    if(eventRuleBook){
-      eventFormData.append("eventRuleBook", eventRuleBook)
+  if (!eventName || !eventEmail || !eventFees || !eventLogo || !date || !timeString || !description || !webPageLink) {
+    toast.error("All Fields are required");
+    return;
+  }
+
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  const dateString = `${day}/${month}/${year}`;
+
+  const eventFormData = new FormData();
+  eventFormData.append("eventName", eventName);
+  eventFormData.append("eventDate", dateString);
+  eventFormData.append("eventTime", timeString);
+  eventFormData.append("eventFees", eventFees);
+  eventFormData.append("minSize", teamMinSize);
+  eventFormData.append("maxSize", teamMaxSize);
+  eventFormData.append("eventImage", eventLogo);
+
+  if (eventRuleBook) {
+    eventFormData.append("eventRuleBook", eventRuleBook);
+  }
+
+  eventFormData.append("description", description);
+  eventFormData.append("isRegistrationOpen", isRegistrationOpen.toString());
+  eventFormData.append("webPageLink", webPageLink);
+
+  setSubmitButtonDisable(true);
+
+  try {
+    const response = await axios.post("/api/events/createEvent", eventFormData);
+    toast.success(response.data.message);
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      toast.error(error.response?.data?.message || "Something went wrong");
+    } else {
+      toast.error("An unexpected error occurred");
     }
-    eventFormData.append("description",description)
-    eventFormData.append("isRegistrationOpen",isRegistrationOpen.toString())
-    eventFormData.append("webPageLink",webPageLink)
+  }
 
-    setSubmitButtonDisable(true)
-    await axios.post("/api/events/createEvent", eventFormData)
-      .then((response) => {
-        toast.success(response.data.message)
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message)
-        return;
-      })
-      setSubmitButtonDisable(false)
-  };
+  setSubmitButtonDisable(false);
+};
+
 
 
   return (
@@ -100,29 +109,30 @@ export default function EventCreation() {
           <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
             <LabelInputContainer>
               <Label htmlFor="eventName">Event Name</Label>
-              <Input id="eventName" placeholder="Name" type="text" required={true}/>
+              <Input id="eventName" placeholder="Name" type="text" required />
             </LabelInputContainer>
           </div>
+
           <LabelInputContainer className="mb-4">
             <Label htmlFor="email">Email Address</Label>
-            <Input id="email" placeholder="projectmayhem@fc.com" type="email" required={true} />
+            <Input id="email" placeholder="projectmayhem@fc.com" type="email" required />
           </LabelInputContainer>
+
           <LabelInputContainer className="mb-4">
             <Label htmlFor="webPageLink">Web Page Link</Label>
-            <Input id="webPageLink" type="text" required={true}/>
+            <Input id="webPageLink" type="text" required />
           </LabelInputContainer>
+
           <LabelInputContainer>
             <Label htmlFor="eventFees">Event Fees</Label>
-            <Input id="eventFees" placeholder="50" type="number" required={true}/>
+            <Input id="eventFees" placeholder="50" type="number" required />
           </LabelInputContainer>
 
           <LabelInputContainer className="mb-4 justify-center mt-2">
             <Label className="text-center text-lg">Event Date and Time</Label>
             <div className="flex text-center mt-1">
               <div className="flex flex-col mt-1">
-                <Label htmlFor="date-picker" className="px-1">
-                  Date
-                </Label>
+                <Label htmlFor="date-picker" className="px-1">Date</Label>
                 <div className="bg-neutral-800 rounded-md mt-1">
                   <Popover open={open} onOpenChange={setOpen}>
                     <PopoverTrigger asChild>
@@ -133,11 +143,11 @@ export default function EventCreation() {
                       >
                         {date
                           ? date.toLocaleDateString('en-GB', {
-                            timeZone: 'Asia/Kolkata',
-                            day: '2-digit',
-                            month: '2-digit',
-                            year: 'numeric',
-                          })
+                              timeZone: 'Asia/Kolkata',
+                              day: '2-digit',
+                              month: '2-digit',
+                              year: 'numeric',
+                            })
                           : "Select date"}
 
                         <ChevronDownIcon />
@@ -149,41 +159,42 @@ export default function EventCreation() {
                         selected={date}
                         captionLayout="dropdown"
                         onSelect={(date) => {
-                          setDate(date)
-                          setOpen(false)
+                          setDate(date);
+                          setOpen(false);
                         }}
                       />
                     </PopoverContent>
                   </Popover>
                 </div>
               </div>
+
               <div className="flex flex-col ml-auto mt-1 text-center">
-                <Label htmlFor="time-picker" className="px-1">
-                  Time
-                </Label>
+                <Label htmlFor="time-picker" className="px-1">Time</Label>
                 <Input
                   type="time"
                   id="time-picker"
                   step="1"
-                  defaultValue="--:--:--"
-                  className="appearance-none mt-1"
                   onChange={(e) => setTimeString(e.target.value)}
-                  required={true}
+                  required
+                  className="appearance-none mt-1"
                 />
               </div>
             </div>
           </LabelInputContainer>
+
           <LabelInputContainer>
             <div className="flex items-center justify-center gap-3">
               <Checkbox className="border-black" onClick={() => setIsIndividualParticipation(!isIndividualParticipation)} />
-              <Label className="text-black">IndividualParticipation</Label>
+              <Label className="text-black">Individual Participation</Label>
             </div>
           </LabelInputContainer>
-          <div className="mb-4 mt-2 text-center flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2" >
-            <LabelInputContainer >
+
+          <div className="mb-4 mt-2 text-center flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
+            <LabelInputContainer>
               <Label htmlFor="teamMinSize">Team Minimum Size</Label>
               <Input id="teamMinSize" type="number" disabled={isIndividualParticipation} />
             </LabelInputContainer>
+
             <LabelInputContainer>
               <Label htmlFor="teamMaxSize">Team Maximum Size</Label>
               <Input id="teamMaxSize" type="number" disabled={isIndividualParticipation} />
@@ -200,41 +211,50 @@ export default function EventCreation() {
           <LabelInputContainer>
             <div className="flex items-center justify-center gap-3 mt-2">
               <Label className="text-black">Event Logo Image</Label>
-              <Input id="picture" type="file" required={true} onChange={(e) => {
-                const files = e.target.files
-                if (!files) return;
-                setEventLogo(files[0])
-              }
-              } />
+              <Input
+                id="picture"
+                type="file"
+                required
+                onChange={(e) => {
+                  const files = e.target.files;
+                  if (files) setEventLogo(files[0]);
+                }}
+              />
             </div>
           </LabelInputContainer>
+
           <LabelInputContainer>
             <div className="flex items-center justify-center gap-3 mt-2">
               <Label className="text-black">Event Rule Book</Label>
-              <Input id="ruleBook" type="file" onChange={(e) => {
-                const files = e.target.files
-                if (!files) return;
-                setEventRuleBook(files[0])
-              }
-              } />
+              <Input
+                id="ruleBook"
+                type="file"
+                onChange={(e) => {
+                  const files = e.target.files;
+                  if (files) setEventRuleBook(files[0]);
+                }}
+              />
             </div>
           </LabelInputContainer>
+
           <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
             <LabelInputContainer>
               <Label htmlFor="description">Description</Label>
-              <Input id="description" placeholder="description" required={true} type="text" className="min-h-10"/>
+              <Input id="description" placeholder="description" required type="text" className="min-h-10" />
             </LabelInputContainer>
           </div>
 
           <button
-            className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] mt-2"
+            className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white
+            shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset]
+            dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900
+            dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]
+            mt-2"
             type="submit"
-            onSubmit={handleSubmit}
             disabled={submitButtonDisable}
           >
-            {submitButtonDisable? "Creating Event": "Create Event"}
+            {submitButtonDisable ? "Creating Event" : "Create Event"}
           </button>
-
         </form>
       </div>
     </div>
@@ -248,9 +268,5 @@ const LabelInputContainer = ({
   children: React.ReactNode;
   className?: string;
 }) => {
-  return (
-    <div className={cn("flex w-full flex-col space-y-2", className)}>
-      {children}
-    </div>
-  );
+  return <div className={cn("flex w-full flex-col space-y-2", className)}>{children}</div>;
 };
