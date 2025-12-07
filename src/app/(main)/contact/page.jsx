@@ -1,8 +1,9 @@
 "use client";
-import React, { useContext } from "react";
+import React from "react";
 import FeedbackForm from "@/components/FeedbackForm";
 import { motion } from "framer-motion";
 import Background from "@/components/Background";
+import Image from "next/image";
 
 const contact = () => {
 
@@ -10,37 +11,43 @@ const contact = () => {
     <main className="relative min-h-screen">
       <Background />
       <div className="relative z-10">
-        <div className="container mx-auto py-8 min-h-screen pt-24">
-          {/* Header Section */}
-          <div className="text-center flex flex-col items-center justify-center">
+        <div className="container mx-auto py-8 min-h-screen pt-24 px-4">
+          {/* Two Column Layout */}
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-12rem)] py-12">
+            
+            {/* Left Side - Logo and Theme */}
             <motion.div
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="mb-2"
+              className="flex flex-col items-center justify-center space-y-4"
             >
-              <h1 className="text-6xl md:text-8xl font-bold mb-2">
+              <div className="relative w-48 h-48 md:w-64 md:h-64">
+                <Image
+                  src="/logo.png"
+                  alt="Advitiya Logo"
+                  fill
+                  className="object-contain drop-shadow-[0_0_40px_rgba(34,211,238,0.6)]"
+                  priority
+                />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold">
                 <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text drop-shadow-[0_0_40px_rgba(34,211,238,0.8)]">
-                  CONTACT US
+                  Space Odyssey
                 </span>
-              </h1>
-              <h2 className="text-3xl md:text-5xl font-bold text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.9)]">
-                Share Your Feedback
               </h2>
             </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+            {/* Right Side - Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl text-cyan-100 mt-6 mb-10 drop-shadow-[0_2px_15px_rgba(0,0,0,1)] font-medium"
             >
-              We'd love to hear from you. Send us a message and we'll respond as
-              soon as possible.
-            </motion.p>
-          </div>
+              <FeedbackForm />
+            </motion.div>
 
-          <FeedbackForm />
+          </div>
         </div>
       </div>
     </main>

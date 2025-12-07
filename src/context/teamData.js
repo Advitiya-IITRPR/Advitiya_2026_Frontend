@@ -94,7 +94,7 @@ export const coheadsData = [
   },
   {
     name: "Rajveer Gill",
-    position: "PR & Outreach Co-Head",
+    position: "Outreach Co-Head",
     image: "https://res.cloudinary.com/dykbuvd20/image/upload/v1760450739/rajveer_gill_dygkft.jpg",
     linkedin: "https://linkedin.com/in/rajveer-gill",
     email: "rajveer.gill@example.com",

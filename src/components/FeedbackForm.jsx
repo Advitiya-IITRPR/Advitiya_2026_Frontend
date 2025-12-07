@@ -45,8 +45,8 @@ const FeedbackForm = () => {
   return (
     <div>
       {/* Feedback Form */}
-      <div className="max-w-3xl mx-auto mb-16 bg-[#021334] rounded-xl shadow-lg p-10">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-7">
+      <div className="bg-[#021334] rounded-xl shadow-lg p-6 md:p-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
             {/* Name Field */}
             <div>

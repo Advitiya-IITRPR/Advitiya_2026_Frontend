@@ -31,14 +31,14 @@ const ourTeam = () => {
           <div className="flex justify-around">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-1 justify-items-center items-center">
               {OCs.map((member, index) => (
-                <ContactCard key={index} member={member} />
+                <ContactCard key={index} member={member} isOC={true} />
               ))}
             </div>
           </div>
           <div className="flex justify-around">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1 items-center justify-center auto-rows-max">
               {teamMembers.map((member, index) => (
-                <ContactCard key={index} member={member} />
+                <ContactCard key={index} member={member} isOC={false} />
               ))}
             </div>
           </div>
