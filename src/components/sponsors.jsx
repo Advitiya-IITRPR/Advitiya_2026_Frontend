@@ -170,12 +170,11 @@ function useOutsideClick(ref, handler) {
 
 export default function EventsSection() {
   const [active, setActive] = useState(null);
-  const carouselRef = useRef(null);
+  const containerRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const id = useId();
-
-  // Duplicate sponsors for infinite loop
-  const duplicatedSponsors = [...sponsors, ...sponsors];
+  const [duration, setDuration] = useState(45); // Animation duration in seconds
+  const [duplicatedSponsors] = useState([...sponsors, ...sponsors]);
 
   useEffect(() => {
     function onKeyDown(event) {
@@ -190,26 +189,16 @@ export default function EventsSection() {
       document.body.style.overflow = "auto";
     }
 
+    // Calculate duration based on number of sponsors
+    const baseDuration = 20; // Base duration for 6 sponsors
+    const calculatedDuration = (baseDuration * sponsors.length) / 3;
+    setDuration(calculatedDuration);
+
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [active]);
+  }, [active, sponsors.length]);
 
-  useOutsideClick(carouselRef, () => setActive(null));
-
-  // Animation variants for the carousel
-  const containerVariants = {
-    animate: (isPaused) => ({
-      x: [0, -1000], // Adjust this value based on your content width
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 40, // Adjust speed here (higher = slower)
-          ease: "linear",
-        },
-      },
-    }),
-  };
+  useOutsideClick(containerRef, () => setActive(null));
 
   return (
     <section id="sponsors" className="w-full py-12 sm:py-16 lg:py-20 relative overflow-hidden">
@@ -270,12 +259,6 @@ export default function EventsSection() {
                       >
                         {active.name}
                       </motion.h3>
-                      <motion.p
-                        layoutId={`description-${active.description}-${id}`}
-                        className="text-neutral-600 dark:text-neutral-400"
-                      >
-                        {active.description}
-                      </motion.p>
                     </div>
 
                     <div className="text-center mb-4 px-4">
@@ -321,45 +304,40 @@ export default function EventsSection() {
             </p>
           </motion.div>
 
-          {/* Sponsors Carousel */}
-          <div 
-            className="relative w-full overflow-hidden py-8"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
+          {/* Infinite Moving Cards */}
+          <div className="relative w-full overflow-hidden py-8">
             {/* Gradient overlays for fade effect on sides */}
             <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none"></div>
             <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none"></div>
             
-            <motion.div 
-              ref={carouselRef}
-              className="flex space-x-8"
-              variants={containerVariants}
-              animate={!isPaused ? "animate" : "initial"}
-              custom={isPaused}
-            >
-              {duplicatedSponsors.map((sponsor, index) => (
-                <motion.div
-                  layoutId={`card-${sponsor.name}-${index}`}
-                  key={`card-${sponsor.name}-${index}`}
-                  onClick={() => setActive(sponsor)}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: (index % sponsors.length) * 0.1 }}
-                  className="group cursor-pointer w-[320px] sm:w-[360px] flex-shrink-0"
-                  whileHover={{ 
-                    y: -10,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  <div
-                    className={`relative overflow-hidden rounded-xl backdrop-blur-lg bg-black/60 border border-purple-400/40 p-0 hover:bg-black/70 transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:scale-105 flex flex-col h-full`}
+            <div className="relative h-[400px] overflow-hidden">
+              <motion.div
+                ref={containerRef}
+                className="absolute top-0 left-0 flex space-x-8 h-full"
+                animate={{
+                  x: ['0%', '-50%'],
+                }}
+                transition={{
+                  duration: duration,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+              >
+                {[...duplicatedSponsors, ...duplicatedSponsors].map((sponsor, index) => (
+                  <motion.div
+                    key={`${sponsor.name}-${index}`}
+                    className="w-[320px] sm:w-[360px] flex-shrink-0 group"
+                    whileHover={{ 
+                      y: -10,
+                      transition: { duration: 0.3 }
+                    }}
+                    onClick={() => setActive(sponsor)}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4 }}
                   >
-                    <motion.div
-                      layoutId={`image-${sponsor.name}-${id}`}
-                      className="flex-none"
-                    >
+                    <div className="relative h-full overflow-hidden rounded-xl backdrop-blur-lg bg-black/60 border border-purple-400/40 p-0 hover:bg-black/70 transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:scale-105 flex flex-col">
                       <div className="relative w-full h-48 overflow-hidden">
                         <Image
                           width={600}
@@ -370,46 +348,32 @@ export default function EventsSection() {
                         />
                         <div className={`absolute inset-0 bg-gradient-to-br ${sponsor.color} opacity-50 mix-blend-overlay`}></div>
                       </div>
-                    </motion.div>
 
-                    <div className="flex-1 flex flex-col items-center text-center justify-between p-4 min-h-0">
-                      <div className="w-full">
+                      <div className="flex-1 flex flex-col items-center text-center p-4">
                         <div className="flex items-center justify-center mb-3">
-                          <div
-                            className={`p-2.5 rounded-full bg-gradient-to-r ${sponsor.color} mr-3 shadow-[0_0_20px_rgba(168,85,247,0.6)] transform group-hover:scale-110 transition-transform duration-300`}
-                          >
+                          <div className={`p-2.5 rounded-full bg-gradient-to-r ${sponsor.color} mr-3 shadow-[0_0_20px_rgba(168,85,247,0.6)] transform group-hover:scale-110 transition-transform duration-300`}>
                             <sponsor.icon size={20} className="text-white" />
                           </div>
-                          <motion.h3
-                            layoutId={`title-${sponsor.name}-${index}`}
-                            className="font-bold text-cyan-100 text-xl drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] group-hover:text-white transition-colors"
-                          >
+                          <h3 className="font-bold text-cyan-100 text-xl drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] group-hover:text-white transition-colors">
                             {sponsor.name}
-                          </motion.h3>
+                          </h3>
                         </div>
-
-                        <motion.p
-                          layoutId={`sector-${sponsor.sector}-${index}`}
-                          className="text-cyan-200 text-sm font-medium mb-2 px-4 py-1 bg-black/30 rounded-full inline-block"
-                        >
-                          {sponsor.sector}
-                        </motion.p>
-                        <div className="w-full px-4 mb-4">
-                        </div>
-                      </div>
-
-                      <div className="w-full mt-auto px-4 pb-4">
-                        <div className="w-full text-center">
-                          <p className="text-cyan-100 text-base leading-relaxed">
-                            {sponsor.description}
-                          </p>
+                        
+                        <p className="text-cyan-100 text-sm px-4">
+                          {sponsor.description}
+                        </p>
+                        
+                        <div className="mt-4 w-full px-4">
+                          <span className="inline-block px-4 py-2 text-sm bg-gradient-to-r from-purple-600/80 to-pink-600/80 text-white rounded-full group-hover:from-purple-500 group-hover:to-pink-500 transition-all duration-300 shadow-lg shadow-purple-500/20">
+                            Learn More
+                          </span>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
           </div>
 
           {/* Scroll Indicator */}
