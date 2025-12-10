@@ -1,20 +1,399 @@
-"use client";
+// import { useState, useEffect, useRef } from "react";
+// import { Code, Award, Briefcase, Palette, Users, Trophy } from "lucide-react";
 
-import React, { useState, useEffect, useId, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Code,
-  Music,
-  Gamepad2,
-  Briefcase,
-  Palette,
-  Users,
-  Trophy,
-  Clock,
-  Award,
-  MapPin,
-} from "lucide-react";
-import Image from "next/image";
+// const sponsors = [
+//   {
+//     name: "NexaSoft",
+//     sector: "Cloud & AI",
+//     icon: Code,
+//     color: "from-cyan-500 to-blue-500",
+//   },
+//   {
+//     name: "GreenLeaf Energy",
+//     sector: "Renewables",
+//     icon: Award,
+//     color: "from-green-500 to-emerald-500",
+//   },
+//   {
+//     name: "Finova Capital",
+//     sector: "Fintech",
+//     icon: Briefcase,
+//     color: "from-yellow-500 to-orange-500",
+//   },
+//   {
+//     name: "PixelForge Studios",
+//     sector: "Design & Media",
+//     icon: Palette,
+//     color: "from-purple-500 to-pink-500",
+//   },
+//   {
+//     name: "SkyLoop Networks",
+//     sector: "Networking",
+//     icon: Users,
+//     color: "from-indigo-500 to-blue-500",
+//   },
+//   {
+//     name: "MediSync Health",
+//     sector: "HealthTech",
+//     icon: Trophy,
+//     color: "from-red-500 to-rose-500",
+//   },
+// ];
+
+// function generateCode(width, height) {
+//   const lib = [
+//     "// sponsor card system",
+//     "const SCAN_WIDTH = 8;",
+//     "const FADE_ZONE = 35;",
+//     "function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }",
+//     "function lerp(a, b, t) { return a + (b - a) * t; }",
+//     "const scanner = { x: window.innerWidth / 2, glow: 3.5 };",
+//     "function drawParticle(ctx, p) { ctx.globalAlpha = p.a; }",
+//     "const state = { intensity: 1.2, particles: 2500 };",
+//     "ctx.globalCompositeOperation = 'lighter';",
+//     "for (let i = 0; i < count; i++) { update(particles[i]); }",
+//   ];
+//   const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+//   let flow = lib.join(" ");
+//   while (flow.length < width * height) flow += " " + pick(lib);
+//   let out = "";
+//   for (let row = 0; row < height; row++) {
+//     let line = flow.slice(row * width, (row + 1) * width);
+//     if (line.length < width) line += " ".repeat(width - line.length);
+//     out += line + (row < height - 1 ? "\n" : "");
+//   }
+//   return out;
+// }
+
+// export default function SponsorsBeam() {
+//   const scannerCanvasRef = useRef(null);
+//   const [position, setPosition] = useState(0);
+//   const [velocity, setVelocity] = useState(120);
+//   const [direction, setDirection] = useState(-1);
+//   const [isAnimating, setIsAnimating] = useState(true);
+//   const [isDragging, setIsDragging] = useState(false);
+//   const [paused, setPaused] = useState(false);
+//   const lastTimeRef = useRef(0);
+//   const lastMouseRef = useRef(0);
+//   const mouseVelRef = useRef(0);
+//   const animRef = useRef(null);
+//   const particlesRef = useRef([]);
+//   const scanningRef = useRef(false);
+//   const [winWidth, setWinWidth] = useState(1200);
+
+//   const dup = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
+
+//   useEffect(() => {
+//     setWinWidth(window.innerWidth);
+//     const handle = () => setWinWidth(window.innerWidth);
+//     window.addEventListener("resize", handle);
+//     return () => window.removeEventListener("resize", handle);
+//   }, []);
+
+//   useEffect(() => {
+//     const total = (400 + 60) * sponsors.length;
+//     setPosition(winWidth);
+
+//     const anim = (t) => {
+//       const dt = (t - lastTimeRef.current) / 1000;
+//       lastTimeRef.current = t;
+
+//       if (isAnimating && !isDragging && !paused) {
+//         setVelocity((v) => (v > 30 ? v * 0.95 : v));
+//         setPosition((p) => {
+//           let np = p + velocity * direction * dt;
+//           if (np < -total) np = winWidth;
+//           else if (np > winWidth) np = -total;
+//           return np;
+//         });
+//       }
+
+//       const sx = winWidth / 2,
+//         sw = 8,
+//         sl = sx - sw / 2,
+//         sr = sx + sw / 2;
+//       let any = false;
+//       document.querySelectorAll(".sponsor-card-wrapper").forEach((w) => {
+//         const r = w.getBoundingClientRect();
+//         const n = w.querySelector(".sponsor-card-normal");
+//         const a = w.querySelector(".sponsor-card-ascii");
+//         if (!n || !a) return;
+//         if (r.left < sr && r.right > sl) {
+//           any = true;
+//           const l = Math.max(sl - r.left, 0);
+//           const rr = Math.min(sr - r.left, r.width);
+//           n.style.clipPath = `inset(0 0 0 ${(l / r.width) * 100}%)`;
+//           a.style.clipPath = `inset(0 ${100 - (rr / r.width) * 100}% 0 0)`;
+//         } else {
+//           if (r.right < sl) {
+//             n.style.clipPath = `inset(0 0 0 100%)`;
+//             a.style.clipPath = `inset(0 0 0 0)`;
+//           } else {
+//             n.style.clipPath = `inset(0 0 0 0%)`;
+//             a.style.clipPath = `inset(0 100% 0 0)`;
+//           }
+//         }
+//       });
+//       scanningRef.current = any;
+//       animRef.current = requestAnimationFrame(anim);
+//     };
+
+//     lastTimeRef.current = performance.now();
+//     animRef.current = requestAnimationFrame(anim);
+//     return () => animRef.current && cancelAnimationFrame(animRef.current);
+//   }, [isAnimating, isDragging, velocity, direction, paused, winWidth]);
+
+//   useEffect(() => {
+//     const c = scannerCanvasRef.current;
+//     if (!c) return;
+//     const ctx = c.getContext("2d");
+//     const w = winWidth,
+//       h = 300;
+//     c.width = w;
+//     c.height = h;
+
+//     const gc = document.createElement("canvas");
+//     const gctx = gc.getContext("2d");
+//     gc.width = 16;
+//     gc.height = 16;
+//     const gr = gctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+//     gr.addColorStop(0, "rgba(255, 255, 255, 1)");
+//     gr.addColorStop(0.3, "rgba(196, 181, 253, 0.8)");
+//     gr.addColorStop(0.7, "rgba(139, 92, 246, 0.4)");
+//     gr.addColorStop(1, "transparent");
+//     gctx.fillStyle = gr;
+//     gctx.beginPath();
+//     gctx.arc(8, 8, 8, 0, Math.PI * 2);
+//     gctx.fill();
+
+//     const max = 800,
+//       lx = w / 2,
+//       lw = 3,
+//       fz = 60;
+//     particlesRef.current = [];
+//     for (let i = 0; i < max; i++) {
+//       particlesRef.current.push({
+//         x: lx + (Math.random() - 0.5) * lw,
+//         y: Math.random() * h,
+//         vx: Math.random() * 0.8 + 0.2,
+//         vy: (Math.random() - 0.5) * 0.3,
+//         r: Math.random() * 0.6 + 0.4,
+//         a: Math.random() * 0.4 + 0.6,
+//         oa: 0,
+//         life: 1,
+//         decay: Math.random() * 0.02 + 0.005,
+//         time: 0,
+//         ts: Math.random() * 0.06 + 0.02,
+//         ta: Math.random() * 0.15 + 0.1,
+//       });
+//       particlesRef.current[i].oa = particlesRef.current[i].a;
+//     }
+
+//     const render = () => {
+//       ctx.clearRect(0, 0, w, h);
+//       const vg = ctx.createLinearGradient(0, 0, 0, h);
+//       vg.addColorStop(0, "rgba(255, 255, 255, 0)");
+//       vg.addColorStop(fz / h, "rgba(255, 255, 255, 1)");
+//       vg.addColorStop(1 - fz / h, "rgba(255, 255, 255, 1)");
+//       vg.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+//       ctx.globalCompositeOperation = "lighter";
+//       const gi = scanningRef.current ? 3.5 : 1;
+
+//       const cg = ctx.createLinearGradient(lx - lw / 2, 0, lx + lw / 2, 0);
+//       cg.addColorStop(0, "rgba(255, 255, 255, 0)");
+//       cg.addColorStop(0.5, `rgba(255, 255, 255, ${gi})`);
+//       cg.addColorStop(1, "rgba(255, 255, 255, 0)");
+//       ctx.globalAlpha = 1;
+//       ctx.fillStyle = cg;
+//       ctx.fillRect(lx - lw / 2, 0, lw, h);
+
+//       const g1 = ctx.createLinearGradient(lx - lw * 2, 0, lx + lw * 2, 0);
+//       g1.addColorStop(0, "rgba(139, 92, 246, 0)");
+//       g1.addColorStop(0.5, `rgba(196, 181, 253, ${0.8 * gi})`);
+//       g1.addColorStop(1, "rgba(139, 92, 246, 0)");
+//       ctx.globalAlpha = 0.8;
+//       ctx.fillStyle = g1;
+//       ctx.fillRect(lx - lw * 2, 0, lw * 4, h);
+
+//       ctx.globalCompositeOperation = "destination-in";
+//       ctx.globalAlpha = 1;
+//       ctx.fillStyle = vg;
+//       ctx.fillRect(0, 0, w, h);
+
+//       ctx.globalCompositeOperation = "lighter";
+//       particlesRef.current.forEach((p) => {
+//         p.x += p.vx;
+//         p.y += p.vy;
+//         p.time++;
+//         p.a = p.oa * p.life + Math.sin(p.time * p.ts) * p.ta;
+//         p.life -= p.decay;
+//         if (p.x > w + 10 || p.life <= 0) {
+//           p.x = lx + (Math.random() - 0.5) * lw;
+//           p.y = Math.random() * h;
+//           p.life = 1;
+//           p.time = 0;
+//         }
+//         let fa = 1;
+//         if (p.y < fz) fa = p.y / fz;
+//         else if (p.y > h - fz) fa = (h - p.y) / fz;
+//         ctx.globalAlpha = p.a * fa;
+//         ctx.drawImage(gc, p.x - p.r, p.y - p.r, p.r * 2, p.r * 2);
+//       });
+//       requestAnimationFrame(render);
+//     };
+//     render();
+//   }, [winWidth]);
+
+//   const md = (e) => {
+//     e.preventDefault();
+//     setIsDragging(true);
+//     setIsAnimating(false);
+//     lastMouseRef.current = e.clientX;
+//     mouseVelRef.current = 0;
+//   };
+
+//   const mm = (e) => {
+//     if (!isDragging) return;
+//     e.preventDefault();
+//     const dx = e.clientX - lastMouseRef.current;
+//     setPosition((p) => p + dx);
+//     mouseVelRef.current = dx * 60;
+//     lastMouseRef.current = e.clientX;
+//   };
+
+//   const mu = () => {
+//     if (!isDragging) return;
+//     setIsDragging(false);
+//     if (Math.abs(mouseVelRef.current) > 30) {
+//       setVelocity(Math.abs(mouseVelRef.current));
+//       setDirection(mouseVelRef.current > 0 ? 1 : -1);
+//     } else {
+//       setVelocity(120);
+//     }
+//     setIsAnimating(true);
+//   };
+
+//   return (
+//     <section className="w-full py-12 sm:py-16 lg:py-20 relative bg-black min-h-screen overflow-hidden">
+//       <div className="absolute top-5 left-5 flex gap-2 z-50">
+//         <button
+//           onClick={() => setIsAnimating(!isAnimating)}
+//           className="px-5 py-2 bg-white/20 backdrop-blur-sm border-none rounded-full text-white font-bold cursor-pointer transition-all hover:bg-white/30 hover:-translate-y-0.5"
+//         >
+//           {isAnimating ? "⏸️ Pause" : "▶️ Play"}
+//         </button>
+//         <button
+//           onClick={() => {
+//             setPosition(winWidth);
+//             setVelocity(120);
+//             setDirection(-1);
+//             setIsAnimating(true);
+//             setIsDragging(false);
+//           }}
+//           className="px-5 py-2 bg-white/20 backdrop-blur-sm border-none rounded-full text-white font-bold cursor-pointer transition-all hover:bg-white/30 hover:-translate-y-0.5"
+//         >
+//           🔄 Reset
+//         </button>
+//         <button
+//           onClick={() => setDirection((d) => d * -1)}
+//           className="px-5 py-2 bg-white/20 backdrop-blur-sm border-none rounded-full text-white font-bold cursor-pointer transition-all hover:bg-white/30 hover:-translate-y-0.5"
+//         >
+//           ↔️ Direction
+//         </button>
+//       </div>
+
+//       <div className="absolute top-5 right-5 text-white text-base bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm z-50">
+//         Speed: <span>{Math.round(velocity)}</span> px/s
+//       </div>
+
+//       <div className="w-full flex flex-col items-center text-center mb-12 relative z-10">
+//         <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6 drop-shadow-[0_0_30px_rgba(168,85,247,0.8)]">
+//           Our Sponsors
+//         </h1>
+//         <p className="text-lg sm:text-xl lg:text-2xl text-cyan-100 max-w-4xl leading-relaxed px-4 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] font-medium">
+//           Celebrating the partners powering innovation
+//         </p>
+//       </div>
+
+//       <canvas
+//         ref={scannerCanvasRef}
+//         className="absolute left-0 pointer-events-none z-20"
+//         style={{
+//           top: "50%",
+//           transform: "translateY(-50%)",
+//           width: "100vw",
+//           height: "300px",
+//         }}
+//       />
+
+//       <div
+//         className="relative w-full h-[250px] flex items-center overflow-visible"
+//         style={{ top: "calc(50% - 125px)" }}
+//         onMouseEnter={() => setPaused(true)}
+//         onMouseLeave={() => setPaused(false)}
+//       >
+//         <div
+//           className="flex items-center gap-[60px] whitespace-nowrap select-none"
+//           style={{
+//             transform: `translateX(${position}px)`,
+//             cursor: isDragging ? "grabbing" : "grab",
+//           }}
+//           onMouseDown={md}
+//           onMouseMove={mm}
+//           onMouseUp={mu}
+//           onMouseLeave={mu}
+//         >
+//           {dup.map((s, i) => (
+//             <div
+//               key={i}
+//               className="sponsor-card-wrapper relative w-[400px] h-[250px] flex-shrink-0"
+//             >
+//               <div className="sponsor-card-normal absolute top-0 left-0 w-full h-full rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.4)] z-10 transition-[clip-path] duration-[50ms] ease-linear">
+//                 <div
+//                   className={`w-full h-full bg-gradient-to-br ${s.color} flex flex-col items-center justify-center p-8`}
+//                 >
+//                   <div className="p-6 rounded-full bg-white/20 backdrop-blur-sm mb-6 shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+//                     <s.icon size={64} className="text-white" />
+//                   </div>
+//                   <h3 className="text-3xl font-bold text-white mb-3 text-center drop-shadow-lg">
+//                     {s.name}
+//                   </h3>
+//                   <p className="text-xl text-white/90 text-center font-medium">
+//                     {s.sector}
+//                   </p>
+//                 </div>
+//               </div>
+//               <div className="sponsor-card-ascii absolute top-0 left-0 w-full h-full rounded-2xl overflow-hidden z-20 pointer-events-none transition-[clip-path] duration-[50ms] ease-linear">
+//                 <pre
+//                   className="absolute top-0 left-0 w-full h-full text-[rgba(220,210,255,0.6)] font-mono text-[11px] leading-[13px] overflow-hidden whitespace-pre m-0 p-0"
+//                   style={{
+//                     WebkitMaskImage:
+//                       "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0.2) 100%)",
+//                     maskImage:
+//                       "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0.2) 100%)",
+//                   }}
+//                 >
+//                   {generateCode(67, 19)}
+//                 </pre>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+
+//       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/90 text-center text-sm bg-black/30 px-6 py-4 rounded-full backdrop-blur-sm z-50 max-w-2xl">
+//         <p className="leading-relaxed">
+//           Drag cards to explore • Scanner reveals code overlay • Cards
+//           infinitely loop
+//         </p>
+//       </div>
+//     </section>
+//   );
+// }
+
+import { useState, useEffect, useRef } from "react";
+import { Code, Award, Briefcase, Palette, Users, Trophy } from "lucide-react";
 
 const sponsors = [
   {
@@ -22,422 +401,313 @@ const sponsors = [
     sector: "Cloud & AI",
     icon: Code,
     color: "from-cyan-500 to-blue-500",
-    description: "Building scalable cloud-native platforms.",
-    src: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1200&h=600&fit=crop&crop=entropy&auto=format",
-    ctaText: "Visit Site",
-    ctaLink: "#",
-    details: { industry: "Software", founded: "2016", hq: "Bengaluru" },
-    content: () => (
-      <div className="space-y-4 text-center">
-        <p className="text-neutral-600 dark:text-neutral-400">
-          NexaSoft accelerates digital transformation with secure, serverless stacks and ML ops.
-        </p>
-      </div>
-    ),
   },
   {
     name: "GreenLeaf Energy",
     sector: "Renewables",
     icon: Award,
     color: "from-green-500 to-emerald-500",
-    description: "Sustainable solar solutions at scale.",
-    src: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=1200&h=600&fit=crop&crop=entropy&auto=format",
-    ctaText: "Visit Site",
-    ctaLink: "#",
-    details: { industry: "Energy", founded: "2012", hq: "Gurugram" },
-    content: () => (
-      <div className="space-y-4 text-center">
-        <p className="text-neutral-600 dark:text-neutral-400">
-          Provider of utility-scale solar farms and rooftop microgrids for campuses and SMEs.
-        </p>
-      </div>
-    ),
   },
   {
     name: "Finova Capital",
     sector: "Fintech",
     icon: Briefcase,
     color: "from-yellow-500 to-orange-500",
-    description: "Smart payments and lending APIs.",
-    src: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1200&h=600&fit=crop&crop=entropy&auto=format",
-    ctaText: "Visit Site",
-    ctaLink: "#",
-    details: { industry: "Finance", founded: "2018", hq: "Mumbai" },
-    content: () => (
-      <div className="space-y-4 text-center">
-        <p className="text-neutral-600 dark:text-neutral-400">
-          Enabling seamless collections, payouts, and credit scoring with robust compliance.
-        </p>
-      </div>
-    ),
   },
   {
     name: "PixelForge Studios",
     sector: "Design & Media",
     icon: Palette,
     color: "from-purple-500 to-pink-500",
-    description: "Branding and motion design for startups.",
-    src: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1200&h=600&fit=crop&crop=entropy&auto=format",
-    ctaText: "Visit Site",
-    ctaLink: "#",
-    details: { industry: "Creative", founded: "2014", hq: "Pune" },
-    content: () => (
-      <div className="space-y-4 text-center">
-        <p className="text-neutral-600 dark:text-neutral-400">
-          From visual identities to product videos, PixelForge crafts memorable brand stories.
-        </p>
-      </div>
-    ),
   },
   {
     name: "SkyLoop Networks",
     sector: "Networking",
     icon: Users,
     color: "from-indigo-500 to-blue-500",
-    description: "High-availability network solutions.",
-    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop&crop=entropy&auto=format",
-    ctaText: "Visit Site",
-    ctaLink: "#",
-    details: { industry: "Telecom", founded: "2010", hq: "Hyderabad" },
-    content: () => (
-      <div className="space-y-4 text-center">
-        <p className="text-neutral-600 dark:text-neutral-400">
-          Enterprise Wi‑Fi, SD‑WAN, and edge security with 24/7 managed services.
-        </p>
-      </div>
-    ),
   },
   {
     name: "MediSync Health",
     sector: "HealthTech",
     icon: Trophy,
     color: "from-red-500 to-rose-500",
-    description: "Connected devices and telemedicine.",
-    src: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1200&h=600&fit=crop&crop=entropy&auto=format",
-    ctaText: "Visit Site",
-    ctaLink: "#",
-    details: { industry: "Healthcare", founded: "2015", hq: "Chennai" },
-    content: () => (
-      <div className="space-y-4 text-center">
-        <p className="text-neutral-600 dark:text-neutral-400">
-          Remote patient monitoring and AI triage helping hospitals scale care access.
-        </p>
-      </div>
-    ),
   },
 ];
 
-const CloseIcon = () => (
-  <motion.svg
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0, transition: { duration: 0.05 } }}
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="h-4 w-4 text-black"
-  >
-    <path d="m18 6l-12 12" />
-    <path d="m6 6l12 12" />
-  </motion.svg>
-);
-
-// Simple outside click hook
-function useOutsideClick(ref, handler) {
-  useEffect(() => {
-    const listener = (event) => {
-      if (!ref.current || ref.current.contains(event.target)) {
-        return;
-      }
-      handler(event);
-    };
-
-    document.addEventListener("mousedown", listener);
-    document.addEventListener("touchstart", listener);
-
-    return () => {
-      document.removeEventListener("mousedown", listener);
-      document.removeEventListener("touchstart", listener);
-    };
-  }, [ref, handler]);
+function generateCode(width, height) {
+  const lib = [
+    "// sponsor card system",
+    "const SCAN_WIDTH = 8;",
+    "const FADE_ZONE = 35;",
+    "function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }",
+    "function lerp(a, b, t) { return a + (b - a) * t; }",
+    "const scanner = { x: window.innerWidth / 2, glow: 3.5 };",
+    "function drawParticle(ctx, p) { ctx.globalAlpha = p.a; }",
+    "const state = { intensity: 1.2, particles: 2500 };",
+    "ctx.globalCompositeOperation = 'lighter';",
+    "for (let i = 0; i < count; i++) { update(particles[i]); }",
+  ];
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  let flow = lib.join(" ");
+  while (flow.length < width * height) flow += " " + pick(lib);
+  let out = "";
+  for (let row = 0; row < height; row++) {
+    let line = flow.slice(row * width, (row + 1) * width);
+    if (line.length < width) line += " ".repeat(width - line.length);
+    out += line + (row < height - 1 ? "\n" : "");
+  }
+  return out;
 }
 
-export default function EventsSection() {
-  const [active, setActive] = useState(null);
-  const ref = useRef(null);
-  const id = useId();
-  const [current, setCurrent] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(3);
-  const [paused, setPaused] = useState(false);
+export default function SponsorsBeam() {
+  const scannerCanvasRef = useRef(null);
+  const containerRef = useRef(null);
+  const [position, setPosition] = useState(0);
+  const velocity = 150;
+  const direction = -1;
+  const lastTimeRef = useRef(0);
+  const animRef = useRef(null);
+  const renderRef = useRef(null);
+  const particlesRef = useRef([]);
+  const scanningRef = useRef(false);
+  const [winWidth, setWinWidth] = useState(1200);
+
+  const dup = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
 
   useEffect(() => {
-    function compute() {
-      const w = window.innerWidth;
-      if (w < 640) setItemsPerView(1);
-      else if (w < 1024) setItemsPerView(2);
-      else setItemsPerView(3);
-    }
-    compute();
-    window.addEventListener("resize", compute);
-    return () => window.removeEventListener("resize", compute);
+    setWinWidth(window.innerWidth);
+    const handle = () => setWinWidth(window.innerWidth);
+    window.addEventListener("resize", handle);
+    return () => window.removeEventListener("resize", handle);
   }, []);
 
-  const maxIndex = Math.max(0, sponsors.length - itemsPerView);
+  useEffect(() => {
+    const total = (400 + 60) * sponsors.length;
+    setPosition(winWidth);
+
+    const anim = (t) => {
+      const dt = (t - lastTimeRef.current) / 1000;
+      lastTimeRef.current = t;
+
+      setPosition((p) => {
+        let np = p + velocity * direction * dt;
+        if (np < -total) np = winWidth;
+        else if (np > winWidth) np = -total;
+        return np;
+      });
+
+      const sx = winWidth / 2,
+        sw = 8,
+        sl = sx - sw / 2,
+        sr = sx + sw / 2;
+      let any = false;
+      document.querySelectorAll(".sponsor-card-wrapper").forEach((w) => {
+        const r = w.getBoundingClientRect();
+        const n = w.querySelector(".sponsor-card-normal");
+        const a = w.querySelector(".sponsor-card-ascii");
+        if (!n || !a) return;
+        if (r.left < sr && r.right > sl) {
+          any = true;
+          const l = Math.max(sl - r.left, 0);
+          const rr = Math.min(sr - r.left, r.width);
+          n.style.clipPath = `inset(0 0 0 ${(l / r.width) * 100}%)`;
+          a.style.clipPath = `inset(0 ${100 - (rr / r.width) * 100}% 0 0)`;
+        } else {
+          if (r.right < sl) {
+            n.style.clipPath = `inset(0 0 0 100%)`;
+            a.style.clipPath = `inset(0 0 0 0)`;
+          } else {
+            n.style.clipPath = `inset(0 0 0 0%)`;
+            a.style.clipPath = `inset(0 100% 0 0)`;
+          }
+        }
+      });
+      scanningRef.current = any;
+      animRef.current = requestAnimationFrame(anim);
+    };
+
+    lastTimeRef.current = performance.now();
+    animRef.current = requestAnimationFrame(anim);
+    return () => animRef.current && cancelAnimationFrame(animRef.current);
+  }, [velocity, direction, winWidth]);
 
   useEffect(() => {
-    setCurrent((i) => Math.min(i, maxIndex));
-  }, [itemsPerView, maxIndex]);
+    const c = scannerCanvasRef.current;
+    if (!c) return;
+    const ctx = c.getContext("2d");
+    const w = winWidth,
+      h = 250;
+    c.width = w;
+    c.height = h;
 
-  // Autoplay: advance every 3s, pause on hover or when modal is open
-  useEffect(() => {
-    if (paused || (active && typeof active === "object")) return;
-    if (maxIndex === 0) return; // no need to slide if everything fits
-    const id = setInterval(() => {
-      setCurrent((i) => (i >= maxIndex ? 0 : i + 1));
-    }, 1500);
-    return () => clearInterval(id);
-  }, [paused, maxIndex, active]);
+    const gc = document.createElement("canvas");
+    const gctx = gc.getContext("2d");
+    gc.width = 16;
+    gc.height = 16;
+    const gr = gctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+    gr.addColorStop(0, "rgba(255, 255, 255, 1)");
+    gr.addColorStop(0.3, "rgba(196, 181, 253, 0.8)");
+    gr.addColorStop(0.7, "rgba(139, 92, 246, 0.4)");
+    gr.addColorStop(1, "transparent");
+    gctx.fillStyle = gr;
+    gctx.beginPath();
+    gctx.arc(8, 8, 8, 0, Math.PI * 2);
+    gctx.fill();
 
-  useEffect(() => {
-    function onKeyDown(event) {
-      if (event.key === "Escape") {
-        setActive(false);
-      }
+    const max = 800,
+      lx = w / 2,
+      lw = 3,
+      fz = 40;
+    particlesRef.current = [];
+    for (let i = 0; i < max; i++) {
+      particlesRef.current.push({
+        x: lx + (Math.random() - 0.5) * lw,
+        y: Math.random() * h,
+        vx: Math.random() * 0.8 + 0.2,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 0.6 + 0.4,
+        a: Math.random() * 0.4 + 0.6,
+        oa: 0,
+        life: 1,
+        decay: Math.random() * 0.02 + 0.005,
+        time: 0,
+        ts: Math.random() * 0.06 + 0.02,
+        ta: Math.random() * 0.15 + 0.1,
+      });
+      particlesRef.current[i].oa = particlesRef.current[i].a;
     }
 
-    if (active && typeof active === "object") {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    const render = () => {
+      ctx.clearRect(0, 0, w, h);
+      const vg = ctx.createLinearGradient(0, 0, 0, h);
+      vg.addColorStop(0, "rgba(255, 255, 255, 0)");
+      vg.addColorStop(fz / h, "rgba(255, 255, 255, 1)");
+      vg.addColorStop(1 - fz / h, "rgba(255, 255, 255, 1)");
+      vg.addColorStop(1, "rgba(255, 255, 255, 0)");
 
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [active]);
+      ctx.globalCompositeOperation = "lighter";
+      const gi = scanningRef.current ? 3.5 : 1;
 
-  useOutsideClick(ref, () => setActive(null));
+      const cg = ctx.createLinearGradient(lx - lw / 2, 0, lx + lw / 2, 0);
+      cg.addColorStop(0, "rgba(255, 255, 255, 0)");
+      cg.addColorStop(0.5, `rgba(255, 255, 255, ${gi})`);
+      cg.addColorStop(1, "rgba(255, 255, 255, 0)");
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = cg;
+      ctx.fillRect(lx - lw / 2, 0, lw, h);
+
+      const g1 = ctx.createLinearGradient(lx - lw * 2, 0, lx + lw * 2, 0);
+      g1.addColorStop(0, "rgba(139, 92, 246, 0)");
+      g1.addColorStop(0.5, `rgba(196, 181, 253, ${0.8 * gi})`);
+      g1.addColorStop(1, "rgba(139, 92, 246, 0)");
+      ctx.globalAlpha = 0.8;
+      ctx.fillStyle = g1;
+      ctx.fillRect(lx - lw * 2, 0, lw * 4, h);
+
+      ctx.globalCompositeOperation = "destination-in";
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = vg;
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.globalCompositeOperation = "lighter";
+      particlesRef.current.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.time++;
+        p.a = p.oa * p.life + Math.sin(p.time * p.ts) * p.ta;
+        p.life -= p.decay;
+        if (p.x > w + 10 || p.life <= 0) {
+          p.x = lx + (Math.random() - 0.5) * lw;
+          p.y = Math.random() * h;
+          p.life = 1;
+          p.time = 0;
+        }
+        let fa = 1;
+        if (p.y < fz) fa = p.y / fz;
+        else if (p.y > h - fz) fa = (h - p.y) / fz;
+        ctx.globalAlpha = p.a * fa;
+        ctx.drawImage(gc, p.x - p.r, p.y - p.r, p.r * 2, p.r * 2);
+      });
+      renderRef.current = requestAnimationFrame(render);
+    };
+    render();
+    return () => renderRef.current && cancelAnimationFrame(renderRef.current);
+  }, [winWidth]);
 
   return (
-    <section id="sponsors" className="w-full py-12 sm:py-16 lg:py-20 relative">
-      <div className="flex flex-col items-center justify-center w-full px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-7xl mx-auto space-y-12 sm:space-y-16">
-          {/* Modal overlay */}
-          <AnimatePresence>
-            {active && typeof active === "object" && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/20 h-full w-full z-10"
-              />
-            )}
-          </AnimatePresence>
+    <section className="w-full py-20 sm:py-24 lg:py-28 relative bg-black min-h-screen overflow-hidden">
+      <div className="w-full flex flex-col items-center text-center mb-32 relative z-10">
+        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6 drop-shadow-[0_0_30px_rgba(168,85,247,0.8)]">
+          Our Sponsors
+        </h1>
+        <p className="text-lg sm:text-xl lg:text-2xl text-cyan-100 max-w-4xl leading-relaxed px-4 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] font-medium">
+          Celebrating the partners powering innovation
+        </p>
+      </div>
 
-          {/* Modal */}
-          <AnimatePresence>
-            {active && typeof active === "object" ? (
-              <div className="fixed inset-0 grid place-items-center z-[100] p-4">
-                <motion.button
-                  key={`button-${active.name}-${id}`}
-                  layout
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, transition: { duration: 0.05 } }}
-                  className="flex absolute top-6 right-6 lg:hidden items-center justify-center bg-white rounded-full h-8 w-8 z-10"
-                  onClick={() => setActive(null)}
+      <div
+        ref={containerRef}
+        className="relative w-full h-[250px] flex items-center overflow-visible"
+        style={{ top: "calc(50% - 125px)" }}
+      >
+        <canvas
+          ref={scannerCanvasRef}
+          className="absolute left-0 pointer-events-none z-20"
+          style={{
+            top: "0",
+            width: "100vw",
+            height: "250px",
+          }}
+        />
+
+        <div
+          className="flex items-center gap-[60px] whitespace-nowrap select-none"
+          style={{
+            transform: `translateX(${position}px)`,
+          }}
+        >
+          {dup.map((s, i) => (
+            <div
+              key={i}
+              className="sponsor-card-wrapper relative w-[400px] h-[250px] flex-shrink-0"
+            >
+              <div className="sponsor-card-normal absolute top-0 left-0 w-full h-full rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.4)] z-10 transition-none">
+                <div
+                  className={`w-full h-full bg-gradient-to-br ${s.color} flex flex-col items-center justify-center p-8`}
                 >
-                  <CloseIcon />
-                </motion.button>
-
-                <motion.div
-                  layoutId={`card-${active.name}-${id}`}
-                  ref={ref}
-                  className="w-full max-w-[700px] max-h-[90vh] flex flex-col bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden m-4 shadow-lg"
-                >
-                  <motion.div
-                    layoutId={`image-${active.name}-${id}`}
-                    className="flex-none"
-                  >
-                    <Image
-                      priority
-                      unoptimized
-                      width={700}
-                      height={220}
-                      src={active.src}
-                      alt={active.name}
-                      className="w-full h-44 object-cover"
-                    />
-                  </motion.div>
-
-                  <div className="p-6 flex-1 flex flex-col min-h-0">
-                    <div className="text-center mb-4">
-                      <motion.h3
-                        layoutId={`title-${active.name}-${id}`}
-                        className="font-bold text-neutral-700 dark:text-neutral-200 text-2xl mb-2"
-                      >
-                        {active.name}
-                      </motion.h3>
-                      <motion.p
-                        layoutId={`description-${active.description}-${id}`}
-                        className="text-neutral-600 dark:text-neutral-400"
-                      >
-                        {active.description}
-                      </motion.p>
-                    </div>
-
-                    <div className="text-center mb-4 px-4">
-                      <motion.a
-                        layoutId={`button-${active.name}-${id}`}
-                        href={active.ctaLink}
-                        className={`inline-block px-8 py-3 text-sm rounded-full font-bold bg-gradient-to-r ${active.color} text-white hover:shadow-lg transition-all`}
-                      >
-                        {active.ctaText}
-                      </motion.a>
-                    </div>
-
-                    <motion.div
-                      layout
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="overflow-auto flex-1 min-h-0 text-neutral-600 dark:text-neutral-400 space-y-4"
-                    >
-                      {typeof active.content === "function"
-                        ? active.content()
-                        : active.content}
-                    </motion.div>
+                  <div className="p-6 rounded-full bg-white/20 backdrop-blur-sm mb-6 shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                    <s.icon size={64} className="text-white" />
                   </div>
-                </motion.div>
+                  <h3 className="text-3xl font-bold text-white mb-3 text-center drop-shadow-lg">
+                    {s.name}
+                  </h3>
+                  <p className="text-xl text-white/90 text-center font-medium">
+                    {s.sector}
+                  </p>
+                </div>
               </div>
-            ) : null}
-          </AnimatePresence>
-
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: -40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="w-full flex flex-col items-center text-center"
-          >
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6 sm:mb-8 drop-shadow-[0_0_30px_rgba(168,85,247,0.8)]">
-              Our Sponsors
-            </h1>
-
-            <p className="text-lg sm:text-xl lg:text-2xl text-cyan-100 max-w-4xl mx-auto leading-relaxed px-4 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,1)] font-medium">
-              Celebrating the partners
-            </p>
-          </motion.div>
-
-          {/* Sponsors Grid */}
-          <div className="w-full px-4 sm:px-6 lg:px-8">
-            <div className="relative">
-              <div
-                className="overflow-hidden"
-                onMouseEnter={() => setPaused(true)}
-                onMouseLeave={() => setPaused(false)}
-              >
-                <motion.div
-                  animate={{ x: `-${(100 / itemsPerView) * current}%` }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className="flex gap-6 sm:gap-8"
-                  style={{ width: `${(100 / itemsPerView) * sponsors.length}%` }}
+              <div className="sponsor-card-ascii absolute top-0 left-0 w-full h-full rounded-2xl overflow-hidden z-20 pointer-events-none transition-none">
+                <pre
+                  className="absolute top-0 left-0 w-full h-full text-[rgba(220,210,255,0.6)] font-mono text-[11px] leading-[13px] overflow-hidden whitespace-pre m-0 p-0"
+                  style={{
+                    WebkitMaskImage:
+                      "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0.2) 100%)",
+                    maskImage:
+                      "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0.2) 100%)",
+                  }}
                 >
-                  {sponsors.map((sponsor, index) => (
-                    <div
-                      key={`slide-${sponsor.name}-${id}`}
-                      className="flex-none"
-                      style={{ minWidth: `${100 / itemsPerView}%` }}
-                    >
-                      <motion.div
-                        layoutId={`card-${sponsor.name}-${id}`}
-                        onClick={() => setActive(sponsor)}
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.45, delay: index * 0.06 }}
-                        className="group cursor-pointer w-full h-full"
-                      >
-                        <div
-                          className={`relative overflow-hidden rounded-xl backdrop-blur-lg bg-black/60 border border-purple-400/40 p-0 hover:bg-black/70 transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:scale-105 flex flex-col h-full`}
-                        >
-                          <motion.div
-                            layoutId={`image-${sponsor.name}-${id}`}
-                            className="flex-none"
-                          >
-                            <Image
-                              unoptimized
-                              width={600}
-                              height={240}
-                              src={sponsor.src}
-                              alt={sponsor.name}
-                              className="w-full h-44 rounded-t-lg object-cover object-top group-hover:scale-110 transition-transform duration-300"
-                            />
-                          </motion.div>
-
-                          <div className="flex-1 flex flex-col items-center text-center justify-between p-4 min-h-0">
-                            <div className="w-full">
-                              <div className="flex items-center justify-center mb-2">
-                                <div
-                                  className={`p-3 rounded-full bg-gradient-to-r ${sponsor.color} mr-3 shadow-[0_0_20px_rgba(168,85,247,0.6)]`}
-                                >
-                                  <sponsor.icon size={24} className="text-white" />
-                                </div>
-                                <motion.h3
-                                  layoutId={`title-${sponsor.name}-${id}`}
-                                  className="font-bold text-cyan-100 text-xl drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]"
-                                >
-                                  {sponsor.name}
-                                </motion.h3>
-                              </div>
-
-                              <motion.p
-                                layoutId={`description-${sponsor.description}-${id}`}
-                                className="text-cyan-50 mb-2 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
-                              >
-                                {sponsor.sector}
-                              </motion.p>
-                              <div className="w-full flex-1 overflow-auto space-y-2 px-2 min-h-0">
-                                <div className="flex items-center justify-center gap-2 text-cyan-100">
-                                  <Users size={16} className="text-cyan-400" />
-                                  <span className="text-sm">{sponsor.description}</span>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="w-full mt-3">
-                              <div className="grid grid-cols-2 gap-3 w-full mb-2 text-sm">
-                                <div className="text-center p-3 rounded bg-black/40 border border-cyan-400/30">
-                                  <div className="text-cyan-300 font-semibold drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
-                                    {sponsor.details.industry}
-                                  </div>
-                                  <div className="text-cyan-100 text-xs">Industry</div>
-                                </div>
-                                <div className="text-center p-3 rounded bg-black/40 border border-yellow-400/30">
-                                  <div className="text-yellow-300 font-semibold drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]">
-                                    {sponsor.details.founded}
-                                  </div>
-                                  <div className="text-cyan-100 text-xs">Founded</div>
-                                </div>
-                              </div>
-                              <p className="text-cyan-200 text-sm drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
-                                Click to view details
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
-                  ))}
-                </motion.div>
+                  {generateCode(67, 19)}
+                </pre>
               </div>
             </div>
-          </div>
+          ))}
         </div>
+      </div>
+
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/90 text-center text-sm bg-black/30 px-6 py-4 rounded-full backdrop-blur-sm z-50 max-w-2xl">
+        <p className="leading-relaxed">
+          Scanner reveals code overlay • Cards infinitely loop
+        </p>
       </div>
     </section>
   );
