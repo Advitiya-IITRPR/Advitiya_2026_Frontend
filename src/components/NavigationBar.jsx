@@ -179,11 +179,8 @@ import {
   UserPlus,
   Sparkles
 } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { useSession } from "next-auth/react";
 
 export default function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -192,9 +189,7 @@ export default function NavigationBar() {
   const { data: session } = useSession()
   const router = useRouter()
 
-
-  const Logout = async () => {
-    console.log("Enter")
+   const Logout = async () => {
 
     await signOut({ redirect: false, callbackUrl: '/' })
       .then(() => {
@@ -232,8 +227,8 @@ export default function NavigationBar() {
   const navItems = [
     { name: "Home", href: "/", icon: Home },
     { name: "Events", href: "/events", icon: Calendar },
-    { name: "Our Team", href: "/our-team", icon: Users },
-    { name: "Sponsors", href: "/#sponsors", icon: Trophy },
+    { name: "Our Team", href: "/team", icon: Users },
+    { name: "Sponsors", href: "/sponsors", icon: Trophy },
     { name: "Contact Us", href: "/contact", icon: Mail },
     { name: "CA", href: "/ca", icon: MicVocal },
     { name: "Prefest", href: "/prefest", icon: Sparkles },
@@ -353,26 +348,30 @@ export default function NavigationBar() {
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "glass-nav py-2" : "bg-transparent py-4"
           }`}
       >
-        {/* --- Centered container --- */}
         <div className="max-w-[98%] mx-auto flex justify-between items-center px-4">
-          {/* --- Left Logo --- */}
-          <Link href="/" className="flex items-center">
-            <motion.span
-              className="text-3xl md:text-4xl font-bold gradient-text"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+          {/* Logo */}
+          <a href="/" className="flex items-center">
+            <motion.div
+              className="logo-glow"
+              whileHover={{
+                scale: 1.1,
+                rotate: [0, -8, 8, -8, 0],
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{
+                scale: { duration: 0.2 },
+                rotate: { duration: 0.5 }
+              }}
             >
-              {/* LOGO */}
-              <Image
+              <img
                 src="/logo.png"
                 alt="Advitiya Logo"
-                width={100}
-                height={100}
+                className="h-16 md:h-26 w-auto"
               />
-            </motion.span>
-          </Link>
+            </motion.div>
+          </a>
 
-          {/* --- Desktop Menu with significant spacing --- */}
+          {/* Desktop Menu - Compact */}
           <div className="hidden lg:flex items-center gap-1 xl:gap-2">
             {navItems.map((item, index) => (
               <motion.a
@@ -397,9 +396,8 @@ export default function NavigationBar() {
             ))}
           </div>
 
-
-          {/* --- Register Now Button with balanced padding --- */}
-          {!session ? (
+          {/* Action Buttons - Compact */}
+         {!session ? (
             <div className="hidden lg:flex items-center gap-2.5">
               <a href="/registration">
                 <motion.button
@@ -461,61 +459,67 @@ export default function NavigationBar() {
             </div>
           )}
 
-
-          {/* --- Mobile Toggle Button --- */}
+          {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-white p-2 h-full"
+            className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+            aria-label="Toggle menu"
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isOpen ? <X size={26} strokeWidth={2.5} /> : <Menu size={26} strokeWidth={2.5} />}
+            </motion.div>
           </button>
         </div>
+      </motion.nav>
 
-        {/* --- Mobile Menu --- */}
-        <AnimatePresence>
-          {isOpen && (
-            <>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="fixed inset-0 bg-black/85 backdrop-blur-md z-40 lg:hidden h-screen"
-                onClick={() => setIsOpen(false)}
-              />
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/85 backdrop-blur-md z-40 lg:hidden"
+              onClick={() => setIsOpen(false)}
+            />
 
-              <motion.div
-                initial={{ opacity: 0, x: "100%" }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: "100%" }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="fixed top-0 right-0 h-full w-[85%] max-w-md z-50 lg:hidden"
-              >
-                <div className="h-full bg-gradient-to-br from-slate-900 via-purple-900/60 to-slate-900 backdrop-blur-xl p-6 pt-20 flex flex-col space-y-1 overflow-y-auto border-l-2 border-purple-500/40">
-                  {navItems.map((item, index) => (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, x: 50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.08 }}
+            <motion.div
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="fixed top-0 right-0 h-full w-[85%] max-w-md z-50 lg:hidden"
+            >
+              <div className="h-full bg-gradient-to-br from-slate-900 via-purple-900/60 to-slate-900 backdrop-blur-xl p-6 pt-20 flex flex-col space-y-1 overflow-y-auto border-l-2 border-purple-500/40">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.08 }}
+                  >
+                    <a
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-white hover:text-cyan-300 hover:bg-white/5 transition-all flex items-center gap-4 text-lg font-semibold py-4 px-4 rounded-lg border-b border-white/10 group"
                     >
-                      <a
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="text-white hover:text-cyan-300 hover:bg-white/5 transition-all flex items-center gap-4 text-lg font-semibold py-4 px-4 rounded-lg border-b border-white/10 group"
+                      <motion.div
+                        whileHover={{ scale: 1.2, rotate: 360 }}
+                        transition={{ duration: 0.5 }}
                       >
-                        <motion.div
-                          whileHover={{ scale: 1.2, rotate: 360 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <item.icon size={22} strokeWidth={2.5} className="group-hover:text-purple-400" />
-                        </motion.div>
-                        <span>{item.name}</span>
-                      </a>
-                    </motion.div>
-                  ))}
+                        <item.icon size={22} strokeWidth={2.5} className="group-hover:text-purple-400" />
+                      </motion.div>
+                      <span>{item.name}</span>
+                    </a>
+                  </motion.div>
+                ))}
 
-                  {!session ? (
+                {!session ? (
                     <div className="space-y-2">
                       {/* Register Button */}
                       <motion.div
@@ -583,12 +587,11 @@ export default function NavigationBar() {
                       </motion.div>
                     </div>
                   )}
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }
