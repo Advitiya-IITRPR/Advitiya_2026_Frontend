@@ -400,6 +400,12 @@ export default function EventsSection() {
           </motion.div>
         </div>
       </div>
+
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/90 text-center text-sm bg-black/30 px-6 py-4 rounded-full backdrop-blur-sm z-50 max-w-2xl">
+        <p className="leading-relaxed">
+          Scanner reveals code overlay • Cards infinitely loop
+        </p>
+      </div>
     </section>
   );
 }
