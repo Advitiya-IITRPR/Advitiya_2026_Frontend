@@ -26,11 +26,11 @@ export const OCsData = [
 // Heads (5 members)
 export const headsData = [
   {
-    name: "Simran Kaur",
-    position: "Operations Head",
-    image: "https://res.cloudinary.com/dykbuvd20/image/upload/v1760450562/simran_kaur_yvhqko.jpg",
-    linkedin: "https://linkedin.com/in/simran-kaur",
-    email: "simran.kaur@example.com",
+    name: "Chaitanya Kalme",
+    position: "Web Dev Head",
+    image: "https://res.cloudinary.com/doxe1rjaj/image/upload/v1762323022/Chaitanya_-_Chaitanya_Kalme_abw78x.jpg",
+    linkedin: "https://www.linkedin.com/in/chaitanya-kalme-1a610a346/",
+    email: "2023csb1112@iitrpr.ac.in",
   },
   {
     name: "Ritesh Kumar",

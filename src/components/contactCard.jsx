@@ -17,6 +17,19 @@ const contactCards = ({ member, isOC = false }) => {
     hoverGlow: "hover:shadow-[0_0_40px_rgba(251,146,60,0.4)]",
   };
 
+  const magentaTheme = {
+  border: "border-pink-400/60",
+  shadow: "shadow-[0_0_20px_rgba(236,72,153,0.4)]",
+  nameText: "text-pink-100",
+  nameShadow: "drop-shadow-[0_0_10px_rgba(236,72,153,0.8)]",
+  iconBg: "bg-pink-500/90",
+  iconHover: "hover:bg-pink-400",
+  iconShadow: "shadow-pink-500/40",
+  iconHoverShadow: "hover:shadow-[0_0_20px_rgba(236,72,153,0.8)]",
+  hoverGlow: "hover:shadow-[0_0_40px_rgba(236,72,153,0.4)]",
+};
+
+
   const purpleTheme = {
     border: "border-purple-400/60",
     shadow: "shadow-[0_0_20px_rgba(168,85,247,0.4)]",
@@ -29,7 +42,7 @@ const contactCards = ({ member, isOC = false }) => {
     hoverGlow: "hover:shadow-[0_0_40px_rgba(168,85,247,0.4)]",
   };
 
-  const theme = isOC ? orangeTheme : purpleTheme;
+  const theme = isOC ? magentaTheme : purpleTheme;
 
   return (
     <div

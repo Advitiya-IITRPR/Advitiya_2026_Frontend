@@ -362,12 +362,7 @@ export default function EventsSection() {
                         <p className="text-cyan-100 text-sm px-4">
                           {sponsor.description}
                         </p>
-                        
-                        <div className="mt-4 w-full px-4">
-                          <span className="inline-block px-4 py-2 text-sm bg-gradient-to-r from-purple-600/80 to-pink-600/80 text-white rounded-full group-hover:from-purple-500 group-hover:to-pink-500 transition-all duration-300 shadow-lg shadow-purple-500/20">
-                            Learn More
-                          </span>
-                        </div>
+
                       </div>
                     </div>
                   </motion.div>
