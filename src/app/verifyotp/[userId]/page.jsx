@@ -95,8 +95,8 @@ const VerifyOtp = () => {
         {/* Logo and Header */}
         <div className="flex flex-col items-center mb-8">
           <Image
-            src="/E-Cell Image.jpg"
-            alt="E-Cell Logo"
+            src="/logo2.png"
+            alt="Advitiya Logo"
             width={80}
             height={80}
             className="rounded-full mb-4"
