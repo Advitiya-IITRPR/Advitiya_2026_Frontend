@@ -170,7 +170,7 @@ const columns: ColumnDef<participant>[] = [
                         <Dialog key={participant.id}>
                             <form>
                                 <DialogTrigger asChild>
-                                <Button variant="outline">{participant.userName}</Button>
+                                    <Button variant="outline">{participant.userName}</Button>
                                 </DialogTrigger>
 
                                 <DialogContent className="sm:max-w-[425px]">
