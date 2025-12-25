@@ -165,10 +165,10 @@ const columns: ColumnDef<participant>[] = [
             const participantArr: user[] = row.getValue("participants");
 
             return (
-                <div className="flex gap-x-2 flex-wrap">
-                    {participantArr.map((participant) => (
-                        <Dialog key={participant.id}>
-                            <form>
+                    <div className="flex gap-x-2 flex-wrap">
+                        {participantArr.map((participant) => (
+                            <Dialog key={participant.id}>
+                                <form>
                                 <DialogTrigger asChild>
                                     <Button variant="outline">{participant.userName}</Button>
                                 </DialogTrigger>
