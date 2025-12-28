@@ -148,7 +148,7 @@ export default function Highlights() {
     },
     {
       url: "/highlights/Image10.jpg",
-      alt: "Team Collaboration",
+      alt: "",
       span: "col-span-1 row-span-2",
     },
     {
@@ -158,7 +158,7 @@ export default function Highlights() {
     },
     {
       url: "/highlights/Image12.jpg",
-      alt: "Opening Ceremony",
+      alt: "",
       span: "col-span-1 row-span-1",
     },
   ];
