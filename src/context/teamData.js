@@ -80,16 +80,16 @@ export const headsData = [
   {
     name: "Shivam Upadhyay",
     position: "Security Head",
-    image: "",
-    linkedin: " ",
-    email: "",
+    image: "https://drive.google.com/uc?export=view&id=1GS1e5i7NFBD5c4xykfTCfUGiDbuQBHPY",
+    linkedin: "https://www.linkedin.com/in/shivamupadhyay2005?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    email: "2023ceb1047@iitrpr.ac.in",
   },
   {
     name: "Mann sharma",
     position: "Security Head",
-    image: "",
-    linkedin: "",
-    email: "",
+    image: "https://drive.google.com/uc?export=view&id=1CWUK5bs6azNhcmnMjUj2wQWHtZdJXigY",
+    linkedin: "https://www.linkedin.com/in/mann-sharma-b32966288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    email: "2023ceb1039@iitrpr.ac.in",
   },
 
   {
@@ -102,9 +102,9 @@ export const headsData = [
   {
     name: "Kunal Dhiman",
     position: "Pronites Head",
-    image: "",
-    linkedin: "",
-    email: "",
+    image: "https://drive.google.com/uc?export=view&id=1p4jN2sAB19SxAKQcih4jN6UW4LMW2lNy",
+    linkedin: "https://www.linkedin.com/in/kunal-dhiman-661541293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    email: "2023eeb1218@iitrpr.ac.in",
   },
   {
     name: "Nachiket Patil",
@@ -266,13 +266,12 @@ export const headsData = [
     email: "",
   },
 
-
   {
     name: "Diya Seal",
     position: "Workshops and Talks Head",
-    image: "",
-    linkedin: "",
-    email: "",
+    image: "https://drive.google.com/uc?export=view&id=1CbUi86xkjtdEBXPDcxG7RLEmVt6XXFtx",
+    linkedin: "https://www.linkedin.com/in/diya-seal-352bbb286/",
+    email: "2023meb1341@iitrpr.ac.in",
   },
   {
     name: "Dev Agrawal",
