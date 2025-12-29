@@ -1,41 +1,40 @@
 import type { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
+
   images: {
-    domains: ['localhost','drive.google.com'],
-    // Or use the newer remotePatterns approach (recommended):
+    domains: ["localhost", "drive.google.com"],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
       },
       {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
       },
     ],
   },
 
   typescript: {
-    // ❗ Allows production builds to succeed even with TS errors
     ignoreBuildErrors: true,
   },
 
   async rewrites() {
+    if (!process.env.BACKEND_URL) {
+      throw new Error("BACKEND_URL is not defined");
+    }
+
     return [
       {
-        source: '/api/:path*',
-        destination: `${process.env.BACKEND_URL}/api/:path*`, // Proxy to backend
+        source: "/api/:path*",
+        destination: `${process.env.BACKEND_URL}/api/:path*`,
       },
     ];
   },
-}
-
+};
 
 export default nextConfig;
