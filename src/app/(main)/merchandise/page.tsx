@@ -44,7 +44,7 @@ const merchandiseList = [
   {
     title: "Advitiya T-Shirt White",
     src: "/merchandise/Advitiya_TShirt1.png",
-    description: "",
+    description: "Rs 349",
     ctaText: "Order Now",
     ctaLink: "https://docs.google.com/forms/d/e/1FAIpQLSftGIgeis0G31Ck6hGGIPwv49ppwOPrEGyECwrjXm43_UvHwg/viewform?usp=sharing&ouid=102438842226303481541",
     content: () => {
@@ -61,6 +61,7 @@ const merchandiseList = [
   {
     title: "Advitiya T-Shirt Black",
     src: "/merchandise/Advitiya_TShirt2.png",
+    description: "Rs 349",
     ctaText: "Order Now",
     ctaLink: "https://docs.google.com/forms/d/e/1FAIpQLSftGIgeis0G31Ck6hGGIPwv49ppwOPrEGyECwrjXm43_UvHwg/viewform?usp=sharing&ouid=102438842226303481541",
     content: () => {
@@ -77,6 +78,7 @@ const merchandiseList = [
   {
     title: "Advitiya Hoodie Black",
     src: "/merchandise/Advitiya_Hoodie2.png",
+    description: "Rs 749",
     ctaText: "Order Now",
     ctaLink: "https://docs.google.com/forms/d/e/1FAIpQLSd14zNmvLeM2eP5RgjA819bzABeeD_6ul1xljBtTZwSko-zXA/viewform?usp=header",
     content: () => {
@@ -93,6 +95,7 @@ const merchandiseList = [
   {
     title: "Advitiya Hoodie White",
     src: "/merchandise/Advitiya_Hoodie1.png",
+    description: "Rs 749",
     ctaText: "Order Now",
     ctaLink: "https://docs.google.com/forms/d/e/1FAIpQLSd14zNmvLeM2eP5RgjA819bzABeeD_6ul1xljBtTZwSko-zXA/viewform?usp=header",
     content: () => {
