@@ -153,67 +153,66 @@ function MerchandisePage() {
   //   </>
   // );
 
- return (
+  return (
     <>
       <main className="relative min-h-screen">
-        {/* <StarsBackground/> */}
+        {/* Background */}
         <div className="fixed inset-0 z-0 bg-gradient-to-br from-black via-gray-900 to-blue-950">
           <StarsBackground className="w-full h-full" showShootingStars={true} />
         </div>
+
         <h1 className="relative z-10 mt-34 text-center justify-center font-bold text-5xl mb-5 text-white">
           Buy Our Merchandise
         </h1>
+
+        {/* Overlay (desktop only) */}
         <AnimatePresence>
           {active && typeof active === "object" && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/20 h-full w-full z-10"
+              className="fixed inset-0 bg-black/20 z-10 hidden sm:block"
             />
           )}
         </AnimatePresence>
+
+        {/* Modal */}
         <AnimatePresence>
-          {active && typeof active === "object" ? (
-            <div className="fixed inset-0  grid place-items-center z-[100]">
+          {active && typeof active === "object" && (
+            <div className="fixed inset-0 z-[100] grid place-items-center ">
+              {/* Close Button */}
               <motion.button
-                key={`button-${active.title}-${id}`}
-                layout
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: {
-                    duration: 0.05,
-                  },
-                }}
-                className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6 z-[110]"
                 onClick={() => setActive(null)}
               >
                 <CloseIcon />
               </motion.button>
+
+              {/* Modal Card */}
               <motion.div
                 layoutId={`card-${active.title}-${id}`}
                 ref={ref}
-                className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+                className="w-full max-w-[500px] h-full md:max-h-[90vh] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
               >
-                <motion.div layoutId={`image-${active.title}-${id}`}>
-                  <img
-                    width={200}
-                    height={200}
-                    src={active.src}
-                    alt={active.title}
-                    className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
-                  />
-                </motion.div>
+                {/* Scrollable content */}
+                <div className="flex flex-col overflow-y-auto max-h-full">
 
-                <div>
-                  <div className="flex justify-between items-start p-4">
-                    <div className="">
+                  {/* Hoodie Image (scaled down) */}
+                  <motion.div layoutId={`image-${active.title}-${id}`}>
+                    <img
+                      src={active.src}
+                      alt={active.title}
+                      className="w-full h-auto max-h-[40vh] object-contain sm:rounded-t-3xl"
+                    />
+                  </motion.div>
+
+                  {/* Title + CTA */}
+                  <div className="p-4 flex justify-between items-start gap-4">
+                    <div>
                       <motion.h3
                         layoutId={`title-${active.title}-${id}`}
                         className="font-medium text-neutral-700 dark:text-neutral-200 text-base"
@@ -227,12 +226,8 @@ function MerchandisePage() {
                         {active.description}
                       </motion.p>
                     </div>
-
                     <motion.a
                       layout
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
                       href={active.ctaLink}
                       target="_blank"
                       className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
@@ -240,40 +235,39 @@ function MerchandisePage() {
                       {active.ctaText}
                     </motion.a>
                   </div>
-                  <div className="pt-4 relative px-4">
-                    <motion.div
-                      layout
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
-                    >
-                      {typeof active.content === "function"
-                        ? active.content()
-                        : active.content}
-                    </motion.div>
+
+                  {/* Scrollable area for hoodie + size chart */}
+                  <div className="px-4 pb-4 flex flex-col gap-4 overflow-y-auto max-h-[calc(90vh-180px)]">
+                    {/* Hoodie image again (scrollable version) */}
+
+                    {/* Size chart */}
+                    {typeof active.content === "function"
+                      ? active.content()
+                      : active.content}
                   </div>
                 </div>
               </motion.div>
             </div>
-          ) : null}
+          )}
         </AnimatePresence>
+
+        {/* Cards Grid */}
         <ul className="relative z-10 max-w-2xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-start gap-4">
           {merchandiseList.map((card, index) => (
             <motion.div
               layoutId={`card-${card.title}-${id}`}
               key={card.title}
               onClick={() => setActive(card)}
-              className="p-4 flex flex-col  hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
+              className="p-4 flex flex-col hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
             >
-              <div className="flex gap-4 flex-col  w-full">
+              <div className="flex gap-4 flex-col w-full">
                 <motion.div layoutId={`image-${card.title}-${id}`}>
                   <Image
                     width={100}
                     height={100}
                     src={card.src}
                     alt={card.title}
-                    className="h-60 w-full  rounded-lg object-cover object-top"
+                    className="h-60 w-full rounded-lg object-cover object-top"
                   />
                 </motion.div>
                 <div className="flex justify-center items-center flex-col">
@@ -297,6 +291,7 @@ function MerchandisePage() {
       </main>
     </>
   );
+
 
 }
 
