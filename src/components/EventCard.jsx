@@ -486,6 +486,11 @@ export function ExpandableEventCards({ events }) {
                         : "🔴 Registration Closed"}
                     </div>
 
+                    <div className="items-center px-3 py-1 rounded-full text-sm font-semibold">
+                      RuleBook: 
+                      <a href={active.eventRuleBook} target="_blank"> Link</a>
+                    </div>
+
                     <div className="pt-4 text-left">
                       <h4 className="font-semibold text-cyan-300 text-lg mb-3 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
                         About This Event
@@ -502,7 +507,7 @@ export function ExpandableEventCards({ events }) {
         ) : null}
       </AnimatePresence>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 max-w-none items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 max-w-none items-stretch h-96 overflow-y-hidden">
         {events.map((event, index) => (
           <motion.div
             layoutId={`card-${event.eventName}-${id}`}
@@ -537,13 +542,6 @@ export function ExpandableEventCards({ events }) {
                       {event.eventName}
                     </motion.h3>
                   </div>
-
-                  <motion.p
-                    layoutId={`description-${event.description}-${id}`}
-                    className="text-cyan-50 mb-2 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
-                  >
-                    {event.description}
-                  </motion.p>
 
                   <div className="w-full flex-1 overflow-auto space-y-3 px-2 min-h-0">
                     {/* Removed prize display from initial card */}
