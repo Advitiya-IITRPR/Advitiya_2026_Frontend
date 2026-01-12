@@ -738,37 +738,134 @@ Guidelines:
       },
     ]
   },
-  // {
-  //   clubName: "Robotics Club",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "Robosoccer",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 2,
-  //       maxSize: 4,
-  //       eventRuleBook: ""
-  //     },
-  //     {
-  //       id: 2,
-  //       eventName: "Fastest line follower",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 2,
-  //       maxSize: 4,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
+  {
+    clubName: "Robotics Club",
+    events: [
+      {
+        id: 1,
+        eventName: "Robosoccer",
+        eventImage: "https://drive.google.com/uc?export=view&id=1HXrxCRCUapSfw8L7TJQPwJCGRQY9ZMem",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Introduction
+
+IIT Ropar’s Advitya 26 proudly presents the exhilarating RoboSoccer competition! Teams will demonstrate their ingenuity by crafting non-attacking robots to engage in thrilling soccer matches. This event is a perfect fusion of technology, strategy, and sportsmanship, embodying the spirit of innovation seamlessly blended with the essence of humanity.
+
+Task
+
+As the name suggests, RoboSoccer involves robots playing “football” using a “tennis ball”, two goalposts, and two teams. Humanoid robots are not required; a wheeled robot is ideal. Each team consists of two robots: a defender and an attacker. The objective is to score by maneuvering the ball into the opposing team’s goalpost. Matches are tentatively set to last 12 minutes, subject to adjustments based on time availability.
+
+Registration Rules
+
+It is an offline, team-based event held at IIT Ropar Main Campus during ADVITIYA.
+A team should consist of 2–4 members.
+Students from different educational institutions can form a team.
+More than one team can participate from the same institution.
+Guidelines
+
+A game is played between two teams, that are four robots.
+Starting two-quarters of the arena belongs to one team, and the next two/ last two quarters belong to the other team.
+A team aims to defend its goal, just like traditional soccer, which means you have to stop another team from pushing the ball through your goal.
+All your parts including the battery (if wireless) on the bot, should not weigh more than 5 kgs (5% tolerance allowed). The only part which may not be on the bot is the controller.
+Power can be on the bot or external. If external power is required, you are only allowed to use extension boards provided by the organizers. Your bot should have the required features which can be plugged into and unplugged from the extension boards as needed.
+General Rules
+
+Bot Dimensions and Weight
+
+30*30*30 cm3 and 5 Kgs
+The weight limits have a 5% tolerance.
+(The robot must be designed to fit entirely within a 30 cm × 30 cm × 30 cm
+cubic box, with all mechanisms fully extended or stretched to their
+maximum limits. Additionally, the battery must be onboard and integrated
+into the robot's design.)
+
+Arena
+
+The arena is divided into four equal parts along its length.
+The dimensions of the arena are 8 ft * 12 ft(distance between the goal
+posts).
+The goal dimensions are not fixed but will be large enough to prevent a
+single robot from completely blocking it.
+Mobility
+
+All robots must have easily visible and controlled mobility. Methods of
+mobility include: 
+
+Rolling (wheels, tracks or the whole robot).
+Non-wheeled (no rolling elements in contact with the floor and no
+continuous rolling/cam operated motion)
+Mobility methods that are NOT allowed:
+
+Flying mechanisms are not allowed.
+The robots should not secure themselves on the match surface by
+using suction cups, sticky threads, glue etc.
+FOULS
+
+Covering the ball from all four sides (not considering the top and
+bottom here) by a single robot is not allowed.
+Use any part of your robot as a weapon to harm other bots. It is clarified
+that pushing a bot is allowed.
+Kicking the ball out of the arena.
+Using any part of your robot to damage the football field will be counted
+as a foul. If a team damages the field more than 3 times in a single
+match, then the team will be disqualified and will be out of the
+competition.
+If the ball is in contact with a bot and the bot’s wheels cross the goal
+line will be counted as a goal. This rule may change for your match
+which will be decided at the time of the event and will be informed to
+you.
+Damaging the opponent bot. If any team member touches any bot
+without the referee's / event manager's permission,it is foul.
+In case of any foul, the time clock will stop, and you will be given a
+penalty.
+In case there is a deadlock (lasting more than 8 seconds), the play will
+stop and the team in whose quarter the deadlock occurs will be
+awarded a goal kick.
+Penalty (Any foul which is done inside the outer D-box)
+
+The ball will be placed in the middle of the half of the team who is taking the
+penalty. The bot of the team who has made a foul has to remain in the
+opposite team's second quarter, i.e., 3rd quarter from his side, and cannot
+leave it, till the attacker touches the ball.
+
+Safety Rules
+
+Compliance with all event rules is mandatory.
+
+Special care should be taken to protect the onboard batteries and pneumatics.
+If your robot design does not fully comply with the rules or includes ambiguous elements, please contact the RoboSoccer Organizing Team at IIT Ropar as early as possible. Attempting to exploit a loophole without prior clarification may result in disqualification.
+Each event has safety inspections. Your team will be allowed to compete at the sole discretion of IIT Ropar authorities.
+Criteria for Victory
+
+A team is declared victorious if it scores a higher number of goals at the end of the match.
+If there is a tie, an extra minute will be given as “extra time” to facilitate the tie-break.
+Any team with robot(s) deemed unsafe by the judges after the match has begun will be disqualified and therefore declared the loser. The match will be immediately halted and the opponent will be awarded a win.
+NOTE
+
+Notification of any changes to the event will be given before the event commences.
+Violating the rules or using unfair means will lead to immediate disqualification. The organizing team’s decision is final and binding, with no further debate permitted.
+In case of any discrepancy, the decision of the organizing committee will be final and binding.`,
+        registrationLink: "https://unstop.com/competitions/robo-soccer-advitiya26-indian-institute-of-technology-iit-ropar-1618914",
+        minSize: 2,
+        maxSize: 4,
+        eventRuleBook: "https://drive.google.com/file/d/1VTI6eiLV7xeCpjjTkqVEsWqAsnkNBtBB/view"
+      },
+      {
+        id: 2,
+        eventName: "Fastest line follower",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://unstop.com/competitions/fastest-line-follower-advitiya26-indian-institute-of-technology-iit-ropar-1622036",
+        minSize: 2,
+        maxSize: 4,
+        eventRuleBook: "https://drive.google.com/file/d/101UKr5n_JRYdrgMN89YdxTiaEBpddhc7/view"
+      },
+    ]
+  },
   // {
   //   clubName: "Softcom",
   //   events: [
@@ -780,7 +877,7 @@ Guidelines:
   //       eventDate: "06/02/2026",
   //       eventTime: "03:00 PM",
   //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
+  //       registrationLink: "",
   //       minSize: 3,
   //       maxSize: 5,
   //       eventRuleBook: ""
@@ -793,7 +890,7 @@ Guidelines:
   //       eventDate: "06/02/2026",
   //       eventTime: "03:00 PM",
   //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
+  //       registrationLink: "",
   //       minSize: 1,
   //       maxSize: 4,
   //       eventRuleBook: ""

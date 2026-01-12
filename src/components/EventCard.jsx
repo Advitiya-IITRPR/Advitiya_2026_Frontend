@@ -399,6 +399,7 @@ export function ExpandableEventCards({ events }) {
                   height={220}
                   src={active.eventImage}
                   alt={active.eventName}
+                  loading="lazy"
                   className="w-full h-44 object-cover"
                 />
               </motion.div>
@@ -528,6 +529,7 @@ export function ExpandableEventCards({ events }) {
                   height={240}
                   src={event.eventImage}
                   alt={event.eventName}
+                  loading="lazy"
                   className="w-full h-44 rounded-t-lg object-cover object-top group-hover:scale-110 transition-transform duration-300"
                 />
               </motion.div>
