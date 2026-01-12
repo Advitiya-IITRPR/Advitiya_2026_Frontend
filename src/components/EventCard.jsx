@@ -75,7 +75,7 @@
 //           />
 //         )}
 //       </AnimatePresence>
-      
+
 //       <AnimatePresence>
 //         {active && typeof active === "object" ? (
 //           <div className="fixed inset-0 grid place-items-center z-100 p-4">
@@ -99,7 +99,7 @@
 //             >
 //               <CloseIcon />
 //             </motion.button>
-            
+
 //             <motion.div
 //               layoutId={`card-${active.eventName}-${id}`}
 //               ref={ref}
@@ -193,7 +193,7 @@
 //           </div>
 //         ) : null}
 //       </AnimatePresence>
-      
+
 //       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 max-w-none items-stretch">
 //         {events.map((event, index) => (
 //           <motion.div
@@ -448,7 +448,7 @@ export function ExpandableEventCards({ events }) {
                       </div>
                       <div className="flex items-center justify-center gap-2">
                         <span className="text-sm text-cyan-200">
-                          🔴 Free Registration 
+                          🔴 Free Registration
                         </span>
                       </div>
                       <div className="flex items-center justify-center gap-2">
@@ -475,11 +475,10 @@ export function ExpandableEventCards({ events }) {
                     </div>
 
                     <div
-                      className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
-                        active.isRegistrationOpen
+                      className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${active.isRegistrationOpen
                           ? "bg-green-500/20 text-green-300 border border-green-500/30 drop-shadow-[0_0_8px_rgba(34,197,94,0.6)]"
                           : "bg-red-500/20 text-red-300 border border-red-500/30 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]"
-                      }`}
+                        }`}
                     >
                       {active.isRegistrationOpen
                         ? "🟢 Registration Open"
@@ -487,7 +486,7 @@ export function ExpandableEventCards({ events }) {
                     </div>
 
                     <div className="items-center px-3 py-1 rounded-full text-sm font-semibold">
-                      RuleBook: 
+                      RuleBook:
                       <a href={active.eventRuleBook} target="_blank"> Link</a>
                     </div>
 
@@ -495,9 +494,10 @@ export function ExpandableEventCards({ events }) {
                       <h4 className="font-semibold text-cyan-300 text-lg mb-3 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
                         About This Event
                       </h4>
-                      <div className="text-blue-100 text-sm md:text-base leading-relaxed">
+                      <div className="text-blue-100 text-sm md:text-base leading-relaxed whitespace-pre-line">
                         {active.description}
                       </div>
+
                     </div>
                   </div>
                 </motion.div>
@@ -507,7 +507,7 @@ export function ExpandableEventCards({ events }) {
         ) : null}
       </AnimatePresence>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 max-w-none items-stretch h-96 overflow-y-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 max-w-none items-stretch">
         {events.map((event, index) => (
           <motion.div
             layoutId={`card-${event.eventName}-${id}`}
