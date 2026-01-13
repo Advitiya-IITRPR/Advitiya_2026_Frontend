@@ -866,256 +866,338 @@ In case of any discrepancy, the decision of the organizing committee will be fin
       },
     ]
   },
-  // {
-  //   clubName: "Softcom",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "Hackathon",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "",
-  //       minSize: 3,
-  //       maxSize: 5,
-  //       eventRuleBook: ""
-  //     },
-  //     {
-  //       id: 2,
-  //       eventName: "GameJam",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "",
-  //       minSize: 1,
-  //       maxSize: 4,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
-  // {
-  //   clubName: "Zenith",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "Beyond Zenith- An E class model rocketry competition",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 4,
-  //       maxSize: 6,
-  //       eventRuleBook: ""
-  //     },
-  //     {
-  //       id: 2,
-  //       eventName: "Cosmoquest- A story based quiz competition with questions related to Astronomy and Astrophysics",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 3,
-  //       maxSize: 5,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
-  // {
-  //   clubName: "Iota Cluster",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "PromptForge ",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 1,
-  //       maxSize: 3,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
-  // {
-  //   clubName: "Chemical Engineering ",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "Process Wars- Teams engineer solutions and then clash head to head to justify why their process is the smartest and most scalable  ",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 1,
-  //       maxSize: 3,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
-  // {
-  //   clubName: "Civil Engineering ",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "The Bridge Off",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 2,
-  //       maxSize: 3,
-  //       eventRuleBook: ""
-  //     },
-  //     {
-  //       id: 2,
-  //       eventName: "Blueprint battle",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 4,
-  //       maxSize: 6,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
-  // {
-  //   clubName: "Electrical Engineering",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "Circuit Chase",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 1,
-  //       maxSize: 2,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
-  // {
-  //   clubName: "Mathematics and Computing",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "Maths Arena",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 2,
-  //       maxSize: 3,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
-  // {
-  //   clubName: "CSE",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "AI Fusion",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 4,
-  //       maxSize: 4,
-  //       eventRuleBook: ""
-  //     },
-  //     {
-  //       id: 2,
-  //       eventName: "AI Magination",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 3,
-  //       maxSize: 4,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
-  // {
-  //   clubName: "Mechanical",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "CoasterX",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 2,
-  //       maxSize: 4,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
-  // {
-  //   clubName: "Meta",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "Materialize: A materials related quiz based on a short film which will be shown.",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 1,
-  //       maxSize: 1,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
-  //   {
-  //   clubName: "Enigma",
-  //   events: [
-  //     {
-  //       id: 1,
-  //       eventName: "SBT Quiz: sci biz tech quiz",
-  //       eventImage: "",
-  //       isRegistrationOpen: true,
-  //       eventDate: "06/02/2026",
-  //       eventTime: "03:00 PM",
-  //       description: "This is the event we have created",
-  //       registrationLink: "https://advitiya-2025.vercel.app/",
-  //       minSize: 1,
-  //       maxSize: 3,
-  //       eventRuleBook: ""
-  //     },
-  //   ]
-  // },
+  {
+    clubName: "Softcom",
+    events: [
+      {
+        id: 1,
+        eventName: "Hackathon",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `About the Event:
+
+JPD Hub, a leading software development agency, is excited to collaborate with Advitiya, the Technical Fest of IIT Ropar, to host an innovative hackathon.
+This challenge focuses on building intelligent routing, analytics, and scalability, rather than static page generation.
+The complete problem statement will be shared at the time of event.
+Note : The problem statements will be live on the spot in the unstop only.
+Rules:
+
+Team Size:
+Teams must consist of 3-5 members to ensure effective collaboration and diverse skill sets.
+All team members must be from the same college or university, but having members from multiple batches and departments is encouraged.
+Originality:
+Plagiarism of any kind is strictly prohibited.
+Solutions must not replicate any existing platform or module directly.
+Open source projects can be used for inspiration but must be duly acknowledged.
+Timeliness:
+Ensure all deliverables are submitted before the deadline. Late submissions will not be entertained.
+Maintain timely and clear Git commits to demonstrate consistent progress throughout the hackathon.
+Collaboration:
+Teamwork and brainstorming are encouraged, but all code must be original and developed during the hackathon.
+Duration:
+Starts: 23th January 2026, 12 Noon
+Ends: 27th January 2026, 12 Midnight
+Total time: 4.5 days
+Judging Criteria:
+
+Problem Statement Accuracy & Feature Implementation – 60%
+Completeness, App Design & Overall Quality – 30%
+Performance, Efficiency & On-Time Submission – 10%
+Objective:
+
+Details will be communicated shortly.
+Submission Details:
+
+GitHub Repository:
+Host all code in a public GitHub repository.
+The repository must contain:
+Properly structured and documented code.
+A README.md file explaining:
+Setup and usage instructions.
+A brief overview of your solution.
+Regular Git commits to track progress.
+Zipped Code:
+Submit a zipped file of the complete project for redundancy.
+Submission Portal:
+Participants will be required to submit the GitHub repository along with the zipped code before 27th January 2026, 12 Midnight.
+Notification of any changes to the event will be given before the event commences.
+In case of any discrepancy, the decision of the organizing committee will be final and binding.
+Event Fee Status:
+
+Free event
+Read`,
+        registrationLink: "https://unstop.com/hackathons/advitiya-x-jpd-hub-hackathon26-advitiya26-indian-institute-of-technology-iit-ropar-1620027",
+        minSize: 3,
+        maxSize: 5,
+        eventRuleBook: ""
+      },
+      {
+        id: 2,
+        eventName: "GameJam",
+        eventImage: "https://drive.google.com/uc?export=view&id=1KMhFM2_nvhaz0QM0VHAI43WLQRC1Wa6g",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "",
+        minSize: 1,
+        maxSize: 4,
+        eventRuleBook: "https://drive.google.com/file/d/1byqfvdux68Je3ksHE36cbspqRtLnxe6c/view"
+      },
+    ]
+  },
+  {
+    clubName: "Zenith",
+    events: [
+      {
+        id: 1,
+        eventName: "Beyond Zenith- An E class model rocketry competition",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 4,
+        maxSize: 6,
+        eventRuleBook: "https://drive.google.com/file/d/16g5DOAN1JAuRtnlAjrXHwbFBIiaYVixa/view"
+      },
+      {
+        id: 2,
+        eventName: "Cosmoquest- A story based quiz competition with questions related to Astronomy and Astrophysics",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 3,
+        maxSize: 5,
+        eventRuleBook: "https://drive.google.com/file/d/10j39Zx89w1b2u_5roKYlxZZoPsLX3K_V/view"
+      },
+    ]
+  },
+  {
+    clubName: "Iota Cluster",
+    events: [
+      {
+        id: 1,
+        eventName: "PromptForge ",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 1,
+        maxSize: 3,
+        eventRuleBook: "https://drive.google.com/file/d/1mTqHOxbGf9XrxJ0vSrKTtADU_EU2amBy/view"
+      },
+    ]
+  },
+  {
+    clubName: "Artifical Intellegience",
+    events: [
+      {
+        id: 1,
+        eventName: "AI Fusion",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 1,
+        maxSize: 3,
+        eventRuleBook: "https://drive.google.com/file/d/195WgHChNsl6OVCbpX8sjqK4jr9nGAlRu/view"
+      },
+      {
+        id: 2,
+        eventName: "AI Magination",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 1,
+        maxSize: 3,
+        eventRuleBook: "https://drive.google.com/file/d/1LJCN-Z2LgvaJfyhX59y-Cvgi9mj9Gj1g/view"
+      },
+    ]
+  },
+  {
+    clubName: "Chemical Engineering ",
+    events: [
+      {
+        id: 1,
+        eventName: "Process Wars- Teams engineer solutions and then clash head to head to justify why their process is the smartest and most scalable  ",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 1,
+        maxSize: 3,
+        eventRuleBook: "https://drive.google.com/file/d/1KmLdpppLgrnNl20DgBL_hGa2Tplz1qnO/view"
+      },
+    ]
+  },
+  {
+    clubName: "Civil Engineering ",
+    events: [
+      {
+        id: 1,
+        eventName: "The Bridge Off",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 2,
+        maxSize: 3,
+        eventRuleBook: "https://drive.google.com/file/d/1qs8Ol7N-hFdeXDvyffhGd52AjCQTyo95/view"
+      },
+      {
+        id: 2,
+        eventName: "Blueprint battle",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 4,
+        maxSize: 6,
+        eventRuleBook: "https://drive.google.com/file/d/1at3veoUqpS2-etBY_BUUtKp-oMc8bcXm/view"
+      },
+    ]
+  },
+  {
+    clubName: "Electrical Engineering",
+    events: [
+      {
+        id: 1,
+        eventName: "Circuit Chase",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 1,
+        maxSize: 2,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "Mathematics and Computing",
+    events: [
+      {
+        id: 1,
+        eventName: "Maths Arena",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 2,
+        maxSize: 3,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "CSE",
+    events: [
+      {
+        id: 1,
+        eventName: "AI Fusion",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 4,
+        maxSize: 4,
+        eventRuleBook: ""
+      },
+      {
+        id: 2,
+        eventName: "AI Magination",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 3,
+        maxSize: 4,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "Mechanical",
+    events: [
+      {
+        id: 1,
+        eventName: "CoasterX",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 2,
+        maxSize: 4,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "Meta",
+    events: [
+      {
+        id: 1,
+        eventName: "Materialize: A materials related quiz based on a short film which will be shown.",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 1,
+        maxSize: 1,
+        eventRuleBook: ""
+      },
+    ]
+  },
+    {
+    clubName: "Enigma",
+    events: [
+      {
+        id: 1,
+        eventName: "SBT Quiz: sci biz tech quiz",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: "This is the event we have created",
+        registrationLink: "https://advitiya-2025.vercel.app/",
+        minSize: 1,
+        maxSize: 3,
+        eventRuleBook: ""
+      },
+    ]
+  },
 ]
 
 
