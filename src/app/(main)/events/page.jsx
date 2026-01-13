@@ -18,7 +18,8 @@ const eventList = [
       {
         id: 1,
         eventName: "Flight fury - FPV drone racing",
-        eventImage: "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -41,12 +42,14 @@ Sharing drones between teams is strictly prohibited.
 Net Time = Total time taken + penalty time.
 The team with the lowest net time wins.
 Pilots must carry their own battery chargers and at least 2 batteries.`,
-        registrationLink: "https://unstop.com/events/flight-fury-advitiya26-indian-institute-of-technology-iit-ropar-1619505",
+        registrationLink:
+          "https://unstop.com/events/flight-fury-advitiya26-indian-institute-of-technology-iit-ropar-1619505",
         minSize: 3,
         maxSize: 4,
-        eventRuleBook: "https://drive.google.com/file/d/1PJvKJorVJ13O7u-ABc0TYp_qKRifbUUV/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/1PJvKJorVJ13O7u-ABc0TYp_qKRifbUUV/view",
       },
-    ]
+    ],
   },
   {
     clubName: "Automotive Club",
@@ -54,7 +57,8 @@ Pilots must carry their own battery chargers and at least 2 batteries.`,
       {
         id: 1,
         eventName: "Full Throttle",
-        eventImage: "https://drive.google.com/uc?export=view&id=13K2kKnj8EquCkZD8c-qGxJYl2nEC1gJq",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=13K2kKnj8EquCkZD8c-qGxJYl2nEC1gJq",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -68,10 +72,12 @@ This will be a racing tournament where cars from different teams will compete wi
 Cars should not leave loose parts on the track. Any team found doing so will be penalized .
 Teams starting before the whistle or the referee’s signal will receive a penalty.
 If any team is found damaging another team’s vehicle, it will be penalized.`,
-        registrationLink: "https://unstop.com/competitions/full-throttle-advitiya26-indian-institute-of-technology-iit-ropar-1618954",
+        registrationLink:
+          "https://unstop.com/competitions/full-throttle-advitiya26-indian-institute-of-technology-iit-ropar-1618954",
         minSize: 2,
         maxSize: 4,
-        eventRuleBook: "https://drive.google.com/file/d/1KsuuOLEG9F67kvLYtqWVBgpC9FO30BuN/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/1KsuuOLEG9F67kvLYtqWVBgpC9FO30BuN/view",
       },
       {
         id: 2,
@@ -156,12 +162,14 @@ The total prize pool for GripBot Gauntlet 2026 is ₹25,000, awarded as cash pri
 First Prize: ₹12,000
 Second Prize: ₹8,000
 Third Prize: ₹5,000 .`,
-        registrationLink: "https://unstop.com/competitions/gripbot-gauntlet-advitiya26-indian-institute-of-technology-iit-ropar-1620114",
+        registrationLink:
+          "https://unstop.com/competitions/gripbot-gauntlet-advitiya26-indian-institute-of-technology-iit-ropar-1620114",
         minSize: 2,
         maxSize: 4,
-        eventRuleBook: "https://drive.google.com/file/d/14U_5pD7a-dY5T0hRe06QRb87rPXGUFK6/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/14U_5pD7a-dY5T0hRe06QRb87rPXGUFK6/view",
       },
-    ]
+    ],
   },
   {
     clubName: "CIM",
@@ -169,7 +177,8 @@ Third Prize: ₹5,000 .`,
       {
         id: 1,
         eventName: "CADvergence",
-        eventImage: "https://drive.google.com/uc?export=view&id=1J_frQrsXBwM2z002OIMBZPDpJs889vEg",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=1J_frQrsXBwM2z002OIMBZPDpJs889vEg",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -199,15 +208,18 @@ Misbehaviour or disturbance during the competition will lead to disqualification
 Late or incomplete submissions may be penalised or rejected.
 Judges’ decisions will be final and non-negotiable.
 `,
-        registrationLink: "https://unstop.com/events/cadvergence-advitiya26-indian-institute-of-technology-iit-ropar-1619475",
+        registrationLink:
+          "https://unstop.com/events/cadvergence-advitiya26-indian-institute-of-technology-iit-ropar-1619475",
         minSize: 1,
         maxSize: 2,
-        eventRuleBook: "https://drive.google.com/file/d/10S5hTxGeOSQjW5UYmSih5IG7H7hspty2/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/10S5hTxGeOSQjW5UYmSih5IG7H7hspty2/view",
       },
       {
         id: 2,
         eventName: "Cyber Forge",
-        eventImage: "https://drive.google.com/uc?export=view&id=11OSiX-mL7q48Q_waz2RTc-TNtYFz13JT",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=11OSiX-mL7q48Q_waz2RTc-TNtYFz13JT",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -246,12 +258,14 @@ Designs must strictly adhere to the requirements and constraints mentioned in th
 Any violation of submission rules, file naming conventions, or deadlines will result in disqualification.
 Late submissions will not be considered under any circumstances.
 The decision of the judges will be final and binding.`,
-        registrationLink: "https://unstop.com/events/cyber-forge-advitiya26-indian-institute-of-technology-iit-ropar-1619502",
+        registrationLink:
+          "https://unstop.com/events/cyber-forge-advitiya26-indian-institute-of-technology-iit-ropar-1619502",
         minSize: 1,
         maxSize: 4,
-        eventRuleBook: "https://drive.google.com/file/d/1HLIeghq4vd2YMpL5biUy4VifN4zhX5-n/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/1HLIeghq4vd2YMpL5biUy4VifN4zhX5-n/view",
       },
-    ]
+    ],
   },
   {
     clubName: "Coding Club",
@@ -259,7 +273,8 @@ The decision of the judges will be final and binding.`,
       {
         id: 1,
         eventName: "COD-COM",
-        eventImage: "https://drive.google.com/uc?export=view&id=1AQ8pmpSXoy6UH0oGMwU2Iv8mZt89ipTZ",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=1AQ8pmpSXoy6UH0oGMwU2Iv8mZt89ipTZ",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -282,15 +297,18 @@ Judging Criteria:
 Each problem will have the same associated score, and the score will be awarded only when the solution passes all the test cases.
 For each incorrect solution, the team will receive a 10-minute penalty.
 Each team will be ranked according to the number of problems solved, and ties will be broken using the time penalty.`,
-        registrationLink: "https://unstop.com/hackathons/cod-advitiya26-indian-institute-of-technology-iit-ropar-1619481",
+        registrationLink:
+          "https://unstop.com/hackathons/cod-advitiya26-indian-institute-of-technology-iit-ropar-1619481",
         minSize: 2,
         maxSize: 3,
-        eventRuleBook: "https://drive.google.com/file/d/1DSyDL-R57EBH1bnGlQZ0oOGoSz3ebkxW/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/1DSyDL-R57EBH1bnGlQZ0oOGoSz3ebkxW/view",
       },
       {
         id: 2,
         eventName: "Codehunt",
-        eventImage: "https://drive.google.com/uc?export=view&id=1bWhLYLfLr5zKJtY3yHxKLO028jRPGc7a",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=1bWhLYLfLr5zKJtY3yHxKLO028jRPGc7a",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -314,15 +332,18 @@ Each correct solution to the first two coding problems awards a total of 120 poi
 The subsequent two problems, i.e., the last two, award a total of 160 points, with 80 points for each problem.
 Each aptitude round awards a total of 50 points.
 Ranking will be done based on the total score a team accumulates.`,
-        registrationLink: "https://unstop.com/hackathons/codehunt-advitiya26-indian-institute-of-technology-iit-ropar-1619459",
+        registrationLink:
+          "https://unstop.com/hackathons/codehunt-advitiya26-indian-institute-of-technology-iit-ropar-1619459",
         minSize: 2,
         maxSize: 3,
-        eventRuleBook: "https://drive.google.com/file/d/1LoO3djbpfJaDRTssyvrm6f-78IDPV8OQ/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/1LoO3djbpfJaDRTssyvrm6f-78IDPV8OQ/view",
       },
       {
         id: 3,
         eventName: "Algo-Unlock",
-        eventImage: "https://drive.google.com/uc?export=view&id=1TWPYBeZ08neW0IfI92dohbndDjE028fD",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=1TWPYBeZ08neW0IfI92dohbndDjE028fD",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -339,15 +360,18 @@ Event Structure:
 
 Round 1: .Online contest having 7-8 questions
 Round 2: winners  will be announced based on final ranking of the 2nd round only while accounting the penalties`,
-        registrationLink: "https://unstop.com/hackathons/algo-advitiya26-indian-institute-of-technology-iit-ropar-1619469",
+        registrationLink:
+          "https://unstop.com/hackathons/algo-advitiya26-indian-institute-of-technology-iit-ropar-1619469",
         minSize: 2,
         maxSize: 3,
-        eventRuleBook: "https://drive.google.com/file/d/19A8tBB8va-sSiq0LgVzYNHMMDMP8NsyO/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/19A8tBB8va-sSiq0LgVzYNHMMDMP8NsyO/view",
       },
       {
         id: 4,
         eventName: "Code-War",
-        eventImage: "https://drive.google.com/uc?export=view&id=1SZbIPCaO_MCtzEyeO-7X0PMUnGUw7pdF",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=1SZbIPCaO_MCtzEyeO-7X0PMUnGUw7pdF",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -366,12 +390,14 @@ General Instructions:
 In case of any discrepancy, the organizing committee’s decision will be final and binding
 Violation of rules or use of unfair means will result in immediate disqualification.
 No further debate will be allowed`,
-        registrationLink: "https://unstop.com/hackathons/code-war-advitiya26-indian-institute-of-technology-iit-ropar-1619494",
+        registrationLink:
+          "https://unstop.com/hackathons/code-war-advitiya26-indian-institute-of-technology-iit-ropar-1619494",
         minSize: 1,
         maxSize: 1,
-        eventRuleBook: "https://drive.google.com/file/d/1XwwHRqVkA8E6uLSHAdXiznj3VN3T9F9-/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/1XwwHRqVkA8E6uLSHAdXiznj3VN3T9F9-/view",
       },
-    ]
+    ],
   },
   {
     clubName: "ESportZ ",
@@ -472,15 +498,18 @@ Prizes will be distributed on the spot after the event concludes.
 
 Contact and Queries
 For any queries or clarifications, participants may contact the organizers listed in the official rule book. The organizing committee retains full authority in resolving disputes or ambiguities.`,
-        registrationLink: "https://unstop.com/events/treasure-hunt-indian-institute-of-technology-iit-ropar-1618936",
+        registrationLink:
+          "https://unstop.com/events/treasure-hunt-indian-institute-of-technology-iit-ropar-1618936",
         minSize: 5,
         maxSize: 5,
-        eventRuleBook: "https://drive.google.com/file/d/1yRYwglBWnJCGLDL7Vn7v2Ah4z_aSbi01/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/1yRYwglBWnJCGLDL7Vn7v2Ah4z_aSbi01/view",
       },
       {
         id: 2,
         eventName: "BGMI",
-        eventImage: "https://drive.google.com/uc?export=view&id=1fomSWhtuOPlwJ2ybwt5ne-cNBk8jHqa7",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=1fomSWhtuOPlwJ2ybwt5ne-cNBk8jHqa7",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -510,15 +539,18 @@ Disconnection and Re-host Policy:
 
 If a player disconnects, the team must continue without them
 No rematch will be provided for individual disconnections`,
-        registrationLink: "https://unstop.com/events/bgmi-advitiya26-indian-institute-of-technology-iit-ropar-1618964",
+        registrationLink:
+          "https://unstop.com/events/bgmi-advitiya26-indian-institute-of-technology-iit-ropar-1618964",
         minSize: 4,
         maxSize: 4,
-        eventRuleBook: "https://drive.google.com/file/d/17rOjfsR0gtWibgj8C60h53_SaRXOcstX/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/17rOjfsR0gtWibgj8C60h53_SaRXOcstX/view",
       },
       {
         id: 3,
         eventName: "Clash Royale ",
-        eventImage: "https://drive.google.com/uc?export=view&id=1FKww8yEZqr5O9-Anu51zsvg5D0pKTk0I",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=1FKww8yEZqr5O9-Anu51zsvg5D0pKTk0I",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -572,12 +604,14 @@ Contact Information
 For any queries related to the event, participants may contact:
 Abhinav Kumar Singh
 9931502765`,
-        registrationLink: "https://unstop.com/events/clash-royale-indian-institute-of-technology-iit-ropar-1618939",
+        registrationLink:
+          "https://unstop.com/events/clash-royale-indian-institute-of-technology-iit-ropar-1618939",
         minSize: 1,
         maxSize: 1,
-        eventRuleBook: "https://drive.google.com/file/d/1TDf3_NueFAJEaRstrqaHXVYgCf92xE2m/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/1TDf3_NueFAJEaRstrqaHXVYgCf92xE2m/view",
       },
-    ]
+    ],
   },
   {
     clubName: "FinCOM",
@@ -619,15 +653,17 @@ Important Note:
 
 The organizing team reserves the right to change or modify any rules
 The decision of the judges will be final and binding`,
-        registrationLink: "https://unstop.com/competitions/advitiya-case-study-competition-advitiya26-indian-institute-of-technology-iit-ropar-1621641",
+        registrationLink:
+          "https://unstop.com/competitions/advitiya-case-study-competition-advitiya26-indian-institute-of-technology-iit-ropar-1621641",
         minSize: 1,
         maxSize: 3,
-        eventRuleBook: ""
+        eventRuleBook: "",
       },
       {
         id: 2,
         eventName: "Trader's Arena",
-        eventImage: "https://drive.google.com/uc?export=view&id=11_PsYglSahcU3vU5MLqcEsm7y8F7-Mvd",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=11_PsYglSahcU3vU5MLqcEsm7y8F7-Mvd",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -671,12 +707,14 @@ All transactions require authorization by the ASE team.
 Unfair means or rule violations will result in immediate disqualification.
 The decisions of the organizing committee are final and binding.
 Notification of any changes will be communicated before the event.`,
-        registrationLink: "https://unstop.com/competitions/traders-arena-advitiya26-indian-institute-of-technology-iit-ropar-1620547",
+        registrationLink:
+          "https://unstop.com/competitions/traders-arena-advitiya26-indian-institute-of-technology-iit-ropar-1620547",
         minSize: 4,
         maxSize: 4,
-        eventRuleBook: "https://drive.google.com/file/d/19lpciF15gTmcv66h-W5fWOS6A0lJFMO5/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/19lpciF15gTmcv66h-W5fWOS6A0lJFMO5/view",
       },
-    ]
+    ],
   },
   {
     clubName: "Monochrome",
@@ -706,15 +744,18 @@ Rules:
 A team can consist of a maximum of two members.
 Students from different educational institutions can form a team.
 More than one team can participate from the same institution.`,
-        registrationLink: "https://unstop.com/events/cine-canvas-advitiya26-indian-institute-of-technology-iit-ropar-1619485",
+        registrationLink:
+          "https://unstop.com/events/cine-canvas-advitiya26-indian-institute-of-technology-iit-ropar-1619485",
         minSize: 1,
         maxSize: 2,
-        eventRuleBook: "https://drive.google.com/file/d/19G5VPMfAL9-MNkLN_ALv8h7u59kz1Tsi/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/19G5VPMfAL9-MNkLN_ALv8h7u59kz1Tsi/view",
       },
       {
         id: 2,
         eventName: "Colour pallette ",
-        eventImage: "https://drive.google.com/uc?export=view&id=1nGZXQGNRFUPggyKJZX94mZfcrCGdrk6R",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=1nGZXQGNRFUPggyKJZX94mZfcrCGdrk6R",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -731,12 +772,14 @@ Guidelines:
 6. Participants will have time to complete their poster design from 27th January to 7th February.
 7. Participants must submit their designs online before 8th February.
 8. Participants are encouraged to share their designs on social media platforms with the event hashtag.`,
-        registrationLink: "https://unstop.com/events/colour-pallette-indian-institute-of-technology-iit-ropar-1619470",
+        registrationLink:
+          "https://unstop.com/events/colour-pallette-indian-institute-of-technology-iit-ropar-1619470",
         minSize: 1,
         maxSize: 1,
-        eventRuleBook: "https://drive.google.com/file/d/1ssZ1HXVI97NOnnI7iVH3Y8LFa46x6Pf9/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/1ssZ1HXVI97NOnnI7iVH3Y8LFa46x6Pf9/view",
       },
-    ]
+    ],
   },
   {
     clubName: "Robotics Club",
@@ -744,7 +787,8 @@ Guidelines:
       {
         id: 1,
         eventName: "Robosoccer",
-        eventImage: "https://drive.google.com/uc?export=view&id=1HXrxCRCUapSfw8L7TJQPwJCGRQY9ZMem",
+        eventImage:
+          "https://drive.google.com/uc?export=view&id=1HXrxCRCUapSfw8L7TJQPwJCGRQY9ZMem",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -846,10 +890,12 @@ NOTE
 Notification of any changes to the event will be given before the event commences.
 Violating the rules or using unfair means will lead to immediate disqualification. The organizing team’s decision is final and binding, with no further debate permitted.
 In case of any discrepancy, the decision of the organizing committee will be final and binding.`,
-        registrationLink: "https://unstop.com/competitions/robo-soccer-advitiya26-indian-institute-of-technology-iit-ropar-1618914",
+        registrationLink:
+          "https://unstop.com/competitions/robo-soccer-advitiya26-indian-institute-of-technology-iit-ropar-1618914",
         minSize: 2,
         maxSize: 4,
-        eventRuleBook: "https://drive.google.com/file/d/1VTI6eiLV7xeCpjjTkqVEsWqAsnkNBtBB/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/1VTI6eiLV7xeCpjjTkqVEsWqAsnkNBtBB/view",
       },
       {
         id: 2,
@@ -858,11 +904,773 @@ In case of any discrepancy, the decision of the organizing committee will be fin
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
-        description: "This is the event we have created",
-        registrationLink: "https://unstop.com/competitions/fastest-line-follower-advitiya26-indian-institute-of-technology-iit-ropar-1622036",
+        description: `Fastest Line Follower Competition
+Objective
+Design and build a fully autonomous robot
+
+Robot must follow a continuous white line on a black surface
+
+Navigate curves and branches accurately
+
+Stop automatically inside the end zone
+
+Complete the track in the shortest possible time
+
+Arena Details
+Arena size: 230 cm × 230 cm
+
+Track type: White line on black base
+
+Track features:
+
+Curves
+
+Free ends branching from the main path
+
+No loops present
+
+End zone:
+
+40 cm × 40 cm white square
+
+Robot must stop completely inside the box
+
+Competition Format
+Single-round competition
+
+Each team gets 3 attempts
+
+Best time out of 3 attempts is considered
+
+Maximum time per attempt: 3 minutes
+
+Calibration time:
+
+3 minutes before attempts
+
+Allowed to adjust code and hardware
+
+No code or hardware changes allowed after calibration
+
+Eligibility & Team Details
+Team size: 2–4 members
+
+Inter-college teams are allowed
+
+Only one team member may be near the arena during official attempts
+
+That member may only place and retrieve the robot
+
+Bot Specifications
+Maximum dimensions: 20 cm × 20 cm × 20 cm
+
+Must be fully autonomous
+
+No wired or wireless external communication
+
+All computation must be onboard
+
+No additional weight allowed during calibration
+
+Robot must remain grounded at all times
+
+Judging Criteria
+Team with the least time (best attempt) wins
+
+Penalties
++10 seconds if the robot moves off the line at any point
+
++10 seconds if the robot fails to stop inside the end zone
+
+Rules & Regulations
+Any external assistance leads to disqualification
+
+Any rule violation results in disqualification
+
+Judges’ and organizers’ decisions are final and binding
+
+Organizers reserve the right to modify rules or event structure`,
+        registrationLink:
+          "https://unstop.com/competitions/fastest-line-follower-advitiya26-indian-institute-of-technology-iit-ropar-1622036",
         minSize: 2,
         maxSize: 4,
-        eventRuleBook: "https://drive.google.com/file/d/101UKr5n_JRYdrgMN89YdxTiaEBpddhc7/view"
+        eventRuleBook:
+          "https://drive.google.com/file/d/101UKr5n_JRYdrgMN89YdxTiaEBpddhc7/view",
+      },
+    ],
+  },
+  {
+    clubName: "Softcom",
+    events: [
+      {
+        id: 1,
+        eventName: "Hackathon",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `About the Event:
+
+JPD Hub, a leading software development agency, is excited to collaborate with Advitiya, the Technical Fest of IIT Ropar, to host an innovative hackathon.
+This challenge focuses on building intelligent routing, analytics, and scalability, rather than static page generation.
+The complete problem statement will be shared at the time of event.
+Note : The problem statements will be live on the spot in the unstop only.
+Rules:
+
+Team Size:
+Teams must consist of 3-5 members to ensure effective collaboration and diverse skill sets.
+All team members must be from the same college or university, but having members from multiple batches and departments is encouraged.
+Originality:
+Plagiarism of any kind is strictly prohibited.
+Solutions must not replicate any existing platform or module directly.
+Open source projects can be used for inspiration but must be duly acknowledged.
+Timeliness:
+Ensure all deliverables are submitted before the deadline. Late submissions will not be entertained.
+Maintain timely and clear Git commits to demonstrate consistent progress throughout the hackathon.
+Collaboration:
+Teamwork and brainstorming are encouraged, but all code must be original and developed during the hackathon.
+Duration:
+Starts: 23th January 2026, 12 Noon
+Ends: 27th January 2026, 12 Midnight
+Total time: 4.5 days
+Judging Criteria:
+
+Problem Statement Accuracy & Feature Implementation – 60%
+Completeness, App Design & Overall Quality – 30%
+Performance, Efficiency & On-Time Submission – 10%
+Objective:
+
+Details will be communicated shortly.
+Submission Details:
+
+GitHub Repository:
+Host all code in a public GitHub repository.
+The repository must contain:
+Properly structured and documented code.
+A README.md file explaining:
+Setup and usage instructions.
+A brief overview of your solution.
+Regular Git commits to track progress.
+Zipped Code:
+Submit a zipped file of the complete project for redundancy.
+Submission Portal:
+Participants will be required to submit the GitHub repository along with the zipped code before 27th January 2026, 12 Midnight.
+Notification of any changes to the event will be given before the event commences.
+In case of any discrepancy, the decision of the organizing committee will be final and binding.
+Event Fee Status:
+
+Free event`,
+        registrationLink:
+          "https://unstop.com/hackathons/advitiya-x-jpd-hub-hackathon26-advitiya26-indian-institute-of-technology-iit-ropar-1620027",
+        minSize: 3,
+        maxSize: 5,
+        eventRuleBook: "",
+      },
+      {
+        id: 2,
+        eventName: "GameJam",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `IIT Ropar’s Software Community is organising Game Jam during Advitiya 2026. We are thrilled to have you participating in this creative and exciting event. This Game Jam is one of the biggest highlights of our college’s annual Technical Fest, and it’s a great chance to show off your skills.
+
+Guidelines:
+
+There are no restrictions on Game engines or Assets being used as long as there are no repercussions related to licensing etc. Examples: Polypizza, OpenGameArt, Sketchfab, Mixamo, Pixabay, Freesound, etc.
+Games can be 2D or 3D.
+You're free to make a game from scratch using any tools of your choice, as long as they don't restrict the sharing or distribution of your published project.
+The platform the game is built for should be secure, generally accessible, and should not require any payment, subscription, purchase of hardware or software, or any kind of additional collection of data for advertising or other purposes.
+You may build and upload the game on itch.io for example, but don't upload it to a cloud service that requires users to have an account or subscription to download.
+Judging Criteria
+
+Points will be awarded for the following criteria -
+
+Round 1 :
+
+Innovation / Originality - 15 points
+Gameplay - 20 points
+Visuals - 20 points
+Completeness - 15 - points
+Round 2 :
+
+Demonstration / Presentation - 30 points
+Note: Selected teams must attend Round 2 in person to avoid disqualification. However, if the majority of teams are unable to participate offline, Round 2 will be conducted online instead.
+
+Rules:
+
+Team Size:
+
+Teams must consist of 1-4 members to ensure effective collaboration and diverse skill sets.
+Team members can be from different colleges or universities.
+Themes:
+
+Themes for the game jam will be announced at the start of Round 1.
+Rounds :
+
+Round 1: Selected teams will be selected for Round 2 based on their performance in the 3-day Game Jam.
+Round 2: Selected teams will be presenting their games to the judges. The format for presenting the game will be announced after Round 1. Teams must be present offline at IIT Ropar for Round 2 (Only in case of the non-availability of the majority of teams, the event shall shift online), otherwise they will be disqualified from Round 2.
+Tools and Technologies:
+
+Participants are allowed to use any legally licensed tools, engines, languages, or frameworks to create their games (e.g., Unity, Unreal Engine, Godot, Construct, etc.)
+Pre-existing assets (code, art, audio) can be used, provided they adhere to legal and ethical standards and proper credits are given.
+Duration:
+
+Starts: 30th January 2026, 12:00 am
+Ends: 1st February 2026, 11:59 pm
+Total time: 3 days
+Submission Details
+
+GitHub Repository:
+Host all code in a public GitHub repository.
+The repository must contain:
+A README.md file explaining:
+Setup and usage instructions.
+How you incorporated the themes given.
+Link to the website where the game is hosted, if applicable.
+Regular Git commits to track progress.
+Final zip submission:
+The final deliverable for Round 1 should be a zip containing the executable files and the github repository readme.
+Any executable format is acceptable. However, preferred formats include an exe for win64, apk for Android, or a browser link in the README for web-hosted games.
+The name of the final zip to be submitted in the Google form/Unstop should be <TeamID>_Advitiya26.
+Submission Portal:
+For Round 1, Games must be submitted before 1st Feb, 11:59 pm. Penalties will be awarded for late submission.
+For Round 2, teams must submit their final presentations before the main event.`,
+        registrationLink: "https://unstop.com/events/game-jam-advitiya26-indian-institute-of-technology-iit-ropar-1620102",
+        minSize: 1,
+        maxSize: 4,
+        eventRuleBook: "",
+      },
+    ],
+  },
+  {
+    clubName: "Zenith",
+    events: [
+      {
+        id: 1,
+        eventName: "Beyond Zenith- An E class model rocketry competition",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Introduction:
+
+Beyond Zenith is a high-impact model rocketry competition where teams design, build, and launch an E-class rocket.
+The event emphasizes end-to-end engineering, structural integrity, and real-world flight performance, fostering innovation, technical rigor, and hands-on learning in rocketry.
+Registration Rules:
+
+Registrations for Beyond Zenith will be done via UnStop.
+Each team must consist of 4-6 members.
+Ensure that all team members are registered under the same team name.
+The event will be held in the IIT Ropar campus itself during ADVITIYA 26 (6 Feb 2026-8 Feb 2026).
+If the number of participating teams is less than 4, then the event will be cancelled. However, participating teams will be informed about the number of participants.
+All teams must declare the composition of the fuel used in their rocket on the day of the event.
+Event Structure:
+
+Teams must perform a vertical launch of their E-class model rockets in strict adherence to all competition rules and safety regulations.
+The rocket’s maximum altitude achieved during flight will be officially measured and recorded using the designated altitude measurement system.
+Successful deployment of the recovery system (parachute) is compulsory for every launch.
+A flight will be considered valid only if the parachute deploys correctly, ensuring safe and controlled recovery of the rocket.
+Rocket Design Specifications:
+
+Remember any violation of the guidelines mentioned below will result in immediate disqualification and no queries will be entertained.
+All rockets must be Class E Rockets.
+Total weight of rocket must not exceed 600 gm.
+The maximum thrust allowed is 30 N.
+The body as well as the motors should be made from scratch.
+A flight will be considered valid only if the parachute deploys correctly, ensuring safe and controlled recovery of the rocket.
+Motors must be single-use and adhere to standard safety certification.
+No metal parts are allowed in rockets apart from launch lugs.
+Judging Criteria:
+
+The final rankings will be determined primarily by the maximum altitude achieved by the rocket during a valid flight.
+In the event of a tie, the following criteria will be used to determine the winner, in order of priority:
+Innovation: Originality, creativity, and effectiveness of unique design features.
+Stability: Quality of the flight trajectory, including straight ascent and minimal oscillation or wobble.
+Rules and regulations are subject to revision prior to the event, and any updates will be communicated to all registered teams in advance.
+The decision of the judges shall be final and binding on all participating teams, and no appeals will be entertained.`,
+        registrationLink: "https://unstop.com/competitions/beyond-zenith-class-e-rocket-launching-competition-advitiya26-indian-institute-of-technology-iit-ropar-1621611",
+        minSize: 4,
+        maxSize: 6,
+        eventRuleBook: ""
+      },
+      {
+        id: 2,
+        eventName: "Cosmoquest- A story based quiz competition with questions related to Astronomy and Astrophysics",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `CosmoQuest is a story-based quizzing competition focused on astronomy and astrophysics, designed to test participants’ scientific understanding, logical reasoning, and interpretative skills through interactive cosmic narratives.
+
+Stage 1 – Story Quiz (Elimination Round):
+
+In Stage 1, teams will participate in a story-based quiz round, where questions are drawn from one or more self-contained narratives rooted in astronomy and astrophysics. Each story will be introduced by the quizmaster and followed by a series of questions testing comprehension, scientific understanding, and logical reasoning based on the narrative context. All teams will receive the same set of questions. Scores accumulated across all questions in this round will determine team rankings, and the top-performing teams will qualify for Stage 2.
+Stage 2 – Advanced Story Challenge (Final Round):
+
+This will feature a more complex and detailed storyline that may span multiple segments. As the story progresses, teams will answer successive questions that require careful interpretation, strong reasoning, and close attention to narrative details. This round places greater emphasis on analytical thinking and continuity across the story. Final rankings will be decided based on overall performance in this round.
+Guidelines:
+
+Participants must follow all instructions given by the quizmaster and event coordinators.
+Cheating or sharing answers across teams is strictly prohibited and may result in disqualification.
+Any form of indiscipline, plagiarism, or misrepresentation may lead to penalties or removal from the event.
+Internet and mobile device use is not allowed in either stage.
+Teams must discuss answers only with their own members.
+If fewer than 5 teams register, the event will be canceled and teams will be informed.
+For more details refer to the rulebook.`,
+        registrationLink: "https://unstop.com/competitions/cosmoquest-advitiya26-indian-institute-of-technology-iit-ropar-1618073",
+        minSize: 3,
+        maxSize: 5,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "Iota Cluster",
+    events: [
+      {
+        id: 1,
+        eventName: "PromptForge ",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Round 1 – Negotiation Round:
+
+Teams are given 20 minutes to prepare their prompt and 5 minutes for live performance. Each team writes a prompt for their chosen LLM to act as a customer negotiating with the organizer’s LLM acting as the shopkeeper. The maximum prompt length is 150 words. Limited LLM options will be provided, including LLaMA, DeepSeek R1, and Grok, subject to availability. Teams whose LLMs negotiate the best prices qualify for the next round. Approximately 40 percent of teams will advance to Round 2.
+Round 2 – Courtroom Showdown:
+
+This is a head-to-head knockout round. Each team’s LLM acts as a lawyer in a courtroom scenario. The case details are revealed only after Round 1 ends to avoid preparation bias. The maximum prompt length is 100 words. Only one final submission is allowed per team.
+Rules and Restrictions:
+
+Teams are not allowed to interact with each other during any round. The system prompt of the organizer’s LLM will not be disclosed. Vulgar, explicit, offensive, or harmful content is strictly prohibited. Jailbreaking attempts are not allowed and chat history will be reviewed. Prompts must not attempt to exploit LLM loopholes such as hidden system prompts, DAN-like prompts, or forced personality overrides. Prompts must work as-is without requiring long conversations or setup. GenAI tools may only be used for writing clean and appropriate prompts.`,
+        registrationLink: "https://unstop.com/hackathons/prompt-forge-indian-institute-of-technology-iit-ropar-1619484",
+        minSize: 1,
+        maxSize: 3,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "Chemical Engineering ",
+    events: [
+      {
+        id: 1,
+        eventName: "Process Wars- Teams engineer solutions and then clash head to head to justify why their process is the smartest and most scalable  ",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Introduction
+Welcome to Process Wars, a reimagined and high-impact competition designed to challenge participants to innovate, strategize, and engineer practical solutions under pressure.
+The event consists of two competitive rounds.
+A set of teams will receive a unique problem statement, and teams working on the same statement will later battle it out.
+The challenge is designed to test your adaptability, creativity, and engineering insight.
+Prepare for fast thinking, smart planning, and high-energy idea battles.
+
+ 
+Pre-requisites
+Only your analytical skills, creativity, and problem-solving mindset are required.
+ 
+Rules and Regulations
+ROUND 1 — The Idea Draft (Prelims)
+Format
+Each set of teams will be assigned a unique engineering problem statement.
+Teams will have 45 minutes to develop, structure, and refine their initial solution.
+Submission
+
+Teams must submit a 3–page (can extend to 4 pages if required) ideation slides:
+ 
+Page 1 — Concept Overview
+Understanding of the problem
+Proposed solution / concept
+Key innovation
+Basic feasibility
+Assumptions (if any)
+ 
+Page 2 — Flow Structure
+One of the following:
+Flowchart
+Block Flow Diagram (BFD)
+Schematic workflow diagram
+ 
+Page 3 — Supporting Logic
+Brief justification of approach
+Potential improvements
+Early-stage constraints
+ 
+Selection
+Top teams from each problem statement will qualify for Round 2.
+ 
+ROUND 2 — The Process Duel (Finals)
+Teams who worked on the same problem statement will compete in a head-to-head engineering duel.
+ 
+Preparation
+Selected teams will get 30 minutes to expand their ideas on:
+Scalability
+Techno-economic reasoning
+Sustainability & safety factors
+Implementation challenges
+Why their idea is superior
+ 
+Teams may create a 3–5 slide pitch deck (optional, may include it in your pervious slides).
+ 
+Round 2 Format
+Each duel consists of:
+  1. Pitch (6 minutes)
+Teams present their improved solution.
+ 
+  2. Judge Q&A 
+To test understanding, logic, and technical consistency.
+ 
+  3. The Duel (2 minutes each)
+Teams directly justify why:
+Their idea is more effective,
+More scalable,
+More innovative,
+Better suited for real-world application.
+ 
+Judging Criteria
+Technical Strength — 25%
+Innovation & Creativity — 25%
+Scalability & Practical Viability — 20%
+Economic & Environmental Logic — 15%
+Pitch & Duel Performance — 15%
+ 
+General Rules
+  1. All solutions must be original.
+  2. Internet allowed; AI tools permitted only for research, not full draft generation. 
+  3. Respectful behaviour is mandatory during duels.
+  4. Time limits must be followed strictly.
+  5. Judges’ decisions are final.
+ 
+Penalties & Deductions
+To ensure fairness and uniformity, the following deductions will apply:
+ 
+1. Time Exceeded (Round 2 – Pitch & Duel)
+Exceeding the allotted 6-minute pitch or 2-minute duel time will result in
+–10 marks for every minute exceeded.
+After 2 minutes of exceedance, the team will be stopped immediately, and the remaining part of the pitch will not be considered.
+ 
+2. Page Limit Violation (Round 1 Submission)
+Round 1 submission requires 3 to 4 pages (Page 1: Overview, Page 2: Flow Structure, Page 3: Supporting Logic).
+Deductions:
+5th page partially used: –5 marks
+5th page fully used: –7 marks
+More than 5 pages: –10 marks + the extra pages will not be evaluated
+ 
+3. Missing Mandatory Sections
+If any required section is missing:
+Missing Flowchart/BFD/Schematic: –5 marks
+Missing Supporting Logic (Page 3): –3 marks`,
+        registrationLink: "https://unstop.com/events/process-wars-advitiya26-indian-institute-of-technology-iit-ropar-1620121",
+        minSize: 1,
+        maxSize: 3,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "Civil Engineering ",
+    events: [
+      {
+        id: 1,
+        eventName: "The Bridge Off",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Design Constraints:
+
+The bridge must satisfy the following dimensional requirements:
+Minimum span: 25 cm
+Maximum span: 45 cm
+Width: No restriction
+Only the materials provided by the organizers are permitted, and participants must follow all construction guidelines.
+Judging Criteria:
+
+Bridges will be evaluated on overall stability, maximum load carried, and strength-to-mass ratio. In case of a tie in load capacity, the bridge with the longer span will be ranked higher. Judges will also assess design approach, material efficiency, innovation, and compliance with the problem statement.`,
+        registrationLink: "https://unstop.com/events/bridge-off-indian-institute-of-technology-iit-ropar-1620128",
+        minSize: 2,
+        maxSize: 3,
+        eventRuleBook: ""
+      },
+      {
+        id: 2,
+        eventName: "Blueprint battle",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Task:
+
+Conduct field observations using Dumpy level and prepare a complete Reduced Lengths table using both Height of Instrument (HI) method and Rise–Fall levelling table.
+Compute reduced levels (RLs) with accuracy and consistency.
+Use the obtained RL data to solve an on-spot Problem Statement (PS) within the given time.
+Accuracy of readings, correctness of calculations, and quality of the PS solution will determine the final score.
+Judging Criteria:
+
+Judging will be based on the accuracy and consistency of the levelling work performed by each team.
+Evaluators will check:
+
+Precision of staff readings and instrument handling
+Correctness of HI or Rise–Fall calculations
+Proper closure and arithmetical checks in the levelling table
+Accuracy of Reduced Levels (RLs) compared to the actual ground values
+Quality and correctness of the Problem Statement solution derived from the levelling data`,
+        registrationLink: "https://unstop.com/events/blueprint-battle-advitiya26-indian-institute-of-technology-iit-ropar-1618934",
+        minSize: 4,
+        maxSize: 6,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "Electrical Engineering",
+    events: [
+      {
+        id: 1,
+        eventName: "Circuit Chase",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Eligibility:
+
+The event is open to all students.
+Inter-college participation is allowed.
+Inter-specialization team members are allowed.
+Each team can have a maximum of two members.
+Format:
+
+Round 1 and Round 2 are Treasure Hunt–based rounds involving conceptual and numerical questions.
+Round 3 (Final Round) is a practical circuit-building round.
+The difficulty level of questions will be based on Class 12 and JEE-level concepts.
+Process:
+
+Teams must register online before the deadline.
+All registered teams will participate in Round 1.
+A predetermined number of teams will qualify for Round 2 based on performance.
+Similarly, selected teams will advance to the Final Round.
+The team that successfully completes all rounds with the best performance will be declared the winner.
+Rules:
+
+Each team is limited to a maximum of two members.
+Each round will have a fixed time limit, which must be strictly followed.
+Teams failing to complete a round within the time limit will be disqualified, irrespective of performance.
+Use of unfair means, plagiarism, or external assistance is strictly prohibited and will lead to immediate disqualification.
+Penalties may be imposed if assistance is taken, as specified for that round.
+The decision of the judging panel and organizing committee will be final and binding.`,
+        registrationLink: "https://unstop.com/competitions/circuit-chase-advitiya26-indian-institute-of-technology-iit-ropar-1619460",
+        minSize: 1,
+        maxSize: 2,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "Mathematics and Computing",
+    events: [
+      {
+        id: 1,
+        eventName: "Maths Arena",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Eligibility and Team Formation:
+
+Participation is open to students only. Teams must consist of a minimum of 2 members and a maximum of 3 members.
+Inter-college teams are allowed.
+Registration Guidelines:
+
+This is an offline event and participation is strictly team-based. A team is allowed to participate only once in Round 1. Multiple teams from the same institution are permitted.
+Rules and Disciplinary Guidelines:
+
+Any use of unfair means, plagiarism, or violation of rules will result in immediate disqualification. Usage of any electronic devices and calculator is strictly prohibited and will result in immediate disqualification. The organizing team’s decision is final and binding, and no further debate will be allowed. In case of any discrepancy, the decision of the organizing committee will be final.
+Any changes to the event, if required, will be communicated before the commencement of the event.`,
+        registrationLink: "https://unstop.com/events/maths-arena-indian-institute-of-technology-iit-ropar-1618925",
+        minSize: 2,
+        maxSize: 3,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "CSE",
+    events: [
+      {
+        id: 1,
+        eventName: "AI Fusion",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Tagline : Navigating the Future with AI brilliance  
+
+1. Introduction: 
+
+This challenge will require the participant to make use of existing AI tools and technologies to build a core technical system. The system so built should demonstrate innovation and practical application of AI. Exact Problem Statement will be announced at the time of the event only. 
+There is NO need for having sound technical knowledge about AI or dev/coding for this event. It's just based on your creativity and your ability to use existing tools. But obviously having technical knowledge is a plus. 
+Team Size : 4
+
+2. Submission Guidelines: 
+
+2.1 Time limit and Ethical considerations: 
+
+The participants are required to strictly adhere to a time limit of 180 minutes which includes the construction of the structure and its submission. 
+Only one entry would be accepted. In the case of multiple entries, the entry submitted most prior would be considered for further evaluation.
+2.2 AI Tool Usage: 
+
+Participants are required to use existing AI tools and technologies in their projects. 
+Any proprietary AI tools or services used must comply with the respective terms of service. 
+2.3 Core Technical Structure: 
+
+Projects should demonstrate a well-designed system architecture.
+The architecture should be outlined clearly in the documentation. 
+2.4 Documentation: 
+
+A comprehensive documentation package must accompany each submission. 
+Documentation should be in the form of a Google Docs document with relevant screenshots and the links to the components which depict the working. 
+Documentation should include technical specifications and user guides. 
+Participants need to submit the GitHub repository.
+3. Judging Criteria: 
+
+Submissions will be evaluated based on: 
+
+Innovation
+Effective Use of AI Tools and the smooth integration of the various components. 
+Documentation 
+System Architecture - creativity and relevance 
+Contact Info: 
+
+Nehal Abbott: 6280339583
+
+Arjun Aggarwal: 6280707215`,
+        registrationLink: "https://unstop.com/events/ai-fusion-advitiya26-indian-institute-of-technology-iit-ropar-1618912",
+        minSize: 4,
+        maxSize: 4,
+        eventRuleBook: ""
+      },
+      {
+        id: 2,
+        eventName: "AI Magination",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `AI Magination is a creative, skill-driven event designed to test participants’ abilities in prompt engineering, visual analysis, storytelling, AI tool usage, and real-time synthesis. The event consists of two rounds, where participants accumulate points across both. The competition aims to encourage innovation, originality, and practical understanding of AI generation systems.
+
+The event consists of two rounds, both contributing to the final score:
+
+Round 1 : Trivia (Prompt Recreation Challenge)
+
+Round 2 : Synthesis (Creation Challenge)
+
+Team Size : 3-4
+ 
+Round 1: (Trivia)
+Task Overview
+Participants will be shown a set of AI-generated images/media. Their objective is to observe each media item closely and write a prompt that can recreate a similar-looking output.
+
+Round 2: Synthesis
+
+Option A: Short Movie Generation (Sci-Fi (A1), Anime (A2), Emotional (A3))
+
+Option B: Product Advertisement Generation
+Option C: BrainRot Story Creation
+
+For each option, problem statements will be provided on spot.
+This round consists of a total of 100 points.
+
+Option A Problem Statements will consist of 3 problem statements. The total achievable score of Anime is 100 points, SciFi is 95 points, Emotional is 85 points.
+
+Option B will consist of one problem statement. Maximum achievable score is 85 points.
+
+Option C will not consist of any actual problem statement. Some environment settings will be mentioned. Total achievable points is 80.
+
+A total of 5 problem statements will be there to choose from.
+
+It may include constraints or mandatory elements.
+
+Participants must integrate these elements while retaining creative freedom.
+
+Tool Usage
+Participants are free to use:
+
+Any image generation tools (e.g., Midjourney, DALL·E, Stable Diffusion)
+
+Any video generation tools (e.g., Runway, Pika, Luma Dream Machine, etc.)
+
+Any LLMs for scripting or refinement
+
+There is no restriction to the number of tools used for creation.
+
+ 
+Combined score from both rounds determines winners.
+Total score attainable : 200 points
+Support and Queries:
+
+Event volunteers will be available to assist with logistics.
+
+Technical help (e.g., internet issues) will be provided when possible.
+
+For major doubts, contact the event coordinators.
+
+
+Winners - Headphones + Certificates + Medals + Trophies.
+First Runner Up - Speakers + Certificates + Medals + Trophies.
+Second Runner Up - Mouse + Certificates + Medals + Trophies. 
+Prizes will be given on the spot.
+
+Arjun Aggarwal: 6280707215
+
+Nehal Abbott: 6280339583`,
+        registrationLink: "https://unstop.com/competitions/aimagination-indian-institute-of-technology-iit-ropar-1618935",
+        minSize: 3,
+        maxSize: 4,
+        eventRuleBook: ""
+      },
+    ]
+  },
+  {
+    clubName: "Mechanical",
+    events: [
+      {
+        id: 1,
+        eventName: "CoasterX",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Task
+Create a roller coaster track that allows a marble to roll for the longest
+time, and reach maximum height incorporating design creativity and
+stability.
+
+Objective:
+
+Allows the marble to travel for the longest possible time
+Achieves the maximum height during the marble’s journey
+Maintains structural stability and smooth motion
+Demonstrates innovation and creativity
+Design Requirements:
+
+The marble must start from a defined starting point and finish at a clearly marked end line
+The track must include: At least one circular loop
+The design must not include closed loops that bring the marble back to the start
+The marble must stay on the track at all times; any derailment invalidates the run
+The track must be free-standing and must not be fixed to any surface
+Judging Criteria:
+
+Innovation and Creativity – 10 points
+Stability of the Track – 10 points
+Height Achieved – 35 points
+`,
+        registrationLink: "https://unstop.com/events/coasterx-indian-institute-of-technology-iit-ropar-1618931",
+        minSize: 2,
+        maxSize: 4,
+        eventRuleBook: ""
       },
     ]
   },
@@ -1198,12 +2006,61 @@ Read`,
       },
     ]
   },
-]
 
+  // {
+  //   clubName: "Meta",
+  //   events: [
+  //     {
+  //       id: 1,
+  //       eventName: "Materialize: A materials related quiz based on a short film which will be shown.",
+  //       eventImage: "",
+  //       isRegistrationOpen: true,
+  //       eventDate: "06/02/2026",
+  //       eventTime: "03:00 PM",
+  //       description: "This is the event we have created",
+  //       registrationLink: "https://advitiya-2025.vercel.app/",
+  //       minSize: 1,
+  //       maxSize: 1,
+  //       eventRuleBook: ""
+  //     },
+  //   ]
+  // },
+  {
+    clubName: "Enigma",
+    events: [
+      {
+        id: 1,
+        eventName: "SBT Quiz: sci biz tech quiz",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Guidelines:
+
+Team Size: 2-3 members
+The Quiz is open to all.
+Rules:
+
+A written Prelims round would be conducted to shortlist 8 teams for the finals.
+Tie between two or more teams will be settled by star marked questions.
+The decision of the quiz master will be final and binding upon all participants.
+The finals would be held in the bounce-pounce format and can be subject to change according to the Quiz Master’s wish.
+Note:
+
+In case of any discrepancy, the decision of the organizing committee will be final and binding
+Participants are expected to maintain sportsmanship and fair play throughout the event.
+Any form of cheating or unethical behavior will lead to disqualification of the team.`,
+        registrationLink: "https://unstop.com/quiz/space-quiz-advitiya26-indian-institute-of-technology-iit-ropar-1618980",
+        minSize: 2,
+        maxSize: 3,
+        eventRuleBook: ""
+      },
+    ]
+  },
+];
 
 const page = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
-
 
   const handleRegisterClick = (event) => {
     setSelectedEvent(event);
@@ -1217,7 +2074,8 @@ const page = () => {
     if (!selectedEvent) return;
 
     try {
-      await axios.post('/api/participant/createParticipant', formData)
+      await axios
+        .post("/api/participant/createParticipant", formData)
         .then((response) => {
           toast.success("Registration Created Successfully");
         })
@@ -1226,10 +2084,9 @@ const page = () => {
         });
       handleCloseModal();
     } catch (error) {
-      toast.error(error.message || 'Registration failed. Please try again.');
+      toast.error(error.message || "Registration failed. Please try again.");
     }
   };
-
 
   // if (loading) {
   //   return (
@@ -1262,20 +2119,22 @@ const page = () => {
           </h1>
         </motion.div>
       </div>
-      {
-        eventList.length > 0 ? eventList.map((event) => (
+      {eventList.length > 0 ? (
+        eventList.map((event) => (
           <div className="container mx-auto px-4 py-8">
-            <h1 className="text-white font-bold relative text-center text-3xl p-4">{event.clubName}</h1>
+            <h1 className="text-white font-bold relative text-center text-3xl p-4">
+              {event.clubName}
+            </h1>
             <EventCard events={event.events} />
           </div>
-        )) : (
-          <h3 className="text-6xl md:text-7xl font-bold mb-6 py-10">
-            <span className="bg-linear-to-r from-green-400 via-green-400 to-purple-400 text-transparent bg-clip-text drop-shadow-[0_0_40px_rgba(34,211,238,0.8)] text-center justify-center mx-auto flex">
-              Coming Soon...
-            </span>
-          </h3>
-        )
-      }
+        ))
+      ) : (
+        <h3 className="text-6xl md:text-7xl font-bold mb-6 py-10">
+          <span className="bg-linear-to-r from-green-400 via-green-400 to-purple-400 text-transparent bg-clip-text drop-shadow-[0_0_40px_rgba(34,211,238,0.8)] text-center justify-center mx-auto flex">
+            Coming Soon...
+          </span>
+        </h3>
+      )}
       {/* <EventRegistrationModal
         event={selectedEvent}
         onClose={handleCloseModal}
