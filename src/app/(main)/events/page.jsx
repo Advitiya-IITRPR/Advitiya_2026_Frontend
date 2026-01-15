@@ -1551,7 +1551,7 @@ Accuracy of Reduced Levels (RLs) compared to the actual ground values
 Quality and correctness of the Problem Statement solution derived from the levelling data`,
         registrationLink: "https://unstop.com/events/blueprint-battle-advitiya26-indian-institute-of-technology-iit-ropar-1618934",
         minSize: 4,
-        maxSize: 6,
+        maxSize: 5,
         eventRuleBook: "https://drive.google.com/file/d/1at3veoUqpS2-etBY_BUUtKp-oMc8bcXm/view"
       },
     ]

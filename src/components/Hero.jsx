@@ -477,6 +477,42 @@ export default function Hero() {
     window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
   }, []);
 
+
+  const hoverCard = {
+  initial: {
+    scale: 1,
+    y: 0,
+  },
+  hover: {
+    scale: 1.08,
+    y: -6,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 18,
+    },
+  },
+};
+
+const hoverIcon = {
+  initial: { rotate: 0, scale: 1 },
+  hover: {
+    rotate: 8,
+    scale: 1.15,
+    transition: { duration: 0.3 },
+  },
+};
+
+const hoverText = {
+  initial: { opacity: 0.9 },
+  hover: {
+    opacity: 1,
+    textShadow: "0 0 12px rgba(255,255,255,0.35)",
+    transition: { duration: 0.3 },
+  },
+};
+
+
   useEffect(() => {
     return () => {
       if (observerRef.current) {
@@ -589,7 +625,7 @@ export default function Hero() {
             className="mb-2 relative"
           >
             {/* Main title */}
-            <motion.h1
+            {/* <motion.h1
               className="text-6xl md:text-9xl font-extrabold mb-2"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -608,16 +644,48 @@ export default function Hero() {
               >
                 ADVITIYA'26
               </span>
-            </motion.h1>
+            </motion.h1> */}
+            <motion.h1
+  className="text-6xl md:text-9xl font-extrabold mb-2"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  <motion.span
+    className="inline-block"
+    style={{
+      background:
+        "linear-gradient(270deg, #22d3ee, #a78bfa, #ec4899, #22d3ee)",
+      backgroundSize: "600% 600%",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      backgroundClip: "text",
+      fontWeight: "900",
+      letterSpacing: "-0.02em",
+    }}
+    animate={{
+      backgroundPosition: ["0% 50%", "100% 50%"],
+    }}
+    transition={{
+      duration: 6,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+  >
+    ADVITIYA'26
+  </motion.span>
+</motion.h1>
 
-            <motion.h2
+
+           <motion.h2
               className="text-3xl md:text-5xl font-bold text-white tracking-widest"
-              initial={{ opacity: 0, letterSpacing: "0.5em" }}
-              animate={{ opacity: 1, letterSpacing: "0.3em" }}
-              transition={{ duration: 1, delay: 0.3 }}
-            >
-              TECHFEST
-            </motion.h2>
+              initial={{ opacity: 0, y: 10, letterSpacing: "0.6em" }}
+              animate={{ opacity: 1, y: 0, letterSpacing: "0.3em" }}
+              transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+              >
+            TECHFEST
+          </motion.h2>
+
           </motion.div>
 
           <motion.div
@@ -645,31 +713,52 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-4 md:gap-6 mb-16 mt-2"
-          >
-            {[
-              { icon: Calendar, text: "February 6-8, 2026", color: "cyan" },
-              { icon: MapPin, text: "IIT Ropar", color: "purple" },
-              { icon: Users, text: "1000+ Participants", color: "pink" },
-            ].map(({ icon: Icon, text, color }, i) => (
-              <motion.div
-                key={text}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className={`flex items-center space-x-3 text-${color}-200 bg-black/60 backdrop-blur-md px-5 py-3 rounded-full border border-${color}-400/50 transition-all duration-300 cursor-default`}
-              >
-                <Icon size={24} />
-                <span className="text-base md:text-lg font-semibold">
-                  {text}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
+  className="flex flex-wrap justify-center gap-4 md:gap-6 mb-16 mt-2"
+>
+  {[
+    { icon: Calendar, text: "February 6–8, 2026", color: "cyan" },
+    { icon: MapPin, text: "IIT Ropar", color: "purple" },
+    { icon: Users, text: "1000+ Participants", color: "pink" },
+  ].map(({ icon: Icon, text, color }) => (
+    <motion.div
+      key={text}
+      variants={hoverCard}
+      initial="initial"
+      whileHover="hover"
+      className={`
+        group flex items-center space-x-3
+        bg-black/60 backdrop-blur-md
+        px-5 py-3 rounded-full cursor-default
+        border border-${color}-400/40
+        hover:bg-black/80
+        transition-colors duration-300
+      `}
+    >
+      {/* Icon */}
+      <motion.span
+        variants={hoverIcon}
+        className={`text-${color}-300`}
+      >
+        <Icon size={24} />
+      </motion.span>
+
+      {/* Text */}
+      <motion.span
+        variants={hoverText}
+        className={`text-base md:text-lg font-semibold text-${color}-200`}
+      >
+        {text}
+      </motion.span>
+
+      {/* Glow ring */}
+      <span
+        className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 
+          blur-xl bg-${color}-500/10 transition-opacity duration-300`}
+      />
+    </motion.div>
+  ))}
+</motion.div>
+
         </div>
 
         {/* Scroll Down Indicator */}
