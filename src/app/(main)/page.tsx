@@ -23,7 +23,7 @@ export default function Home() {
         <Hero />
         <AboutSection />
         <Teaser />
-        <EventsSection />
+        {/* <EventsSection /> */}
         <OurTeam />
 
         <Highlights />

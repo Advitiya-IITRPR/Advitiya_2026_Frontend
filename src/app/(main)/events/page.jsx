@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Background from "@/components/BackgroundEvent";
 import { dataContext } from "@/context/dataContext";
 import { useContext } from "react";
@@ -332,12 +332,12 @@ Ranking will be done based on the total score a team accumulates.`,
           "https://unstop.com/hackathons/codehunt-advitiya26-indian-institute-of-technology-iit-ropar-1619459",
         minSize: 2,
         maxSize: 3,
-        eventRuleBook:"https://drive.google.com/file/d/1LoO3djbpfJaDRTssyvrm6f-78IDPV8OQ/view",
+        eventRuleBook: "https://drive.google.com/file/d/1LoO3djbpfJaDRTssyvrm6f-78IDPV8OQ/view",
       },
       {
         id: 3,
         eventName: "Algo-Unlock",
-        eventImage:"https://drive.google.com/uc?export=view&id=1TWPYBeZ08neW0IfI92dohbndDjE028fD",
+        eventImage: "https://drive.google.com/uc?export=view&id=1TWPYBeZ08neW0IfI92dohbndDjE028fD",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
         eventTime: "03:00 PM",
@@ -1658,7 +1658,7 @@ Any changes to the event, if required, will be communicated before the commencem
       },
     ]
   },
-  
+
   {
     clubName: "Mechanical",
     events: [
@@ -1763,8 +1763,12 @@ Any form of cheating or unethical behavior will lead to disqualification of the 
   },
 ];
 
+const CLUBS_PER_LOAD = 4;
+
 const page = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(CLUBS_PER_LOAD);
+  const loaderRef = useRef(null);
 
   const handleRegisterClick = (event) => {
     setSelectedEvent(event);
@@ -1778,36 +1782,40 @@ const page = () => {
     if (!selectedEvent) return;
 
     try {
-      await axios
-        .post("/api/participant/createParticipant", formData)
-        .then((response) => {
-          toast.success("Registration Created Successfully");
-        })
-        .catch((error) => {
-          toast.error(error.response.data.message);
-        });
+      await axios.post("/api/participant/createParticipant", formData);
+      toast.success("Registration Created Successfully");
       handleCloseModal();
     } catch (error) {
-      toast.error(error.message || "Registration failed. Please try again.");
+      toast.error(
+        error.response?.data?.message ||
+        error.message ||
+        "Registration failed. Please try again."
+      );
     }
   };
 
-  // if (loading) {
-  //   return (
-  //     <main className="relative min-h-screen">
-  //       <div className="fixed inset-0 z-0 bg-gradient-to-br from-black via-gray-900 to-blue-950">
-  //         <StarsBackground className="w-full h-full" showShootingStars={true} />
-  //       </div>
-  //       <div className="relative z-10 min-h-screen flex items-center justify-center">
-  //         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
-  //       </div>
-  //     </main>
-  //   );
-  // }
+  // 🔥 Infinite Scroll Logic
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisibleCount((prev) =>
+            Math.min(prev + CLUBS_PER_LOAD, eventList.length)
+          );
+        }
+      },
+      { threshold: 1 }
+    );
+
+    if (loaderRef.current) observer.observe(loaderRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="pt-20">
       <Background />
+
       {/* Header Section */}
       <div className="text-center flex flex-col items-center justify-center mt-20">
         <motion.div
@@ -1823,15 +1831,35 @@ const page = () => {
           </h1>
         </motion.div>
       </div>
+
+      {/* Events Section */}
       {eventList.length > 0 ? (
-        eventList.map((event) => (
-          <div className="container mx-auto px-4 py-8">
-            <h1 className="text-white font-bold relative text-center text-3xl p-4">
-              {event.clubName}
-            </h1>
-            <EventCard events={event.events} />
+        <>
+          {eventList.slice(0, visibleCount).map((club, index) => (
+            <div
+              key={index}
+              className="container mx-auto px-4 py-12 relative"
+            >
+              {/* ✅ CLUB NAME — FIXED */}
+              <h1 className="text-white font-bold text-center text-3xl mb-8 relative z-20">
+                {club.clubName}
+              </h1>
+
+              {/* ✅ EVENTS */}
+              <div className="relative z-10">
+                <EventCard events={club.events} />
+              </div>
+            </div>
+          ))}
+
+
+          {/* 👇 Scroll Trigger */}
+          <div ref={loaderRef} className="h-16 flex justify-center items-center">
+            {visibleCount < eventList.length && (
+              <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-white"></div>
+            )}
           </div>
-        ))
+        </>
       ) : (
         <h3 className="text-6xl md:text-7xl font-bold mb-6 py-10">
           <span className="bg-linear-to-r from-green-400 via-green-400 to-purple-400 text-transparent bg-clip-text drop-shadow-[0_0_40px_rgba(34,211,238,0.8)] text-center justify-center mx-auto flex">
@@ -1839,11 +1867,15 @@ const page = () => {
           </span>
         </h3>
       )}
-      {/* <EventRegistrationModal
+
+      {/* Modal (if needed later) */}
+      {/* 
+      <EventRegistrationModal
         event={selectedEvent}
         onClose={handleCloseModal}
         onSubmit={handleFormSubmit}
-      /> */}
+      /> 
+      */}
     </div>
   );
 };
