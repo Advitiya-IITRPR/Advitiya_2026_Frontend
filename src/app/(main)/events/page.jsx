@@ -1763,7 +1763,7 @@ Any form of cheating or unethical behavior will lead to disqualification of the 
   },
 ];
 
-const CLUBS_PER_LOAD = 4;
+const CLUBS_PER_LOAD = 2;
 
 const page = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
