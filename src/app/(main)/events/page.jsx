@@ -49,6 +49,49 @@ Pilots must carry their own battery chargers and at least 2 batteries.`,
         eventRuleBook:
           "https://drive.google.com/file/d/1PJvKJorVJ13O7u-ABc0TYp_qKRifbUUV/view",
       },
+      {
+        id: 2,
+        eventName: "Way Point Dash",
+        eventImage:"",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Teams compete in a fully autonomous aerial mission that tests precision, perception, and system reliability. The challenge unfolds across three critical phases: autonomous takeoff, navigation through a series of 3D checkpoints, and autonomous landing - all executed without any manual control. Drones must rely entirely on onboard intelligence, aided by ArUco markers placed across the arena, to interpret the environment and make real-time decisions. With strict failsafe requirements, a confined mission volume, and zero tolerance for human intervention during flight, the event pushes teams to design robust autonomous systems that can launch, navigate, and land safely under competitive pressure.
+
+Event:
+
+Design and deploy a fully autonomous multirotor drone capable of completing a structured aerial mission without any manual control.
+The drone must autonomously take off, navigate through a sequence of 1 m × 1 m checkpoints arranged in 3D space, and land safely in the designated landing zone.
+The course includes varying altitudes, directional changes, and spatial constraints, testing perception, planning, and control.
+ArUco markers are placed throughout the arena to aid localization and decision-making.
+The entire mission must be completed without manual stick input once the mission begins.
+Rules:
+
+Each team is assigned a specific time slot and a maximum mission time of 10 minutes from takeoff to landing.
+A mandatory pre-flight technical inspection is conducted, including:
+Structural and airworthiness checks
+Verification of two independent failsafes:
+Position + altitude hold trigger
+Immediate autonomous landing trigger
+No hardware or software changes are allowed after clearing the inspection.
+Manual control or human intervention during flight is strictly prohibited.
+Missing checkpoints, contact with arena structures, or unsafe behavior will result in penalty time.
+Missions exceeding the maximum time limit will be terminated.
+Flying outside the designated mission area may lead to disqualification.
+Net Time = Total Mission Time + Penalty Time.
+The team with the lowest net time is declared the winner.
+Sharing drones between teams is strictly prohibited.
+Each team must bring their own drone and required equipment.
+The drone must strictly fit within a 50 cm × 50 cm × 50 cm bounding box.
+Batteries up to 6S (Li-Po / Li-Ion) are permitted.
+Propeller size must not exceed 6 inches.`,
+        registrationLink:
+          "https://unstop.com/competitions/waypoint-dash-advitiya26-indian-institute-of-technology-iit-ropar-1623795",
+        minSize: 2,
+        maxSize: 6,
+        eventRuleBook:
+          "https://drive.google.com/file/d/1Zg3EXrMgK3LggU_naatcJW6cnjCiANMh/view",
+      },
     ],
   },
   {
