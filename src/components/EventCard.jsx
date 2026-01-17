@@ -290,7 +290,7 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 export default function ExpandableEventCards({ events }) {
   const [active, setActive] = useState(null);
   const [mounted, setMounted] = useState(false);
-
+  
   const id = useId();
   const ref = useRef(null);
   const router = useRouter();
