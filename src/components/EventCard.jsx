@@ -289,14 +289,23 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 
 export default function ExpandableEventCards({ events }) {
   const [active, setActive] = useState(null);
+  const [mounted, setMounted] = useState(false);
+
   const id = useId();
   const ref = useRef(null);
   const router = useRouter();
 
   useOutsideClick(ref, () => setActive(null));
 
-  /* 🔒 LOCK BACKGROUND SCROLL */
+  /* ✅ ENSURE CLIENT ONLY */
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  /* 🔒 LOCK SCROLL */
+  useEffect(() => {
+    if (!mounted) return;
+
     if (active) {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
@@ -305,22 +314,20 @@ export default function ExpandableEventCards({ events }) {
       document.documentElement.style.overflow = "auto";
     }
 
-    const esc = (e) => {
-      if (e.key === "Escape") setActive(null);
-    };
-
+    const esc = (e) => e.key === "Escape" && setActive(null);
     window.addEventListener("keydown", esc);
+
     return () => {
       window.removeEventListener("keydown", esc);
       document.body.style.overflow = "auto";
       document.documentElement.style.overflow = "auto";
     };
-  }, [active]);
+  }, [active, mounted]);
 
   return (
     <>
       {/* ================= MODAL ================= */}
-      {typeof window !== "undefined" &&
+      {mounted &&
         active &&
         createPortal(
           <AnimatePresence>
@@ -365,17 +372,16 @@ export default function ExpandableEventCards({ events }) {
                   </motion.div>
 
                   {/* CONTENT */}
-                  <div className="flex-1 overflow-y-auto p-8 text-blue-100 space-y-8 overscroll-contain">
+                  <div className="flex-1 overflow-y-auto p-8 space-y-8 text-blue-100">
                     <motion.h2
                       layoutId={`title-${active.eventName}-${id}`}
                       className="text-4xl font-bold text-center bg-gradient-to-r
-                      from-cyan-300 via-blue-300 to-cyan-300
-                      bg-clip-text text-transparent"
+                        from-cyan-300 via-blue-300 to-cyan-300
+                        bg-clip-text text-transparent"
                     >
                       {active.eventName}
                     </motion.h2>
 
-                    {/* META */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
                       <Info icon={<Clock size={16} />} text={active.eventTime} />
                       <Info icon={<Calendar size={16} />} text={active.eventDate} />
@@ -385,12 +391,11 @@ export default function ExpandableEventCards({ events }) {
                       />
 
                       <div
-                        className={`rounded-2xl px-4 py-2.5 text-center text-xs font-semibold border
-                          ${
-                            active.isRegistrationOpen
-                              ? "bg-emerald-500/10 text-emerald-300 border-emerald-400/30"
-                              : "bg-red-500/10 text-red-300 border-red-400/30"
-                          }`}
+                        className={`rounded-xl px-4 py-2 text-xs font-semibold border ${
+                          active.isRegistrationOpen
+                            ? "bg-emerald-500/10 text-emerald-300 border-emerald-400/30"
+                            : "bg-red-500/10 text-red-300 border-red-400/30"
+                        }`}
                       >
                         {active.isRegistrationOpen
                           ? "✓ Registration Open"
@@ -398,36 +403,16 @@ export default function ExpandableEventCards({ events }) {
                       </div>
                     </div>
 
-                    {/* DESCRIPTION */}
-                    <div>
-                      <h3 className="text-xl font-semibold text-cyan-300 mb-2">
-                        About Event
-                      </h3>
-                      <p className="text-sm leading-relaxed whitespace-pre-line text-blue-100/90">
-                        {active.description}
-                      </p>
-                    </div>
-
-                    {/* RULEBOOK */}
-                    {active.eventRuleBook && (
-                      <a
-                        href={active.eventRuleBook}
-                        target="_blank"
-                        className="inline-flex gap-2 px-6 py-3 rounded-xl
-                        bg-cyan-500/10 border border-cyan-400/30
-                        text-cyan-300 hover:border-cyan-400/60
-                        transition"
-                      >
-                        View Rulebook →
-                      </a>
-                    )}
+                    <p className="text-sm leading-relaxed whitespace-pre-line">
+                      {active.description}
+                    </p>
                   </div>
 
                   {/* FOOTER */}
-                  <div className="p-6 flex justify-between border-t border-cyan-400/10 bg-black/50 backdrop-blur">
+                  <div className="p-6 flex justify-between border-t border-cyan-400/10 bg-black/60">
                     <button
                       onClick={() => setActive(null)}
-                      className="px-6 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10"
+                      className="px-6 py-2 rounded-xl bg-white/10"
                     >
                       Close
                     </button>
@@ -437,12 +422,9 @@ export default function ExpandableEventCards({ events }) {
                       onClick={() =>
                         router.push(active.registrationLink)
                       }
-                      className="
-                        px-10 py-3 rounded-xl font-bold text-white
+                      className="px-10 py-3 rounded-xl font-bold text-white
                         bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500
-                        hover:scale-105 transition
-                        disabled:opacity-30
-                      "
+                        disabled:opacity-30"
                     >
                       Register Now
                     </button>
@@ -454,7 +436,7 @@ export default function ExpandableEventCards({ events }) {
           document.getElementById("modal-root")
         )}
 
-      {/* ================= EVENT GRID ================= */}
+      {/* ================= GRID ================= */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         {events.map((event, index) => (
           <motion.div
@@ -466,39 +448,21 @@ export default function ExpandableEventCards({ events }) {
             transition={{ delay: index * 0.05 }}
             className="cursor-pointer"
           >
-            <div
-              className="
-                h-full rounded-2xl overflow-hidden
-                bg-black/60 backdrop-blur
-                border border-cyan-400/20
-                hover:border-cyan-400/60 hover:scale-[1.03]
-                transition-all shadow-xl
-              "
-            >
-              <motion.div layoutId={`image-${event.eventName}-${id}`}>
-                <Image
-                  src={event.eventImage}
-                  alt={event.eventName}
-                  width={600}
-                  height={240}
-                  className="h-44 w-full object-cover"
-                />
-              </motion.div>
+            <div className="rounded-2xl overflow-hidden bg-black/60 border border-cyan-400/20 hover:scale-[1.03] transition">
+              <Image
+                src={event.eventImage}
+                alt={event.eventName}
+                width={600}
+                height={240}
+                className="h-44 w-full object-cover"
+              />
 
               <div className="p-5 text-center space-y-2">
-                <motion.h3
-                  layoutId={`title-${event.eventName}-${id}`}
-                  className="text-xl font-bold text-cyan-300"
-                >
+                <h3 className="text-xl font-bold text-cyan-300">
                   {event.eventName}
-                </motion.h3>
-
+                </h3>
                 <p className="text-sm text-blue-200">
                   {event.eventDate}
-                </p>
-
-                <p className="text-xs text-cyan-400">
-                  Click to view details
                 </p>
               </div>
             </div>
@@ -509,13 +473,12 @@ export default function ExpandableEventCards({ events }) {
   );
 }
 
-/* ===== INFO BADGE ===== */
 function Info({ icon, text }) {
   return (
-    <div className="flex items-center justify-center gap-2 rounded-xl
-      bg-white/5 backdrop-blur px-4 py-3 border border-cyan-400/10">
+    <div className="flex items-center justify-center gap-2 px-4 py-2
+      bg-white/5 rounded-xl border border-cyan-400/10">
       <span className="text-cyan-400">{icon}</span>
-      <span className="text-xs font-medium">{text}</span>
+      <span className="text-xs">{text}</span>
     </div>
   );
 }
