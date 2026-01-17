@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-// import { SessionProvider } from "next-auth/react";
 import AuthProvider from "@/context/AuthProvider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { DataProvider } from "@/context/dataContext";
@@ -18,14 +17,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${montserrat.variable}  antialiased min-h-screen`}
-      >
+      <body className={`${montserrat.variable} antialiased min-h-screen`}>
         <AuthProvider>
           <ThemeProvider
             attribute="class"
@@ -36,7 +33,11 @@ export default function RootLayout({
             <DataProvider>
               {children}
             </DataProvider>
-            <Toaster expand={true} richColors closeButton={true} />
+
+            {/* ✅ REQUIRED FOR MODALS */}
+            <div id="modal-root" />
+
+            <Toaster expand richColors closeButton />
           </ThemeProvider>
         </AuthProvider>
       </body>
