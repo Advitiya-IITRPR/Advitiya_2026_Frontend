@@ -1884,7 +1884,7 @@ const page = () => {
               className="container mx-auto px-4 py-12 relative"
             >
               {/* ✅ CLUB NAME — FIXED */}
-              <h1 className="text-white font-bold text-center text-3xl mb-8 relative z-20">
+              <h1 className="text-white font-bold text-center text-3xl mb-8 relative">
                 {club.clubName}
               </h1>
 
