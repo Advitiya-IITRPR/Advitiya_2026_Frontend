@@ -1286,6 +1286,53 @@ Teams are not allowed to interact with each other during any round. The system p
         maxSize: 3,
         eventRuleBook: "https://drive.google.com/file/d/1mTqHOxbGf9XrxJ0vSrKTtADU_EU2amBy/view"
       },
+      {
+        id: 2,
+        eventName: "Predictathon",
+        eventImage: "",
+        isRegistrationOpen: true,
+        eventDate: "06/02/2026",
+        eventTime: "03:00 PM",
+        description: `Eligibility:
+
+Open to students from any educational institution.
+Inter-college teams are allowed.
+Inter-specialization teams are allowed.
+Multiple teams from the same institution are permitted.
+Each team must consist of 1 or 2 members.
+Once registered, the team composition cannot be changed.
+Registration Guidelines:
+
+Only the team leader is required to attempt Round 1.
+All submissions must be original.
+Any form of plagiarism or use of unfair means will lead to immediate disqualification.
+The organizing committee’s decision will be final and binding.
+Competition Format:
+
+Round 1: CodeQuest:
+
+Type: Technical quiz based on Machine Learning and Generalized Deep Learning concepts
+Number of Questions: Multiple, varying in difficulty
+Duration: 20 minutes
+Evaluation Criteria: Accuracy and speed of execution
+Only the team leader needs to attempt this round.
+Top teams will qualify for Round 2.
+Round 2: HackTheModel:
+
+Duration: 2 weeks
+Tasks: Build and train an ML model
+Optimize the model for performance and efficiency
+Evaluation Parameters: Model accuracy on hidden test dataset
+Model execution time
+Innovative optimization techniques
+Multiple submissions are allowed.
+Only the best submission will be considered for final ranking.
+Final judging will be based on a custom loss function defined by the organizing committee.`,
+        registrationLink: "https://unstop.com/hackathons/predictathon-advitiya26-indian-institute-of-technology-iit-ropar-1619473",
+        minSize: 1,
+        maxSize: 2,
+        eventRuleBook: "https://drive.google.com/file/d/1l7fyH_zRhGvKDH965L8wJHO12veOusAr/view"
+      },
     ]
   },
   {
