@@ -23,7 +23,15 @@
     }
   },
 
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/sponsors.jsx", "src/app/api/auth/[...nextauth]/route.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/sponsors.jsx",
+    "src/app/api/auth/[...nextauth]/route.js",
+    "src/app/(main)/accomodation/page.jsx"
+  ],
 
   "exclude": ["node_modules"]
 }

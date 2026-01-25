@@ -22,7 +22,7 @@ const eventList = [
           "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "01:00 PM",
+        eventTime: "01:00 PM - 05:00 PM",
         description: `Event:
 
 Build and pilot an FPV drone capable of navigating a dynamic race track at high speed.
@@ -99,7 +99,7 @@ Pilots must carry their own battery chargers and at least 2 batteries.`,
           "https://drive.google.com/uc?export=view&id=13K2kKnj8EquCkZD8c-qGxJYl2nEC1gJq",
         isRegistrationOpen: true,
         eventDate: "07/02/2026",
-        eventTime: "01:00 PM",
+        eventTime: "01:00 PM - 05:00 PM",
         description: `Full Throttle, the ultimate showdown of power, precision, and performance in the world of RC ATV racing! This high-octane event brings together enthusiasts, innovators, and thrill-seekers to test their skills and push the limits of their remote-controlled vehicles.
 
 In this action-packed competition, participants will navigate their RC ATVs through challenging terrains, obstacle-filled tracks, and adrenaline-pumping straightaways. From sharp turns to rugged climbs, every second counts as racers battle for supremacy, showcasing their vehicle’s engineering excellence and their own mastery of the controls.
@@ -123,7 +123,7 @@ If any team is found damaging another team’s vehicle, it will be penalized.`,
         eventImage: "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "02:00 PM - 06:00 PM",
         description: `GripBot Gauntlet is a flagship robotics competition organized as part of ADVITIYA – IIT Ropar’s Techfest 2026. This event challenges participants to design, build, and operate a manually controlled gripping robot capable of completing a demanding arena course by performing object-handling tasks with precision and control. The competition is designed to test participants’ mechanical design skills, control strategies, and real-time decision-making under competitive conditions .
 
 Event Overview:
@@ -224,7 +224,7 @@ Third Prize: ₹5,000 .`,
         eventImage: "https://drive.google.com/uc?export=view&id=1J_frQrsXBwM2z002OIMBZPDpJs889vEg",
         isRegistrationOpen: true,
         eventDate: "07/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "02:00 PM - 05:00 PM",
         description: `Guidelines:
 Open to all undergraduate and postgraduate students.
 Participants from different colleges are allowed (inter-college participation is allowed).
@@ -318,7 +318,7 @@ The decision of the judges will be final and binding.`,
         eventImage: "https://drive.google.com/uc?export=view&id=1AQ8pmpSXoy6UH0oGMwU2Iv8mZt89ipTZ",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "02:00 PM - 05:00 PM",
         description: `Stage 1 - Online Round:
 Your team of 2-3 will tackle cool coding problems, showing off your skills. The best teams here not only get significant bragging rights but also snag a spot in the big offline showdown
 Mode- Online
@@ -351,7 +351,7 @@ Each team will be ranked according to the number of problems solved, and ties wi
         eventImage: "https://drive.google.com/uc?export=view&id=1bWhLYLfLr5zKJtY3yHxKLO028jRPGc7a",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
-        eventTime: "03:00 PM",
+        eventTime: "03:00 PM - 06:00 PM",
         description: `Guidelines:
 Each team has to bring their laptop.
 The duration of the event will be 2 hours 30 minutes.
@@ -384,7 +384,7 @@ Ranking will be done based on the total score a team accumulates.`,
         eventImage: "https://drive.google.com/uc?export=view&id=1TWPYBeZ08neW0IfI92dohbndDjE028fD",
         isRegistrationOpen: true,
         eventDate: "07/02/2026",
-        eventTime: "10:00 PM",
+        eventTime: "10:00 PM - 12:00 PM",
         description: `Guidelines:
 
 Each Question Will Carry Some Points, Which Will Vary With Time. There Are Penalties for Wrong Submissions.
@@ -445,8 +445,8 @@ No further debate will be allowed`,
         eventName: "Treasure Hunt",
         eventImage: "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
-        eventDate: "06/02/2026",
-        eventTime: "03:00 PM",
+        eventDate: "07/02/2026",
+        eventTime: "02:00 PM - 05:00 PM",
         description: `Advitiya’26 Treasure Hunt
 
 Organized by eSportz Club | IIT Ropar Tech Fest (Offline Event)
@@ -550,7 +550,7 @@ For any queries or clarifications, participants may contact the organizers liste
           "https://drive.google.com/uc?export=view&id=1fomSWhtuOPlwJ2ybwt5ne-cNBk8jHqa7",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "02:00 PM - 06:00 PM",
         description: `Team Composition and Registration Rules:
 
 This is a team-based squad event
@@ -591,7 +591,7 @@ No rematch will be provided for individual disconnections`,
           "https://drive.google.com/uc?export=view&id=1FKww8yEZqr5O9-Anu51zsvg5D0pKTk0I",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
-        eventTime: "10:00 AM",
+        eventTime: "10:00 AM - 12:00 PM",
         description: `Advitiya’26 Clash Royale Tournament
 
 IIT Ropar Tech Fest | Offline Esports Event
@@ -656,7 +656,7 @@ Abhinav Kumar Singh
         eventImage: "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "02:00 PM - 03:00 PM",
         description: `Problem Statement:
 Problem Statement will be released after the deadline
 
@@ -699,7 +699,7 @@ The decision of the judges will be final and binding`,
           "https://drive.google.com/uc?export=view&id=11_PsYglSahcU3vU5MLqcEsm7y8F7-Mvd",
         isRegistrationOpen: true,
         eventDate: "07/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "10:00 AM - 01:00 PM",
         description: `Introduction:
 
 Welcome to Trader's Arena, the ultimate mock stock challenge.
@@ -758,7 +758,7 @@ Notification of any changes will be communicated before the event.`,
         eventImage: "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "02:00 PM - 06:00 PM",
         description: `Guidelines:
 Participants will draw a story card randomly from a set, containing a unique QR code.
 Scanning the QR code reveals a story prompt on which the movie poster must be based.
@@ -823,7 +823,7 @@ Guidelines:
           "https://drive.google.com/uc?export=view&id=1HXrxCRCUapSfw8L7TJQPwJCGRQY9ZMem",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "10:00 AM",
+        eventTime: "10:00 AM - 02:00 PM",
         description: `Introduction
 
 IIT Ropar’s Advitya 26 proudly presents the exhilarating RoboSoccer competition! Teams will demonstrate their ingenuity by crafting non-attacking robots to engage in thrilling soccer matches. This event is a perfect fusion of technology, strategy, and sportsmanship, embodying the spirit of innovation seamlessly blended with the essence of humanity.
@@ -940,7 +940,7 @@ In case of any discrepancy, the decision of the organizing committee will be fin
         eventImage: "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "03:00 PM",
+        eventTime: "03:00 PM - 05:00 PM",
         description: `Fastest Line Follower Competition
 Objective
 Design and build a fully autonomous robot
@@ -1083,7 +1083,7 @@ Free event`,
         eventImage: "https://drive.google.com/uc?export=view&id=12GdoBQ46ywBp2_tMapluvsimD3sz8f-a",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "10:00 AM",
+        eventTime: "10:00 AM - 01:00 PM",
         description: `IIT Ropar’s Software Community is organising Game Jam during Advitiya 2026. We are thrilled to have you participating in this creative and exciting event. This Game Jam is one of the biggest highlights of our college’s annual Technical Fest, and it’s a great chance to show off your skills.
 
 Guidelines:
@@ -1165,7 +1165,7 @@ For Round 2, teams must submit their final presentations before the main event.`
         eventImage: "https://drive.google.com/uc?export=view&id=1vkjGimsnoteNkIWY3WInIFMGoluCs7_T",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "10:00 AM",
+        eventTime: "10:00 AM - 03:00 PM",
         description: `Introduction:
 
 Beyond Zenith is a high-impact model rocketry competition where teams design, build, and launch an E-class rocket.
@@ -1216,7 +1216,7 @@ The decision of the judges shall be final and binding on all participating teams
         eventImage: "https://drive.google.com/uc?export=view&id=1H125WBRgTI0Q8YdEjnF8hNVprARKjP8y",
         isRegistrationOpen: true,
         eventDate: "07/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "02:00 PM - 05:00 PM",
         description: `CosmoQuest is a story-based quizzing competition focused on astronomy and astrophysics, designed to test participants’ scientific understanding, logical reasoning, and interpretative skills through interactive cosmic narratives.
 
 Stage 1 – Story Quiz (Elimination Round):
@@ -1249,7 +1249,7 @@ For more details refer to the rulebook.`,
         eventImage: "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
-        eventTime: "10:00 AM",
+        eventTime: "10:00 AM - 01:00 PM",
         description: `Round 1 – Negotiation Round:
 Teams are given 20 minutes to prepare their prompt and 5 minutes for live performance. Each team writes a prompt for their chosen LLM to act as a customer negotiating with the organizer’s LLM acting as the shopkeeper. The maximum prompt length is 150 words. Limited LLM options will be provided, including LLaMA, DeepSeek R1, and Grok, subject to availability. Teams whose LLMs negotiate the best prices qualify for the next round. Approximately 40 percent of teams will advance to Round 2.
 
@@ -1274,7 +1274,7 @@ Teams are not allowed to interact with each other during any round. The system p
         eventImage: "https://drive.google.com/uc?export=view&id=1-TloTWHt0J5URWujFKehLrICNB6zlf-j",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
-        eventTime: "03:00 PM",
+        eventTime: "03:00 PM - 06:00 PM",
         description: `Tagline : Navigating the Future with AI brilliance  
 
 1. Introduction: 
@@ -1324,7 +1324,7 @@ Arjun Aggarwal: 6280707215`,
         eventImage: "https://drive.google.com/uc?export=view&id=19p0NQY86TO5_U1CKkfCYDZn8qTjSnEEw",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "10:00 AM",
+        eventTime: "10:00 AM - 01:00 PM",
         description: `AI Magination is a creative, skill-driven event designed to test participants’ abilities in prompt engineering, visual analysis, storytelling, AI tool usage, and real-time synthesis. The event consists of two rounds, where participants accumulate points across both. The competition aims to encourage innovation, originality, and practical understanding of AI generation systems.
 
 The event consists of two rounds, both contributing to the final score:
@@ -1393,7 +1393,7 @@ Nehal Abbott: 6280339583`,
         eventImage: "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "01:00 PM - 05:00 PM",
         description: `Introduction
 Welcome to Process Wars, a reimagined and high-impact competition designed to challenge participants to innovate, strategize, and engineer practical solutions under pressure.
 The event consists of two competitive rounds.
@@ -1512,7 +1512,7 @@ Missing Supporting Logic (Page 3): –3 marks`,
         eventImage: "https://drive.google.com/uc?export=view&id=17MMMgj5FF5cLysZmedBp3IyLB5F-AzNj",
         isRegistrationOpen: true,
         eventDate: "07/02/2026",
-        eventTime: "10:00 AM",
+        eventTime: "10:00 AM - 01:00 PM",
         description: `Design Constraints:
 
 The bridge must satisfy the following dimensional requirements:
@@ -1534,7 +1534,7 @@ Bridges will be evaluated on overall stability, maximum load carried, and streng
         eventImage: "https://drive.google.com/uc?export=view&id=1lLdhByPA0VMCmHG7BDSRfhpbDcfe66oJ",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
-        eventTime: "03:00 PM",
+        eventTime: "03:00 PM - 06:00 PM",
         description: `Task:
 Conduct field observations using Dumpy level and prepare a complete Reduced Lengths table using both Height of Instrument (HI) method and Rise–Fall levelling table.
 Compute reduced levels (RLs) with accuracy and consistency.
@@ -1566,7 +1566,7 @@ Quality and correctness of the Problem Statement solution derived from the level
         eventImage: "https://drive.google.com/uc?export=view&id=18XnNPp0iEv0oprmpbBE46HXQ7CZVN_7q",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "02:00 PM - 06:00 PM",
         description: `Eligibility:
 
 The event is open to all students.
@@ -1609,7 +1609,7 @@ The decision of the judging panel and organizing committee will be final and bin
         eventImage: "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
         eventDate: "07/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "10:00 AM - 01:00 PM",
         description: `Event Format:
 
 ️Round 1 – The Physics Case File:
@@ -1640,7 +1640,7 @@ Use of AI tools or unfair means leads to disqualification`,
         eventImage: "https://drive.google.com/uc?export=view&id=19p0NQY86TO5_U1CKkfCYDZn8qTjSnEEw",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
-        eventTime: "10:00 AM",
+        eventTime: "10:00 AM - 06:00 PM",
         description: `Eligibility and Team Formation:
 Participation is open to students only. Teams must consist of a minimum of 2 members and a maximum of 3 members.
 Inter-college teams are allowed.
@@ -1668,7 +1668,7 @@ Any changes to the event, if required, will be communicated before the commencem
         eventImage: "https://drive.google.com/uc?export=view&id=1gU9W2KMHfkdOHSrwzgE2H3t6jrBQLNUJ",
         isRegistrationOpen: true,
         eventDate: "08/02/2026",
-        eventTime: "01:00 PM",
+        eventTime: "01:00 PM - 05:00 PM",
         description: `Task
 Create a roller coaster track that allows a marble to roll for the longest
 time, and reach maximum height incorporating design creativity and
@@ -1708,7 +1708,7 @@ Height Achieved – 35 points
         eventImage: "https://drive.google.com/uc?export=view&id=1NnZCa_NoZuKqGGN5kisqTb92gTFTwgk8",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
-        eventTime: "03:00 PM",
+        eventTime: "03:00 PM - 06:00 PM",
         description: `All that you need to know about Materialize
 The event aims to combine entertainment with education by screening a movie relevant to the themes of metallurgy, materials science, or engineering challenges, followed by engaging participants in a quiz and crossword competition to test their knowledge and creativity.
 A movie related to materials science, engineering, or innovation will be screened. Based on that quiz will be conducted.
@@ -1735,7 +1735,7 @@ More bonus marks will be given if the quiz is submitted on time.`,
         eventImage: "https://drive.google.com/uc?export=view&id=1Oh74Y1xaUNCkVrgMpCo44dxQ92dHgwE3",
         isRegistrationOpen: true,
         eventDate: "06/02/2026",
-        eventTime: "02:00 PM",
+        eventTime: "02:00 PM - 04:00 PM",
         description: `Guidelines:
 
 Team Size: 2-3 members
