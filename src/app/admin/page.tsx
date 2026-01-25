@@ -16,7 +16,7 @@ export default function AdminHomePage() {
         <Hero />
         <AboutSection />
         <Teaser />
-        <EventsSection />
+        {/* <EventsSection /> */}
         <Highlights />
       </div>
       <Footer />
