@@ -287,10 +287,24 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
+const getPreviewLink = (url) => {
+  if (!url) return "";
+
+  // convert google drive .../file/d/<id>/view -> .../file/d/<id>/preview
+  if (url.includes("/file/d/") && url.includes("/view")) {
+    return url.replace("/view", "/preview");
+  }
+
+  return url;
+};
+
 export default function ExpandableEventCards({ events }) {
   const [active, setActive] = useState(null);
   const [mounted, setMounted] = useState(false);
-  
+
+  // ✅ RULEBOOK MODAL state
+  const [selectedRulebook, setSelectedRulebook] = useState(null);
+
   const id = useId();
   const ref = useRef(null);
   const router = useRouter();
@@ -306,7 +320,7 @@ export default function ExpandableEventCards({ events }) {
   useEffect(() => {
     if (!mounted) return;
 
-    if (active) {
+    if (active || selectedRulebook) {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
     } else {
@@ -314,7 +328,14 @@ export default function ExpandableEventCards({ events }) {
       document.documentElement.style.overflow = "auto";
     }
 
-    const esc = (e) => e.key === "Escape" && setActive(null);
+    const esc = (e) => {
+      if (e.key === "Escape") {
+        // close rulebook first, then main modal
+        if (selectedRulebook) setSelectedRulebook(null);
+        else setActive(null);
+      }
+    };
+
     window.addEventListener("keydown", esc);
 
     return () => {
@@ -322,11 +343,20 @@ export default function ExpandableEventCards({ events }) {
       document.body.style.overflow = "auto";
       document.documentElement.style.overflow = "auto";
     };
-  }, [active, mounted]);
+  }, [active, mounted, selectedRulebook]);
+
+  const handleOpenRulebook = (rulebookUrl) => {
+    if (!rulebookUrl) return;
+    setSelectedRulebook(getPreviewLink(rulebookUrl));
+  };
+
+  const handleCloseRulebook = () => {
+    setSelectedRulebook(null);
+  };
 
   return (
     <>
-      {/* ================= MODAL ================= */}
+      {/* ================= EVENT DETAILS MODAL ================= */}
       {mounted &&
         active &&
         createPortal(
@@ -387,7 +417,11 @@ export default function ExpandableEventCards({ events }) {
                       <Info icon={<Calendar size={16} />} text={active.eventDate} />
                       <Info
                         icon={<Users size={16} />}
-                        text={`${active.minSize}-${active.maxSize} Members`}
+                        text={
+                          active.minSize === active.maxSize
+                            ? `${active.minSize} Members`
+                            : `${active.minSize}-${active.maxSize} Members`
+                        }
                       />
 
                       <div
@@ -409,28 +443,115 @@ export default function ExpandableEventCards({ events }) {
                   </div>
 
                   {/* FOOTER */}
-                  <div className="p-6 flex justify-between border-t border-cyan-400/10 bg-black/60">
-                    <button
-                      onClick={() => setActive(null)}
-                      className="px-6 py-2 rounded-xl bg-white/10"
-                    >
-                      Close
-                    </button>
+                  <div className="p-6 flex flex-col md:flex-row gap-3 md:gap-0 md:justify-between border-t border-cyan-400/10 bg-black/60">
+                    {/* LEFT BUTTONS */}
+                    <div className="flex gap-3">
+                      <button
+                        onClick={() => setActive(null)}
+                        className="px-6 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 transition"
+                      >
+                        Close
+                      </button>
 
+                      {/* ✅ RULEBOOK BUTTON */}
+                      {active.eventRuleBook && active.eventRuleBook.trim() !== "" && (
+                        <button
+                          onClick={() => handleOpenRulebook(active.eventRuleBook)}
+                          className="px-6 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 transition"
+                        >
+                          Rulebook 📘
+                        </button>
+                      )}
+                    </div>
+
+                    {/* RIGHT BUTTON */}
                     <button
                       disabled={!active.isRegistrationOpen}
-                      onClick={() =>
-                        router.push(active.registrationLink)
-                      }
+                      onClick={() => router.push(active.registrationLink)}
                       className="px-10 py-3 rounded-xl font-bold text-white
                         bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500
-                        disabled:opacity-30"
+                        disabled:opacity-30 disabled:cursor-not-allowed"
                     >
                       Register Now
                     </button>
                   </div>
                 </motion.div>
               </div>
+            </>
+          </AnimatePresence>,
+          document.getElementById("modal-root")
+        )}
+
+      {/* ================= RULEBOOK MODAL ================= */}
+      {mounted &&
+        selectedRulebook &&
+        createPortal(
+          <AnimatePresence>
+            <>
+              {/* BACKDROP */}
+              <motion.div
+                className="fixed inset-0 bg-black/80 backdrop-blur-md z-[10000]"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={handleCloseRulebook}
+              />
+
+              {/* MODAL */}
+              <motion.div
+                className="fixed inset-0 z-[10001] flex justify-center items-center px-4"
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+              >
+                <div
+                  onClick={(e) => e.stopPropagation()}
+                  className="bg-white/10 backdrop-blur-xl rounded-2xl w-full md:w-[75%] h-[80%] relative overflow-hidden border border-white/20 shadow-2xl"
+                >
+                  {/* Top Bar */}
+                  <div className="flex justify-between items-center px-4 py-3 border-b border-white/20">
+                    <h2 className="text-white font-semibold text-lg">
+                      Rulebook
+                    </h2>
+
+                    <div className="flex gap-3">
+                      {/* Open in New Tab */}
+                      <a
+                        href={selectedRulebook}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-4 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 transition text-sm"
+                      >
+                        Open ↗
+                      </a>
+
+                      {/* Download */}
+                      <a
+                        href={selectedRulebook}
+                        download
+                        className="px-4 py-2 rounded-xl bg-blue-500/30 text-white hover:bg-blue-500/50 transition text-sm"
+                      >
+                        Download ⬇
+                      </a>
+
+                      {/* Close */}
+                      <button
+                        onClick={handleCloseRulebook}
+                        className="px-4 py-2 rounded-xl bg-red-500/30 text-white hover:bg-red-500/50 transition text-sm"
+                      >
+                        Close ✕
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* PDF Preview */}
+                  <iframe
+                    src={selectedRulebook}
+                    className="w-full h-full"
+                    title="Rulebook Preview"
+                  />
+                </div>
+              </motion.div>
             </>
           </AnimatePresence>,
           document.getElementById("modal-root")
@@ -461,9 +582,7 @@ export default function ExpandableEventCards({ events }) {
                 <h3 className="text-xl font-bold text-cyan-300">
                   {event.eventName}
                 </h3>
-                <p className="text-sm text-blue-200">
-                  {event.eventDate}
-                </p>
+                <p className="text-sm text-blue-200">{event.eventDate}</p>
               </div>
             </div>
           </motion.div>
@@ -475,8 +594,10 @@ export default function ExpandableEventCards({ events }) {
 
 function Info({ icon, text }) {
   return (
-    <div className="flex items-center justify-center gap-2 px-4 py-2
-      bg-white/5 rounded-xl border border-cyan-400/10">
+    <div
+      className="flex items-center justify-center gap-2 px-4 py-2
+      bg-white/5 rounded-xl border border-cyan-400/10"
+    >
       <span className="text-cyan-400">{icon}</span>
       <span className="text-xs">{text}</span>
     </div>
