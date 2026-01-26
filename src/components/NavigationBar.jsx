@@ -179,6 +179,7 @@ import {
   UserPlus,
   Sparkles,
   Shirt,
+  BuildingIcon
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -233,6 +234,7 @@ export default function NavigationBar() {
     { name: "Contact Us", href: "/contact", icon: Mail },
     { name: "CA", href: "/ca", icon: MicVocal },
     { name: "Prefest", href: "/prefest", icon: Sparkles },
+    { name: "Accomodation", href: "/accomodation", icon: BuildingIcon },
   ];
 
   return (
