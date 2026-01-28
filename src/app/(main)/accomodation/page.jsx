@@ -174,57 +174,6 @@ const Accommodation = () => {
       <DecorativeDivider colorFrom="purple-400" colorTo="indigo-500" />
 
       {/* SCHEDULE SECTION */}
-      <section className="py-16 px-6 pb-28">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-sm font-semibold text-blue-300 mb-3 tracking-widest drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]">
-              EVENT TIMELINE
-            </h2>
-            <h3 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-200 via-purple-300 to-indigo-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(147,197,253,0.4)] mb-4">
-              EVENT SCHEDULE
-            </h3>
-            <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
-              Plan your stay according to the event schedule. Check-in and
-              check-out timings are flexible.
-            </p>
-          </div>
-
-          <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-
-            <div className="relative bg-black/60 backdrop-blur-md border-2 border-blue-400/40 hover:border-blue-400/70 rounded-2xl p-4 sm:p-6 transition-all duration-300 shadow-2xl shadow-blue-500/20">
-              <div className="aspect-video w-full rounded-xl overflow-hidden bg-black/40 border border-blue-400/30">
-                <iframe
-                  src="https://docs.google.com/spreadsheets/d/16R5WGCP0H-tuNFHE2xNPe1HzpaHZQ5W2GUwOu992c1M/edit?gid=0#gid=0"
-                  className="w-full h-full"
-                  title="Accommodation Schedule"
-                  style={{ border: "none" }}
-                  loading="lazy"
-                ></iframe>
-              </div>
-
-              <div className="mt-4 flex justify-center">
-                <a
-                  href="https://docs.google.com/spreadsheets/d/16R5WGCP0H-tuNFHE2xNPe1HzpaHZQ5W2GUwOu992c1M/edit?gid=0#gid=0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 border border-blue-400/30"
-                >
-                  <svg
-                    className="w-4 h-4 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                  </svg>
-                  View Full Schedule
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* IMPORTANT INFORMATION SECTION */}
       <section className="py-16 px-6 pb-28">
