@@ -235,6 +235,7 @@ export default function NavigationBar() {
     { name: "CA", href: "/ca", icon: MicVocal },
     { name: "Prefest", href: "/prefest", icon: Sparkles },
     { name: "Accomodation", href: "/accomodation", icon: BuildingIcon },
+    {name:"Workshops", href:"/workshop", icon: Trophy }
   ];
 
   return (
