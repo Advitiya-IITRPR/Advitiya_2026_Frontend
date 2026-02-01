@@ -150,7 +150,7 @@ function WorkshopsPage() {
 
                   {/* Workshop Image */}
                   <motion.div layoutId={`image-${active.title}-${id}`}>
-                    <Image
+                    <img
                       src={active.src}
                       alt={active.title}
                       width={500}
@@ -213,7 +213,7 @@ function WorkshopsPage() {
             >
               <div className="flex gap-4 flex-col w-full">
                 <motion.div layoutId={`image-${card.title}-${id}`}>
-                  <Image
+                  <img
                     width={100}
                     height={100}
                     src={card.src}
