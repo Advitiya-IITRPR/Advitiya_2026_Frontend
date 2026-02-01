@@ -26,6 +26,7 @@
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.22",
     "globe.gl": "^2.44.1",
+    "html5-qrcode": "^2.3.8",
     "jose": "^6.1.0",
     "jspdf": "^4.0.0",
     "jspdf-autotable": "^5.0.2",

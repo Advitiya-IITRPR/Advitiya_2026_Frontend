@@ -48,7 +48,7 @@ const Accommodation = () => {
               </div>
             </div>
 
-            <a href="/contact">
+            <a href="https://forms.gle/ppBxdLcabXP9Xh1WA">
               <button className="px-8 py-3 sm:py-3.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer border border-blue-400/30">
                 Book Now
               </button>
@@ -76,12 +76,9 @@ const Accommodation = () => {
               {
                 id: "01",
                 days: "One Day",
-                price: "₹250",
+                price: "₹200",
                 color: "blue",
                 features: [
-                  "Check-in & Check-out",
-                  "Basic Amenities",
-                  "Security",
                 ],
                 glow: "from-blue-500/30 to-blue-600/30",
                 border: "border-blue-400/40 hover:border-blue-400/70",
@@ -89,12 +86,9 @@ const Accommodation = () => {
               {
                 id: "02",
                 days: "Two Days",
-                price: "₹450",
+                price: "₹400",
                 color: "purple",
                 features: [
-                  "Extended Stay",
-                  "All Basic Amenities",
-                  "24/7 Support",
                 ],
                 glow: "from-purple-500/30 to-purple-600/30",
                 border: "border-purple-400/40 hover:border-purple-400/70",
@@ -102,12 +96,9 @@ const Accommodation = () => {
               {
                 id: "03",
                 days: "Three Days",
-                price: "₹650",
+                price: "₹600",
                 color: "indigo",
                 features: [
-                  "Full Event Coverage",
-                  "Premium Amenities",
-                  "Priority Support",
                 ],
                 glow: "from-indigo-500/30 to-indigo-600/30",
                 border: "border-indigo-400/40 hover:border-indigo-400/70",

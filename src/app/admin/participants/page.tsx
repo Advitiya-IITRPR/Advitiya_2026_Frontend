@@ -44,20 +44,10 @@ import {
 import jsPDF from "jspdf";
 import autoTable, { RowInput } from "jspdf-autotable";
 import Image from "next/image"; // ⭐ REQUIRED FIX
+import QrScanner from '@/components/QrCodeScanner'
+import QrModal from '@/components/QRMode'
 
 // ---------------------- TYPES ----------------------
-export type event = {
-    description: string,
-    eventDateAndTime: Date,
-    eventName: string,
-    eventFees: number,
-    eventImage: string,
-    id: string,
-    isRegistrationOpen: boolean,
-    maxSize: number,
-    minSize: number,
-    webPageLink: string
-}
 
 export type user = {
     id: string,
@@ -65,134 +55,81 @@ export type user = {
     userName: string,
     isVerified: boolean,
     mobileNo: string,
+    collegeName: string,
+    mealPending: number,
+    dateTime: Date,
+    paymentStatus: "Pending" | "Completed"
+
 }
 
-export type participant = {
-    id: string,
-    EventParticipated: event,
-    TeamName: string,
-    participants: user[]
-};
 
 // ---------------------- COLUMNS ----------------------
-const columns: ColumnDef<participant>[] = [
+const columns: ColumnDef<user>[] = [
     {
         accessorKey: "id",
         header: "id",
         enableHiding: false,
     },
     {
-        accessorKey: "TeamName",
-        header: "Team Name",
-        cell: ({ row }) => <div>{row.getValue("TeamName")}</div>
+        accessorKey: "userName",
+        header: "userName",
+        cell: ({ row }) => <div>{row.getValue("userName")}</div>
     },
     {
-        accessorFn: (row) => row.EventParticipated.eventName,
-        id: "EventParticipated",
-        header: ({ column }) => (
-            <Button
-                variant="ghost"
-                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            >
-                Event <ArrowUpDown />
-            </Button>
-        ),
-        cell: ({ row }) => {
-            const eventDetails: event = row.original.EventParticipated;
-            return (
-                <Dialog>
-                    <form>
-                        <DialogTrigger asChild>
-                            <Button variant="outline">{eventDetails.eventName}</Button>
-                        </DialogTrigger>
-
-                        <DialogContent className="sm:max-w-[425px]">
-                            <DialogHeader>
-                                <DialogTitle className="text-center">
-                                    {eventDetails.eventName}
-                                </DialogTitle>
-
-                                <div className="flex gap-3 items-start">
-                                    <DialogDescription className="text-center">
-                                        <span className="font-bold">Date:</span> {new Date(eventDetails.eventDateAndTime).toDateString()} <br />
-                                        <span className="font-bold">Time:</span> {new Date(eventDetails.eventDateAndTime).toLocaleTimeString()} <br />
-                                        <span className="font-bold">Event Fees:</span> {eventDetails.eventFees} <br />
-                                        <span className="font-bold">Web Page Link:</span>{" "}
-                                        <a
-                                            href={eventDetails.webPageLink.startsWith("http")
-                                                ? eventDetails.webPageLink
-                                                : `http://${eventDetails.webPageLink}`
-                                            }
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-blue-400 underline"
-                                        >
-                                            Link
-                                        </a>
-                                        <br />
-                                        <span className="font-bold">Registration:</span>{" "}
-                                        {eventDetails.isRegistrationOpen ? "Open" : "Closed"} <br />
-                                        <span className="font-bold">Team Min Size:</span> {eventDetails.minSize} <br />
-                                        <span className="font-bold">Team Max Size:</span> {eventDetails.maxSize}
-                                    </DialogDescription>
-
-                                    {/* ⭐ Next.js Optimized Image */}
-                                    <Image
-                                        src={eventDetails.eventImage}
-                                        width={100}
-                                        height={100}
-                                        alt={eventDetails.eventName}
-                                        className="rounded-md object-cover"
-                                    />
-                                </div>
-                            </DialogHeader>
-
-                            <div className="grid gap-4">
-                                <div className="grid gap-3 text-center">
-                                    {eventDetails.description}
-                                </div>
-                            </div>
-                        </DialogContent>
-                    </form>
-                </Dialog>
-            );
-        },
+        accessorKey: "isVerified",
+        header: "isVerified",
+        cell: ({ row }) => (
+            <div>
+                {row.getValue("isVerified") ? "Yes" : "No"}
+            </div>
+        )
+    }
+    ,
+    {
+        accessorKey: "mobileNo",
+        header: "mobileNo",
+        cell: ({ row }) => <div>{row.getValue("mobileNo")}</div>
     },
     {
-        accessorKey: "participants",
-        header: () => <div>Participants</div>,
+        accessorKey: "collegeName",
+        header: "collegeName",
+        cell: ({ row }) => <div>{row.getValue("collegeName")}</div>
+    },
+    {
+        accessorKey: "mealPending",
+        header: "mealPending",
+        cell: ({ row }) => <div>{row.getValue("mealPending")}</div>
+    },
+    {
+        accessorKey: "dateTime",
+        header: "Date & Time",
         cell: ({ row }) => {
-            const participantArr: user[] = row.getValue("participants");
+            const value = row.getValue("dateTime") as Date;
 
             return (
-                    <div className="flex gap-x-2 flex-wrap">
-                        {participantArr.map((participant) => (
-                             <Dialog key={participant.id}> 
-                                <form>
-                                <DialogTrigger asChild>
-                                    <Button variant="outline">{participant.userName}</Button>
-                                </DialogTrigger>
-
-                                <DialogContent className="sm:max-w-[425px]">
-                                    <DialogHeader>
-                                        <DialogTitle className="text-center">
-                                            {participant.userName}
-                                        </DialogTitle>
-
-                                        <DialogDescription className="text-center">
-                                            <span className="font-bold">Email:</span> {participant.email} <br />
-                                            <span className="font-bold">Mobile:</span> {participant.mobileNo}
-                                        </DialogDescription>
-                                    </DialogHeader>
-                                </DialogContent>
-                            </form>
-                        </Dialog>
-                    ))}
+                <div>
+                    {value.toLocaleString(undefined, {
+                        year: "numeric",
+                        month: "short",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                    })}
                 </div>
             );
         },
-    }
+    },
+    {
+        accessorKey: "paymentStatus",
+        header: "paymentStatus",
+        cell: ({ row }) => <div>{row.getValue("paymentStatus")}</div>
+    },
 ];
+
+
+type ScanResult =
+    | { success: true; data: user }
+    | { success: false; error: string };
 
 // ---------------------- MAIN COMPONENT ----------------------
 export default function PaticipantPage() {
@@ -201,7 +138,10 @@ export default function PaticipantPage() {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({ id: false })
     const [rowSelection, setRowSelection] = useState({})
-    const [participantsList, setParticipantsList] = useState([])
+    const [participantsList, setParticipantsList] = useState<user[]>([]);
+    const [scanResult, setScanResult] = useState<ScanResult | null>(null);
+    const [isOpen, setIsOpen] = useState(false);
+
 
     const table = useReactTable({
         data: participantsList,
@@ -223,10 +163,29 @@ export default function PaticipantPage() {
     })
 
     useEffect(() => {
-        axios.get("/api/participant/getAllParticipants")
-            .then((response) => setParticipantsList(response.data.data))
-            .catch((error) => toast.error(error.response.data.message))
-            .finally(() => setLoading(false))
+        // axios.get("/api/participant/getAllParticipants")
+        //     .then((response) => setParticipantsList(response.data.data))
+        //     .catch((error) => toast.error(error.response.data.message))
+        //     .finally(() => setLoading(false))
+
+        const usersList: user[] = [
+            {
+                id: "1",
+                email: "example@example.com",
+                userName: "John Doe",
+                isVerified: true,
+                mobileNo: "9087654321",
+                collegeName: "ABC College",
+                mealPending: 3,
+                dateTime: new Date(),
+                paymentStatus: "Pending",
+            },
+        ];
+
+
+        setParticipantsList(usersList)
+        setLoading(false)
+
     }, [])
 
 
@@ -236,43 +195,35 @@ export default function PaticipantPage() {
         const rows = table.getRowModel().rows;
 
         const headers = [
-            "Team Name",
-            "Event Name",
-            "Event Date",
-            "Participant Name",
+            "ID",
+            "Name",
             "Email",
             "Mobile",
+            "College",
+            "Meal Pending",
+            "Date & Time",
+            "Payment Status",
+            "isVerified"
         ];
 
         const body: RowInput[] = [];
 
-        let teamColorToggle = false;
-
         rows.forEach((row) => {
-            const team = row.original;
-            const teamName = team.TeamName;
-            const event = team.EventParticipated;
+            const user = row.original as user;
 
-            const eventName = event?.eventName || "";
-            const eventDate = new Date(event?.eventDateAndTime || "").toDateString();
+            const dateTime = new Date(user.dateTime).toLocaleString();
 
-            const rowColor: [number, number, number] =
-                teamColorToggle ? [230, 247, 255] : [255, 245, 230];
-
-            teamColorToggle = !teamColorToggle;
-
-            team.participants.forEach((p, index) => {
-                const rowData: RowInput = [
-                    { content: index === 0 ? teamName : "", styles: { halign: "center", fillColor: rowColor } },
-                    { content: index === 0 ? eventName : "", styles: { fillColor: rowColor } },
-                    { content: index === 0 ? eventDate : "", styles: { fillColor: rowColor } },
-                    { content: p.userName, styles: { fillColor: rowColor } },
-                    { content: p.email, styles: { fillColor: rowColor } },
-                    { content: p.mobileNo, styles: { fillColor: rowColor } },
-                ];
-
-                body.push(rowData);
-            });
+            body.push([
+                { content: user.id, styles: { halign: "center" } },
+                { content: user.userName },
+                { content: user.email },
+                { content: user.mobileNo },
+                { content: user.collegeName },
+                { content: String(user.mealPending), styles: { halign: "center" } },
+                { content: dateTime },
+                { content: user.paymentStatus, styles: { halign: "center" } },
+                { content: user.isVerified ? "Yes" : "No" }
+            ]);
         });
 
         doc.setFontSize(14);
@@ -281,20 +232,75 @@ export default function PaticipantPage() {
         autoTable(doc, {
             startY: 20,
             head: [headers],
-            body: body,
+            body,
             styles: { fontSize: 10, cellPadding: 3 },
             headStyles: { fillColor: [44, 62, 80], textColor: [255, 255, 255] },
-            columnStyles: { 0: { halign: "center" } },
+            columnStyles: { 0: { halign: "center" }, 5: { halign: "center" }, 7: { halign: "center" } },
         });
 
         doc.save("participants-report.pdf");
     };
+
+    const handleScan = async (qrData: string) => {
+        try {
+            const res = await axios.post("/api/admin/verifyQRCode", {
+                QRCodeData: qrData,
+            });
+
+            const data: user = res.data.data;
+
+            setScanResult({ success: true, data });
+            setIsOpen(true);
+        } catch (err: any) {
+            setScanResult({ success: false, error: err?.message || "Scan failed" });
+            setIsOpen(true);
+        }
+    };
+
 
     if (loading) return <LoaderOne />;
 
     return (
         <div>
             <AdminNavbar />
+
+            <div className='mt-30'>
+                <QrScanner onScan={handleScan} />
+            </div>
+            {isOpen && (
+                <div className="qr-modal-overlay">
+                    <div className="qr-modal">
+                        {scanResult?.success ? (
+                            <>
+                                <h2 className="qr-modal-title">Scan Successful ✅</h2>
+
+                                <div className="qr-modal-body">
+                                    <p><strong>ID:</strong> {scanResult.data.id}</p>
+                                    <p><strong>Email:</strong> {scanResult.data.email}</p>
+                                    <p><strong>Username:</strong> {scanResult.data.userName}</p>
+                                    <p><strong>Verified:</strong> {scanResult.data.isVerified ? "True" : "False"}</p>
+                                    <p><strong>Mobile:</strong> {scanResult.data.mobileNo}</p>
+                                    <p><strong>College:</strong> {scanResult.data.collegeName}</p>
+                                    <p><strong>Meal Pending:</strong> {scanResult.data.mealPending}</p>
+                                    <p><strong>DateTime:</strong> {new Date(scanResult.data.dateTime).toLocaleString()}</p>
+                                    <p><strong>Payment:</strong> {scanResult.data.paymentStatus}</p>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <h2 className="qr-modal-title">Scan Failed ❌</h2>
+                                <p className="qr-modal-error">{scanResult?.error || "Invalid QR code"}</p>
+                            </>
+                        )}
+
+                        <button className="qr-modal-close" onClick={() => setIsOpen(false)}>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
+
+
 
             <div className="mt-32 m-4">
                 <h1 className="text-center font-bold text-2xl italic">
@@ -304,10 +310,10 @@ export default function PaticipantPage() {
                 <div className="w-full">
                     <div className="flex items-center py-4 justify-between gap-10">
                         <Input
-                            placeholder="Filter Event..."
-                            value={(table.getColumn("EventParticipated")?.getFilterValue() as string) ?? ""}
+                            placeholder="Filter User..."
+                            value={(table.getColumn("userName")?.getFilterValue() as string) ?? ""}
                             onChange={(e) =>
-                                table.getColumn("EventParticipated")?.setFilterValue(e.target.value)
+                                table.getColumn("userName")?.setFilterValue(e.target.value)
                             }
                             className="max-w-sm"
                         />
