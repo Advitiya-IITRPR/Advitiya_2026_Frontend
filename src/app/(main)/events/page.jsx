@@ -1814,10 +1814,25 @@ Any form of cheating or unethical behavior will lead to disqualification of the 
 
 const CLUBS_PER_LOAD = 2;
 
+// ✅ Converts google drive view link => preview link (for iframe)
+const getPreviewLink = (url) => {
+  if (!url) return "";
+
+  // convert .../file/d/<id>/view -> .../file/d/<id>/preview
+  if (url.includes("/file/d/") && url.includes("/view")) {
+    return url.replace("/view", "/preview");
+  }
+
+  return url;
+};
+
 const page = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [visibleCount, setVisibleCount] = useState(CLUBS_PER_LOAD);
   const loaderRef = useRef(null);
+
+  // ✅ Rulebook states
+  const [selectedRulebook, setSelectedRulebook] = useState(null);
 
   const handleRegisterClick = (event) => {
     setSelectedEvent(event);
@@ -1825,6 +1840,19 @@ const page = () => {
 
   const handleCloseModal = () => {
     setSelectedEvent(null);
+  };
+
+  // ✅ Open rulebook modal
+  const handleOpenRulebook = (rulebookUrl) => {
+    if (!rulebookUrl) {
+      toast.error("Rulebook not available yet!");
+      return;
+    }
+    setSelectedRulebook(getPreviewLink(rulebookUrl));
+  };
+
+  const handleCloseRulebook = () => {
+    setSelectedRulebook(null);
   };
 
   const handleFormSubmit = async (formData) => {
@@ -1837,8 +1865,8 @@ const page = () => {
     } catch (error) {
       toast.error(
         error.response?.data?.message ||
-        error.message ||
-        "Registration failed. Please try again."
+          error.message ||
+          "Registration failed. Please try again."
       );
     }
   };
@@ -1896,11 +1924,13 @@ const page = () => {
 
               {/* ✅ EVENTS */}
               <div className="relative z-10">
-                <EventCard events={club.events} />
+                <EventCard
+                  events={club.events}
+                  onRulebookClick={handleOpenRulebook} // ✅ added
+                />
               </div>
             </div>
           ))}
-
 
           {/* 👇 Scroll Trigger */}
           <div ref={loaderRef} className="h-16 flex justify-center items-center">
@@ -1917,13 +1947,61 @@ const page = () => {
         </h3>
       )}
 
+      {/* ✅ RULEBOOK MODAL */}
+      {selectedRulebook && (
+        <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50 px-4">
+          <div className="bg-white/10 backdrop-blur-xl rounded-2xl w-full md:w-[75%] h-[80%] relative overflow-hidden border border-white/20 shadow-2xl">
+            {/* Top Bar */}
+            <div className="flex justify-between items-center px-4 py-3 border-b border-white/20">
+              <h2 className="text-white font-semibold text-lg">📘 Rulebook</h2>
+
+              <div className="flex gap-3">
+                {/* Open in New Tab */}
+                <a
+                  href={selectedRulebook}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 transition text-sm"
+                >
+                  Open ↗
+                </a>
+
+                {/* Download (works for direct pdf links) */}
+                <a
+                  href={selectedRulebook}
+                  download
+                  className="px-4 py-2 rounded-xl bg-blue-500/30 text-white hover:bg-blue-500/50 transition text-sm"
+                >
+                  Download ⬇
+                </a>
+
+                {/* Close */}
+                <button
+                  onClick={handleCloseRulebook}
+                  className="px-4 py-2 rounded-xl bg-red-500/30 text-white hover:bg-red-500/50 transition text-sm"
+                >
+                  Close ✕
+                </button>
+              </div>
+            </div>
+
+            {/* PDF Preview */}
+            <iframe
+              src={selectedRulebook}
+              className="w-full h-full"
+              title="Rulebook Preview"
+            />
+          </div>
+        </div>
+      )}
+
       {/* Modal (if needed later) */}
-      {/* 
+      {/*
       <EventRegistrationModal
         event={selectedEvent}
         onClose={handleCloseModal}
         onSubmit={handleFormSubmit}
-      /> 
+      />
       */}
     </div>
   );
