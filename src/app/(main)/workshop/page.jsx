@@ -41,121 +41,39 @@ export const CloseIcon = () => {
 
 const workshopsList = [
   {
-    title: "Web Development Workshop",
-    src: "/workshops/web-dev.png",
-    description: "Learn modern web development with React and Next.js",
-    date: "March 15, 2025",
-    duration: "3 hours",
-    instructor: "John Doe",
+    title: "Derivatives (Futures & Options) Workshop",
+    src: "/Talk_Final.png",
+    description: ``,
+    date: "8th Feb 2026",
+    time: "11AM onwards",
+    instructor: "Mr. Saurabh Khanna",
     ctaText: "Register Now",
-    ctaLink: "https://docs.google.com/forms/d/e/1FAIpQLSftGIgeis0G31Ck6hGGIPwv49ppwOPrEGyECwrjXm43_UvHwg/viewform",
+    ctaLink: "https://docs.google.com/forms/d/e/1FAIpQLSdMuVJGcfySjse0cg2Yp22TJY4kTtytD7vsoOdilQYBhoQIEA/viewform",
     content: () => {
       return (
         <div className="text-neutral-600 dark:text-neutral-400 text-sm md:text-base">
           <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
-            What You'll Learn:
+            Educator Details::
           </h4>
           <ul className="list-disc list-inside space-y-1 mb-4">
-            <li>React fundamentals and hooks</li>
-            <li>Next.js routing and server components</li>
-            <li>Tailwind CSS styling</li>
-            <li>Building responsive layouts</li>
+            <li>Name: Mr. Saurabh Khanna</li>
+            <li>Learning and Development Specialist</li>
+            <li>Multi-Commodity Exchange of India Limited</li>
+
           </ul>
           <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
-            Prerequisites:
+            Session Details:
           </h4>
-          <p>Basic HTML, CSS, and JavaScript knowledge</p>
+          <ul className="list-disc list-inside space-y-1 mb-4">
+            <li>Date: 8th Feb 2026</li>
+            <li>Time: 11AM onwards</li>
+            <li>Session Fee: Rs 150/-</li>
+          </ul>
         </div>
       );
     },
   },
-  {
-    title: "AI & Machine Learning",
-    src: "/workshops/ai-ml.png",
-    description: "Introduction to AI and ML concepts with hands-on projects",
-    date: "March 20, 2025",
-    duration: "4 hours",
-    instructor: "Sarah Johnson",
-    ctaText: "Register Now",
-    ctaLink: "https://docs.google.com/forms/d/e/1FAIpQLSftGIgeis0G31Ck6hGGIPwv49ppwOPrEGyECwrjXm43_UvHwg/viewform",
-    content: () => {
-      return (
-        <div className="text-neutral-600 dark:text-neutral-400 text-sm md:text-base">
-          <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
-            What You'll Learn:
-          </h4>
-          <ul className="list-disc list-inside space-y-1 mb-4">
-            <li>Machine Learning fundamentals</li>
-            <li>Neural networks and deep learning</li>
-            <li>Working with TensorFlow</li>
-            <li>Building your first AI model</li>
-          </ul>
-          <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
-            Prerequisites:
-          </h4>
-          <p>Python programming basics</p>
-        </div>
-      );
-    },
-  },
-  {
-    title: "Blockchain Development",
-    src: "/workshops/blockchain.png",
-    description: "Build decentralized applications with Solidity",
-    date: "March 25, 2025",
-    duration: "5 hours",
-    instructor: "Mike Chen",
-    ctaText: "Register Now",
-    ctaLink: "https://docs.google.com/forms/d/e/1FAIpQLSftGIgeis0G31Ck6hGGIPwv49ppwOPrEGyECwrjXm43_UvHwg/viewform",
-    content: () => {
-      return (
-        <div className="text-neutral-600 dark:text-neutral-400 text-sm md:text-base">
-          <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
-            What You'll Learn:
-          </h4>
-          <ul className="list-disc list-inside space-y-1 mb-4">
-            <li>Blockchain fundamentals</li>
-            <li>Smart contract development</li>
-            <li>Ethereum and Web3.js</li>
-            <li>Deploy your first dApp</li>
-          </ul>
-          <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
-            Prerequisites:
-          </h4>
-          <p>JavaScript and basic programming concepts</p>
-        </div>
-      );
-    },
-  },
-  {
-    title: "Mobile App Development",
-    src: "/workshops/mobile-dev.png",
-    description: "Create cross-platform apps with React Native",
-    date: "March 30, 2025",
-    duration: "4 hours",
-    instructor: "Emily Rodriguez",
-    ctaText: "Register Now",
-    ctaLink: "https://docs.google.com/forms/d/e/1FAIpQLSftGIgeis0G31Ck6hGGIPwv49ppwOPrEGyECwrjXm43_UvHwg/viewform",
-    content: () => {
-      return (
-        <div className="text-neutral-600 dark:text-neutral-400 text-sm md:text-base">
-          <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
-            What You'll Learn:
-          </h4>
-          <ul className="list-disc list-inside space-y-1 mb-4">
-            <li>React Native fundamentals</li>
-            <li>Mobile UI/UX design patterns</li>
-            <li>Navigation and state management</li>
-            <li>Publishing to app stores</li>
-          </ul>
-          <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
-            Prerequisites:
-          </h4>
-          <p>React experience recommended</p>
-        </div>
-      );
-    },
-  },
+  
 ];
 
 function WorkshopsPage() {
@@ -256,11 +174,11 @@ function WorkshopsPage() {
                       >
                         {active.description}
                       </motion.p>
-                      <div className="mt-2 space-y-1 text-sm text-neutral-600 dark:text-neutral-400">
+                      {/* <div className="mt-2 space-y-1 text-sm text-neutral-600 dark:text-neutral-400">
                         <p><span className="font-semibold">Date:</span> {active.date}</p>
-                        <p><span className="font-semibold">Duration:</span> {active.duration}</p>
+                        <p><span className="font-semibold">Duration:</span> {active.time}</p>
                         <p><span className="font-semibold">Instructor:</span> {active.instructor}</p>
-                      </div>
+                      </div> */}
                     </div>
                     <motion.a
                       layout
@@ -317,7 +235,7 @@ function WorkshopsPage() {
                     {card.description}
                   </motion.p>
                   <p className="text-neutral-500 dark:text-neutral-500 text-center text-xs mt-1">
-                    {card.date} • {card.duration}
+                    {card.date} • {card.time}
                   </p>
                 </div>
               </div>
