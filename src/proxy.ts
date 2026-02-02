@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
 export async function proxy(req:NextRequest) {
-  const token = req.cookies.get("token")?.value;
+  const token = req.cookies.get("access_token")?.value;
   const isAdminRoute = req.nextUrl.pathname.startsWith("/admin");
   try {
     if (!token && isAdminRoute && req.nextUrl.pathname !== "/admin/login") {
