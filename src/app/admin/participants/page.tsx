@@ -3,7 +3,7 @@
 import AdminNavbar from '@/components/adminNavBar'
 import { LoaderOne } from '@/components/ui/loader'
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_MEDIA_SRC_TYPES, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
 import {
@@ -56,12 +56,12 @@ export type User = {
   id: string
   email: string
   userName: string
-  isVerified: boolean
+  paymentVerified: boolean
   mobileNo: string
   collegeName: string
-  mealPending: number
+  mealsLeft: number
   dateTime: string   // ✅ FIXED (string, not Date)
-  paymentStatus: "Pending" | "Completed"
+  paymentMade: number
 }
 
 type ScanResult =
@@ -80,9 +80,9 @@ const columns: ColumnDef<User>[] = [
     header: "Name",
   },
   {
-    accessorKey: "isVerified",
+    accessorKey: "paymentVerified",
     header: "Verified",
-    cell: ({ row }) => (row.getValue("isVerified") ? "Yes" : "No"),
+    cell: ({ row }) => (row.getValue("paymentVerified") ? "Yes" : "No"),
   },
   {
     accessorKey: "mobileNo",
@@ -103,10 +103,6 @@ const columns: ColumnDef<User>[] = [
       const value = row.getValue("dateTime") as string
       return new Date(value).toLocaleString()
     },
-  },
-  {
-    accessorKey: "paymentStatus",
-    header: "Payment",
   },
 ]
 
@@ -151,21 +147,21 @@ export default function ParticipantPage() {
   /* ================= LOAD DATA ================= */
 
   useEffect(() => {
-    const mockUsers: User[] = [
-      {
-        id: "1",
-        email: "example@example.com",
-        userName: "John Doe",
-        isVerified: true,
-        mobileNo: "9087654321",
-        collegeName: "ABC College",
-        mealPending: 3,
-        dateTime: new Date().toISOString(),
-        paymentStatus: "Pending",
-      },
-    ]
+    // const mockUsers: User[] = [
+    //   {
+    //     id: "1",
+    //     email: "example@example.com",
+    //     userName: "John Doe",
+    //     paymentVerified: true,
+    //     mobileNo: "9087654321",
+    //     collegeName: "ABC College",
+    //     mealsLeft: 3,
+    //     dateTime: new Date().toISOString(),
+    //     paymentStatus: "Pending",
+    //   },
+    // ]
 
-    setParticipantsList(mockUsers)
+    // setParticipantsList(mockUsers)
     setLoading(false)
   }, [])
 
@@ -183,10 +179,10 @@ export default function ParticipantPage() {
         u.email,
         u.mobileNo,
         u.collegeName,
-        u.mealPending.toString(),
+        u.mealsLeft.toString(),
         new Date(u.dateTime).toLocaleString(),
-        u.paymentStatus,
-        u.isVerified ? "Yes" : "No",
+        u.paymentMade,
+        u.paymentVerified ? "Yes" : "No",
       ]
     })
 
@@ -204,8 +200,7 @@ export default function ParticipantPage() {
     setQrLoading(true)
     try {
       const res = await axios.post("/api/admin/generateQRCode", {
-        id: "1",
-        email: "example@example.com",
+        id: "f516a80d-ab26-4b35-9295-fcbbeb68d692",
       })
       setQr(res.data.data)
       setQrDialogOpen(true)
@@ -221,7 +216,13 @@ export default function ParticipantPage() {
       const res = await axios.post("/api/admin/verifyQRCode", {
         QRCodeData: qrData,
       })
-      setScanResult({ success: true, data: res.data.data })
+      .then((response) =>{
+        console.log(response.data)
+        setScanResult({ success: true, data: response.data.data })
+      })
+      .catch((error) =>{
+        console.log(error)
+      })
     } catch (err: any) {
       setScanResult({ success: false, error: "Invalid QR Code" })
     } finally {
@@ -246,7 +247,7 @@ export default function ParticipantPage() {
       </Button>
 
       <Dialog open={qrDialogOpen} onOpenChange={setQrDialogOpen}>
-        <DialogContent>
+        <DialogContent className='bg-white'>
           <DialogHeader>
             <DialogTitle className="text-center">QR Code</DialogTitle>
             <DialogDescription className="text-center">
@@ -257,20 +258,24 @@ export default function ParticipantPage() {
           {qrLoading ? (
             <div className="animate-spin h-10 w-10 border-2 border-blue-500 rounded-full mx-auto" />
           ) : (
-            qr && <QRCodeCanvas value={qr} size={260} />
+            qr && <QRCodeCanvas value={qr} size={260} className='bg-white' />
           )}
         </DialogContent>
       </Dialog>
 
       {scanModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+        <div className="fixed inset-0 z-20 text-black  bg-black/50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg w-96">
             {scanResult?.success ? (
               <>
                 <h2 className="font-bold text-green-600">Scan Successful ✅</h2>
                 <p>Name: {scanResult.data.userName}</p>
                 <p>Email: {scanResult.data.email}</p>
-                <p>Verified: {scanResult.data.isVerified ? "Yes" : "No"}</p>
+                <p>Email: {scanResult.data.collegeName}</p>
+                <p>Payment Verified: {scanResult.data.paymentVerified ? "Yes" : "No"}</p>
+                <p>Payment Made: {scanResult.data.paymentMade}</p>
+                <p>Verified: {scanResult.data.paymentVerified ? "Yes" : "No"}</p>
+                <p>Meals Left: {scanResult.data.mealsLeft}</p>
               </>
             ) : (
               <h2 className="font-bold text-red-600">Scan Failed ❌</h2>
