@@ -43,9 +43,10 @@ import {
 } from "@/components/ui/dialog"
 import jsPDF from "jspdf";
 import autoTable, { RowInput } from "jspdf-autotable";
-import Image from "next/image"; // ⭐ REQUIRED FIX
+import Image from "next/image";
 import QrScanner from '@/components/QrCodeScanner'
 import QrModal from '@/components/QRMode'
+import { QRCodeCanvas } from 'qrcode.react';
 
 // ---------------------- TYPES ----------------------
 
@@ -59,7 +60,6 @@ export type user = {
     mealPending: number,
     dateTime: Date,
     paymentStatus: "Pending" | "Completed"
-
 }
 
 
@@ -141,6 +141,8 @@ export default function PaticipantPage() {
     const [participantsList, setParticipantsList] = useState<user[]>([]);
     const [scanResult, setScanResult] = useState<ScanResult | null>(null);
     const [isOpen, setIsOpen] = useState(false);
+    const [qrCodeLoading, setQRCodeLoading] = useState(false);
+    const [qr, setQr] = useState('');
 
 
     const table = useReactTable({
@@ -241,6 +243,24 @@ export default function PaticipantPage() {
         doc.save("participants-report.pdf");
     };
 
+    const generateQRCode = async () => {
+        setQRCodeLoading(true);
+        await axios.post(`/api/admin/generateQRCode`, {
+            id: 1,
+            email: "example@example.com",
+
+        })
+            .then((response) => {
+                console.log(response.data)
+                setQr(response.data.data)
+            })
+            .catch((error) => {
+                toast.error(error.response.data.message)
+            })
+            .finally(() => setQRCodeLoading(false))
+
+    }
+
     const handleScan = async (qrData: string) => {
         try {
             const res = await axios.post("/api/admin/verifyQRCode", {
@@ -264,9 +284,32 @@ export default function PaticipantPage() {
         <div>
             <AdminNavbar />
 
-            <div className='mt-30'>
+            <div className='w-50 mt-30'>
                 <QrScanner onScan={handleScan} />
             </div>
+
+            <Dialog>
+                <DialogTrigger asChild>
+                    <Button variant="outline" onClick={() => generateQRCode()}>QR</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle className="text-center font-bold">QR Code</DialogTitle>
+                        <DialogDescription className="font-bold text-center">
+                            This QR Code is Required during event.
+                        </DialogDescription>
+                        {qrCodeLoading ? (
+                            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-700 dark:border-orange-200"></div>
+                        ) : (
+                            <QRCodeCanvas
+                                value={qr}
+                                size={window.innerWidth < 640 ? 200 : 300}
+                            />
+
+                        )}
+                    </DialogHeader>
+                </DialogContent>
+            </Dialog>
             {isOpen && (
                 <div className="qr-modal-overlay">
                     <div className="qr-modal">

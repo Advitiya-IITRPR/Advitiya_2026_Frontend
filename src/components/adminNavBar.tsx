@@ -1,111 +1,242 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { HoveredLink, Menu, MenuItem} from "@/components/ui/navbar-menu";
 
-import { useTheme } from "next-themes"
-import { Moon, Sun } from "lucide-react"
-import { Button } from "@/components/ui/button";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Home,
+  Calendar,
+  Users,
+  LogOut,
+  Moon,
+  Sun,
+  Menu as MenuIcon,
+  X,
+} from "lucide-react";
+import { Menu, MenuItem, HoveredLink } from "@/components/ui/navbar-menu";
+import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import axios from "axios";
 import { toast } from "sonner";
-
+import { Button } from "@/components/ui/button";
 
 export default function AdminNavbar() {
   const [active, setActive] = useState<string | null>(null);
-  const { setTheme, resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  const router = useRouter()
+  const [mounted, setMounted] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const { setTheme, resolvedTheme } = useTheme();
+  const router = useRouter();
+  const isDark = resolvedTheme === "dark";
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    document.body.style.overflow = mobileOpen ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileOpen]);
 
-  if (!mounted) return null // avoids hydration mismatch
-
-  const isDark = resolvedTheme === 'dark'
-
+  if (!mounted) return null;
 
   const logOutAdmin = async () => {
-    await axios.post("/api/admin/logout")
-      .then(() => {
-        toast.success("Admin Logout Successfully")
-        router.replace("/admin/login")
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message)
-      })
-  }
-
+    try {
+      await axios.post("/api/admin/logout");
+      toast.success("Admin Logout Successfully");
+      router.replace("/admin/login");
+    } catch (error: any) {
+      toast.error(error.response?.data?.message || "Logout failed");
+    }
+  };
 
   return (
-    <div className="fixed top-0 inset-x-0 max-w-full h-14 mx-auto z-50 text-xl text-center justify-center gap-x-2">
-      <Menu setActive={setActive}>
-        <div>
-          <Image
-            src="/logo.png"
-            alt="My Photo"
-            width={48}
-            height={48}
-            className="border rounded-xl ml-4"
-            onClick={() => router.replace("/admin")}
-          />
-        </div>
-        <div className="w-full flex items-center justify-center gap-4">
-          <button className="p-[2px] relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-md" />
-            <div className="px-6 py-1 bg-black rounded-md relative group text-white hover:bg-transparent">
-              Home
+    <>
+      {/* ---------- Styles ---------- */}
+      <style>{`
+  .glass-admin {
+    background: rgba(10, 10, 30, 0.75);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(99, 102, 241, 0.25);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.35);
+  }
+`}</style>
+
+
+      {/* ---------- Navbar ---------- */}
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-0 inset-x-0 z-50 glass-admin h-16"
+      >
+        <div className="max-w-[98%] mx-auto flex items-center px-4 h-full">
+            {/* Logo */}
+            <div
+              className="cursor-pointer"
+              onClick={() => router.replace("/admin")}
+            >
+              <Image
+                src="/logo.png"
+                alt="Admin Logo"
+                width={46}
+                height={46}
+                className="rounded-xl"
+              />
             </div>
-          </button>
-          <button className="p-[2px] relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-md" />
-            <div className="px-6 py-1 bg-black rounded-md relative group text-white hover:bg-transparent hover:cursor-pointer" onClick={() => router.replace('/admin/participants')}>
-              Participant
-            </div>
-          </button>
-          <button className="p-[2px] relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-md" />
-            <div className="px-6 py-1 bg-black rounded-md relative group text-white hover:bg-transparent">
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center ml-auto gap-6">
+              <button
+                onClick={() => router.replace("/admin")}
+                className="text-white flex items-center gap-2 font-semibold hover:text-cyan-400 transition"
+              >
+                <Home size={20} /> Home
+              </button>
+
+              <button
+                onClick={() => router.replace("/admin/participants")}
+                className="text-white flex items-center gap-2 font-semibold hover:text-cyan-400 transition"
+              >
+                <Users size={20} /> Participants
+              </button>
+
               <MenuItem setActive={setActive} active={active} item="Events">
-                <div className="flex flex-col space-y-4 text-m">
-                  <HoveredLink href="/admin/createEvent">Create Event</HoveredLink>
-                  <HoveredLink href="/admin/eventList">Show Event List</HoveredLink>
+                <div className="flex flex-col space-y-4 text-sm">
+                  <HoveredLink href="/admin/createEvent">
+                    Create Event
+                  </HoveredLink>
+                  <HoveredLink href="/admin/eventList">
+                    Event List
+                  </HoveredLink>
                 </div>
               </MenuItem>
             </div>
-          </button>
 
-        </div>
+            {/* Right Actions (Desktop) */}
+            <div className="hidden md:flex items-center gap-4">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setTheme(isDark ? "light" : "dark")}
+                className="border-white/20 bg-white/10 hover:bg-white/20"
+              >
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              </Button>
 
-        {/* Theme Toggle Button */}
-        <div className="flex justify-center items-center h-full m-0 size-8 mx-4 my-2">
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() => setTheme(isDark ? 'light' : 'dark')}
-            className="font-bold"
-          >
-            <Moon
-              className={`h-4 w-4 transition-all ${isDark ? 'scale-0 rotate-90' : 'scale-100 rotate-0'}`}
+              <button
+                onClick={logOutAdmin}
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-white font-semibold
+                bg-gradient-to-r from-cyan-500 to-purple-500"
+              >
+                <LogOut size={18} /> Logout
+              </button>
+            </div>
+
+            {/* Mobile Toggle */}
+            <button
+              onClick={() => setMobileOpen(true)}
+              className="md:hidden text-white ml-auto"
+            >
+              <MenuIcon size={28} />
+            </button>
+          </div>
+      </motion.nav>
+
+      {/* ---------- Mobile Menu ---------- */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 bg-black/80 z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
             />
-            <Sun
-              className={`absolute h-4 w-4 transition-all ${isDark ? 'scale-100 rotate-0' : 'scale-0 -rotate-90'}`}
-            />
-          </Button>
-        </div>
 
-        {/* Logout Button */}
-        <div className="flex justify-center items-center h-full mt-2">
-          <button
-            className="px-3 py-1.5 rounded-md border border-neutral-300 bg-neutral-100 text-neutral-600 hover:-translate-y-1 transform transition duration-200 hover:shadow-md text-base font-medium"
-            onClick={() => logOutAdmin()}
-          >
-            Logout
-          </button>
-        </div>
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.35 }}
+              className="fixed right-0 top-0 h-full w-[85%] max-w-sm z-50
+              bg-gradient-to-br from-slate-900 via-purple-900/60 to-slate-900
+              p-6 pt-20 flex flex-col gap-4"
+            >
+              {/* Close */}
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="absolute top-5 right-5 text-white"
+              >
+                <X size={26} />
+              </button>
 
-      </Menu>
-    </div>
+              <button
+                onClick={() => {
+                  router.replace("/admin");
+                  setMobileOpen(false);
+                }}
+                className="text-white flex items-center gap-4 text-lg font-semibold"
+              >
+                <Home /> Home
+              </button>
+
+              <button
+                onClick={() => {
+                  router.replace("/admin/participants");
+                  setMobileOpen(false);
+                }}
+                className="text-white flex items-center gap-4 text-lg font-semibold"
+              >
+                <Users /> Participants
+              </button>
+
+              <div className="border-t border-white/20 pt-4 space-y-3">
+                <p className="text-purple-300 font-semibold">Events</p>
+                <button
+                  onClick={() => {
+                    router.replace("/admin/createEvent");
+                    setMobileOpen(false);
+                  }}
+                  className="text-white flex items-center gap-3"
+                >
+                  <Calendar size={18} /> Create Event
+                </button>
+                <button
+                  onClick={() => {
+                    router.replace("/admin/eventList");
+                    setMobileOpen(false);
+                  }}
+                  className="text-white flex items-center gap-3"
+                >
+                  <Calendar size={18} /> Event List
+                </button>
+              </div>
+
+              <div className="border-t border-white/20 pt-4 flex gap-4">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setTheme(isDark ? "light" : "dark")}
+                >
+                  {isDark ? <Sun size={18} /> : <Moon size={18} />}
+                </Button>
+
+                <button
+                  onClick={logOutAdmin}
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-full text-white font-semibold
+                  bg-gradient-to-r from-cyan-500 to-purple-500"
+                >
+                  <LogOut size={18} /> Logout
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
