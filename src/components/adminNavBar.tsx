@@ -76,7 +76,7 @@ export default function AdminNavbar() {
               className="cursor-pointer"
               onClick={() => router.replace("/admin")}
             >
-              <Image
+              <img
                 src="/logo.png"
                 alt="Admin Logo"
                 width={46}
