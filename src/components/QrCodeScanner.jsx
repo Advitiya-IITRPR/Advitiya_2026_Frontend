@@ -76,7 +76,7 @@ export default function QrScanner({ onScan }) {
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Scan QR Code</button>
+      <button onClick={() => setIsOpen(true)} className="bg-blue-700 p-3 rounded-2xl">Scan QR Code</button>
 
       {isOpen && (
         <div className="qr-fullscreen">

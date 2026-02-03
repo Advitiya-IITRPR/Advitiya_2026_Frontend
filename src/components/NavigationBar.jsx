@@ -189,23 +189,8 @@ export default function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState("");
-  const { data: session } = useSession();
   const router = useRouter();
 
-  const Logout = async () => {
-    await signOut({ redirect: false, callbackUrl: "/" })
-      .then(() => {
-        toast.success("User Logout Successfully");
-        setTimeout(() => {
-          router.push("/");
-        }, 1000);
-      })
-      .catch((error) => {
-        toast.error("Error while Logout", {
-          description: error.message,
-        });
-      });
-  };
 
   useEffect(() => {
     const handleScroll = () => {

@@ -11,6 +11,7 @@ import {
   Sun,
   Menu as MenuIcon,
   X,
+  Building,
 } from "lucide-react";
 import { Menu, MenuItem, HoveredLink } from "@/components/ui/navbar-menu";
 import { useTheme } from "next-themes";
@@ -19,6 +20,7 @@ import Image from "next/image";
 import axios from "axios";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { FaToriiGate } from "react-icons/fa6";
 
 export default function AdminNavbar() {
   const [active, setActive] = useState<string | null>(null);
@@ -95,35 +97,30 @@ export default function AdminNavbar() {
               </button>
 
               <button
-                onClick={() => router.replace("/admin/participants")}
+                onClick={() => router.replace("/admin/mess_Entry")}
                 className="text-white flex items-center gap-2 font-semibold hover:text-cyan-400 transition"
               >
-                <Users size={20} /> Participants
+                <Users size={20} /> Mess Entry
               </button>
 
-              <MenuItem setActive={setActive} active={active} item="Events">
-                <div className="flex flex-col space-y-4 text-sm">
-                  <HoveredLink href="/admin/createEvent">
-                    Create Event
-                  </HoveredLink>
-                  <HoveredLink href="/admin/eventList">
-                    Event List
-                  </HoveredLink>
-                </div>
-              </MenuItem>
+              <button
+                onClick={() => router.replace("/admin/mainGateEntry")}
+                className="text-white flex items-center gap-2 font-semibold hover:text-cyan-400 transition"
+              >
+                <FaToriiGate size={20} /> Main Gate Entry
+              </button>
+              <button
+                onClick={() => router.replace("/admin/hostelEntry")}
+                className="text-white flex items-center gap-2 font-semibold hover:text-cyan-400 transition"
+              >
+                <Building size={20} /> Hostel Entry
+              </button>
+
             </div>
 
             {/* Right Actions (Desktop) */}
-            <div className="hidden md:flex items-center gap-4">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setTheme(isDark ? "light" : "dark")}
-                className="border-white/20 bg-white/10 hover:bg-white/20"
-              >
-                {isDark ? <Sun size={18} /> : <Moon size={18} />}
-              </Button>
-
+            <div className="hidden md:flex items-center gap-4 ml-4">
+            
               <button
                 onClick={logOutAdmin}
                 className="flex items-center gap-2 px-4 py-2 rounded-full text-white font-semibold
@@ -149,7 +146,7 @@ export default function AdminNavbar() {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/80 z-40"
+              className="fixed inset-0 bg-black/80 z-100"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -162,14 +159,14 @@ export default function AdminNavbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.35 }}
-              className="fixed right-0 top-0 h-full w-[85%] max-w-sm z-50
+              className="fixed right-0 top-0 h-full w-[85%] max-w-sm z-100
               bg-gradient-to-br from-slate-900 via-purple-900/60 to-slate-900
               p-6 pt-20 flex flex-col gap-4"
             >
               {/* Close */}
               <button
                 onClick={() => setMobileOpen(false)}
-                className="absolute top-5 right-5 text-white"
+                className="absolute top-5 right-5 text-white opacity-100"
               >
                 <X size={26} />
               </button>
@@ -186,44 +183,35 @@ export default function AdminNavbar() {
 
               <button
                 onClick={() => {
-                  router.replace("/admin/participants");
+                  router.replace("/admin/mess_Entry");
                   setMobileOpen(false);
                 }}
                 className="text-white flex items-center gap-4 text-lg font-semibold"
               >
-                <Users /> Participants
+                <Users /> Mess Entry
+              </button>
+              <button
+                onClick={() => {
+                  router.replace("/admin/mainGateEntry");
+                  setMobileOpen(false);
+                }}
+                className="text-white flex items-center gap-4 text-lg font-semibold"
+              >
+                <FaToriiGate /> Main Gate Entry
+              </button>
+              <button
+                onClick={() => {
+                  router.replace("/admin/hostelEntry");
+                  setMobileOpen(false);
+                }}
+                className="text-white flex items-center gap-4 text-lg font-semibold"
+              >
+                <Building /> Hostel Entry
               </button>
 
-              <div className="border-t border-white/20 pt-4 space-y-3">
-                <p className="text-purple-300 font-semibold">Events</p>
-                <button
-                  onClick={() => {
-                    router.replace("/admin/createEvent");
-                    setMobileOpen(false);
-                  }}
-                  className="text-white flex items-center gap-3"
-                >
-                  <Calendar size={18} /> Create Event
-                </button>
-                <button
-                  onClick={() => {
-                    router.replace("/admin/eventList");
-                    setMobileOpen(false);
-                  }}
-                  className="text-white flex items-center gap-3"
-                >
-                  <Calendar size={18} /> Event List
-                </button>
-              </div>
+              
 
               <div className="border-t border-white/20 pt-4 flex gap-4">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => setTheme(isDark ? "light" : "dark")}
-                >
-                  {isDark ? <Sun size={18} /> : <Moon size={18} />}
-                </Button>
 
                 <button
                   onClick={logOutAdmin}

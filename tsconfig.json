@@ -37,7 +37,7 @@
     "src/app/api/auth/[...nextauth]/route.js",
     "src/app/(main)/accomodation/page.jsx",
     ".next/dev/types/**/*.ts"
-, "src/components/QrCodeScanner.jsx", "src/app/admin/participants/page.tsx"  ],
+, "src/components/QrCodeScanner.jsx", "src/app/admin/mess_Entry/page.tsx"  ],
   "exclude": [
     "node_modules"
   ]

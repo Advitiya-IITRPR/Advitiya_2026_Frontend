@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import AuthProvider from "@/context/AuthProvider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { DataProvider } from "@/context/dataContext";
 
@@ -23,7 +22,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${montserrat.variable} antialiased min-h-screen`}>
-        <AuthProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
@@ -39,7 +37,6 @@ export default function RootLayout({
 
             <Toaster expand richColors closeButton />
           </ThemeProvider>
-        </AuthProvider>
       </body>
     </html>
   );
