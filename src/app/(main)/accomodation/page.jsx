@@ -50,9 +50,20 @@ const Accommodation = () => {
 
             <a href="https://forms.gle/ppBxdLcabXP9Xh1WA">
               <button className="px-8 py-3 sm:py-3.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer border border-blue-400/30">
-                Book Now
+                Boys Shared Room Form
               </button>
             </a>
+            <a href="https://forms.gle/aTsGVBgk3ericnvC6">
+              <button className="px-8 py-3 sm:py-3.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer border border-blue-400/30">
+                Boys Common Room Form
+              </button>
+            </a>
+            <a href="https://forms.gle/9dYRBabgAYndoUMVA">
+              <button className="px-8 py-3 sm:py-3.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer border border-blue-400/30">
+                Girls Accomodation Form
+              </button>
+            </a>
+            
           </div>
         </div>
       </section>
