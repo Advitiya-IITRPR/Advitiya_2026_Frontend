@@ -184,7 +184,7 @@ export default function EventCreation() {
                         type="submit"
                         disabled={!paymentVerified || submitButtonDisable}
                     >
-                        {submitButtonDisable ? "Creating Event" : "Create Event"}
+                        {submitButtonDisable ? "Registering" : "Register"}
                     </button>
 
 
