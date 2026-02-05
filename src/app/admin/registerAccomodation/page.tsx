@@ -135,7 +135,12 @@ export default function EventCreation() {
                                     <SelectItem value="600">600</SelectItem>
                                     <SelectItem value="450">450</SelectItem>
                                     <SelectItem value="900">900</SelectItem>
-                                    <SelectItem value="1350">1350</SelectItem>
+                                    <SelectItem value="300">300</SelectItem>
+                                    <SelectItem value="550">550</SelectItem>
+                                    <SelectItem value="850">850</SelectItem>
+                                    <SelectItem value="500">500</SelectItem>
+                                    <SelectItem value="950">950</SelectItem>
+                                    <SelectItem value=" 1400">1400</SelectItem>
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
