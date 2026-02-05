@@ -138,7 +138,7 @@ export default function EventCreation() {
                         type="submit"
                         disabled={submitButtonDisable}
                     >
-                        {submitButtonDisable ? "Creating Event" : "Create Event"}
+                        {submitButtonDisable ? "Registering" : "Register"}
                     </button>
                 </form>
             </div>
