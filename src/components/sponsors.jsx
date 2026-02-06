@@ -23,6 +23,7 @@ const sponsors = [
     src: "/sponsorship/Campa Sure logo.png",
     ctaText: "Visit Site",
     ctaLink: "#",
+    title: "Hydration partner"
   },
   {
     name: "ICICI Bank",
@@ -30,6 +31,7 @@ const sponsors = [
     src: "/sponsorship/ICICI_Bank.png",
     ctaText: "Visit Site",
     ctaLink: "#",
+    title: "Banking Partner"
   },
   {
     name: "EduFabrica",
@@ -37,6 +39,7 @@ const sponsors = [
     src: "/sponsorship/Edufabrica.png",
     ctaText: "Visit Site",
     ctaLink: "#",
+    title: "Workshop Partner"
   },
   {
     name: "Finlatics",
@@ -44,6 +47,7 @@ const sponsors = [
     src: "/sponsorship/finlatics.png",
     ctaText: "Visit Site",
     ctaLink: "#",
+    title: "Skill Partner"
   },
   {
     name: "Bsates",
@@ -51,6 +55,7 @@ const sponsors = [
     src: "/sponsorship/bsates.jpg",
     ctaText: "Visit Site",
     ctaLink: "#",
+    title: "Education Partner"
   },
   {
     name: "JPDHub",
@@ -58,7 +63,33 @@ const sponsors = [
     src: "/sponsorship/jpdhub_logo.jpg",
     ctaText: "Visit Site",
     ctaLink: "#",
+    title: "Hackathon Partner"
   },
+  {
+    name: "Masters Union",
+    color: "from-green-500 to-emerald-500",
+    src: "/sponsorship/Masters Union.jpeg",
+    ctaText: "Visit Site",
+    ctaLink: "#",
+    title: "Event Partner"
+  },
+  {
+    name: "Denver",
+    color: "from-green-500 to-emerald-500",
+    src: "/sponsorship/Denver.jpg",
+    ctaText: "Visit Site",
+    ctaLink: "#",
+    title: "Fragrance Partner"
+  },
+  {
+    name: "DriftX",
+    color: "from-green-500 to-emerald-500",
+    src: "/sponsorship/DriftX.jpg",
+    ctaText: "Visit Site",
+    ctaLink: "#",
+    title: "Go-karting Partner"
+  },
+
 
 
 ];
@@ -110,7 +141,7 @@ export default function EventsSection() {
   const [isPaused, setIsPaused] = useState(false);
   const id = useId();
   const [duration, setDuration] = useState(45); // Animation duration in seconds
-  const [duplicatedSponsors] = useState([...sponsors, ...sponsors]);
+  const [duplicatedSponsors] = useState([...sponsors]);
 
   useEffect(() => {
     function onKeyDown(event) {
@@ -160,65 +191,47 @@ export default function EventsSection() {
             </p>
           </motion.div>
 
-          {/* Infinite Moving Cards */}
-          <div className="relative w-full overflow-hidden py-8">
-            {/* Gradient overlays for fade effect on sides */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none"></div>
+          <div className="relative w-full py-8">
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {duplicatedSponsors.map((sponsor, index) => (
+                <motion.div
+                  key={`${sponsor.name}-${index}`}
+                  className="group"
+                  whileHover={{ y: -10 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                  onClick={() => setActive(sponsor)}
+                >
+                  <div className="h-full overflow-hidden rounded-xl backdrop-blur-lg bg-black/60 border border-purple-400/40 hover:bg-black/70 transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:scale-105 flex flex-col">
 
-            <div className="relative h-[300px] overflow-hidden">
-              <motion.div
-                ref={containerRef}
-                className="absolute top-0 left-0 flex space-x-8 h-full"
-                animate={{
-                  x: ['0%', '-50%'],
-                }}
-                transition={{
-                  duration: duration,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
-              >
-                {[...duplicatedSponsors, ...duplicatedSponsors].map((sponsor, index) => (
-                  <motion.div
-                    key={`${sponsor.name}-${index}`}
-                    className="w-[320px] sm:w-[360px] flex-shrink-0 group"
-                    whileHover={{
-                      y: -10,
-                      transition: { duration: 0.3 }
-                    }}
-                    onClick={() => setActive(sponsor)}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <div className="relative h-full overflow-hidden rounded-xl backdrop-blur-lg bg-black/60 border border-purple-400/40 p-0 hover:bg-black/70 transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:scale-105 flex flex-col">
-                      <div className="relative w-full h-48 overflow-hidden">
-                        <Image
-                          width={600}
-                          height={240}
-                          src={sponsor.src}
-                          alt={sponsor.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className={`absolute inset-0 bg-gradient-to-br ${sponsor.color} opacity-50 mix-blend-overlay`}></div>
-                      </div>
-
-                      <div className="flex-1 flex flex-col items-center text-center p-4">
-                        <div className="flex items-center justify-center mb-3">
-                          <h3 className="font-bold text-cyan-100 text-xl drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] group-hover:text-white transition-colors">
-                            {sponsor.name}
-                          </h3>
-                        </div>
-
-                      </div>
+                    <div className="relative w-full h-48 overflow-hidden">
+                      <Image
+                        width={600}
+                        height={240}
+                        src={sponsor.src}
+                        alt={sponsor.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-br ${sponsor.color} opacity-50 mix-blend-overlay`}
+                      />
                     </div>
-                  </motion.div>
-                ))}
-              </motion.div>
+
+                    <div className="flex-1 flex flex-col items-center justify-center text-center p-4">
+                      <h3 className="font-bold text-cyan-100 text-xl drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] group-hover:text-white transition-colors">
+                        {sponsor.name}
+                      </h3>
+                    </div>
+
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
+
+
 
           {/* Scroll Indicator */}
           <motion.div
